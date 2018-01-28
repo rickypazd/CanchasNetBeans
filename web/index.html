@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es-bo">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <head>
+
+        <!-- SITE TITTLE -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Peloteada</title>
+        <meta name="author" content="Servisis">
+        <meta itemprop="title" content="Peloteada reservas de canchas de futbol." />
+        <meta name="description" content="Peloteada reservas de canchas de futbol de santa cruz de la sierra." />
+
+        <meta name="twitter:image" content="img/logo-blue.png" />
+
+        <!-- PLUGINS CSS STYLE -->
+        <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+
+        <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="plugins/listtyicons/style.css" rel="stylesheet">
+        <link href="plugins/bootstrapthumbnail/bootstrap-thumbnail.css" rel="stylesheet">
+        <link href="plugins/datepicker/datepicker.min.css" rel="stylesheet">
+        <link href="plugins/selectbox/select_option1.css" rel="stylesheet">
+        <link href="plugins/owl-carousel/owl.carousel.min.css" rel="stylesheet">
+        <link href="plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
+        <link href="plugins/isotope/isotope.min.css" rel="stylesheet">
+
+        <!-- GOOGLE FONT -->
+        <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700,800,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
+
+        <!-- CUSTOM CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- FAVICON -->
+        <link href="img/favicon.png" rel="shortcut icon">
+
+        <style>
+            /* Always set the map height explicitly to define the size of the div
+            * element that contains the map. */
+            #map {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+
+
+        <!-- JAVASCRIPTS -->
+        <script src="plugins/jquery/jquery.min.js"></script>
+        <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+        <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+        <script src="plugins/waypoints/waypoints.min.js"></script>
+        <script src="plugins/counter-up/jquery.counterup.min.js"></script>
+        <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
+        <script src="plugins/selectbox/jquery.selectbox-0.1.3.min.js"></script>
+        <script src="plugins/owl-carousel/owl.carousel.min.js"></script>
+        <script src="plugins/isotope/isotope.min.js"></script>
+        <script src="plugins/fancybox/jquery.fancybox.pack.js"></script>
+        <script src="plugins/isotope/isotope-triger.min.js"></script>
+        <script src="plugins/map/js/rich-marker.js"></script>
+        <script src="plugins/map/js/infobox_packed.js"></script>
+        <script src="js/map.js"></script>
+        <script src="js/custom.js"></script>
+
+        <script src="js/index.js" type="text/javascript"></script>
+
+    </head>
+
+    <body class="body-wrapper">
+        <div class="page-loader" style="background: url(img/preloader.gif) center no-repeat #fff;"></div>
+        <div class="main-wrapper">
+            <!-- HEADER -->
+            <header id="pageTop" class="header">
+
+                <!-- TOP INFO BAR -->
+
+                <div class="nav-wrapper navbarWhite">
+
+                    <div class="container-fluid header-bg">
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-4 col-xs-6 header-left empty">
+                                empty
+                            </div>
+                            <div class="col-lg-8 col-sm-8 col-xs-6 header-right empty">
+                                empty
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NAVBAR -->
+                    <nav id="menuBar" class="navbar navbar-default lightHeader" role="navigation">
+                        <div class="container">
+
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="index.html"><img src="img/logo-blue.png" alt="logo"></a>
+                            </div>
+
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="active dropdown singleDrop">
+                                        <a href="index.html"  role="button" aria-haspopup="true" aria-expanded="false">Inicio</i></a>
+                                    </li>
+                                    <li class=" dropdown singleDrop">
+                                        <a href="perfil.html" role="button" aria-haspopup="true" aria-expanded="false">Perfil</a>
+                                    </li>
+                                    <li class=" dropdown singleDrop">
+                                        <a href="canchas.html"  role="button" aria-haspopup="true" aria-expanded="false">Canchas</a>
+                                    </li>
+                                    <li class=" dropdown singleDrop">
+                                        <a href="reservas.html" role="button" aria-haspopup="true" aria-expanded="false">Reservas</a>
+                                    </li>
+                                    <li class=" dropdown singleDrop">
+                                        <a href="contacto.html" role="button" aria-haspopup="true" aria-expanded="false">Contacto</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button id="btn_ini_sess" class="btn btn-default navbar-btn" type="button" data-toggle="modal" data-target="#loginModal"> + <span>Iniciar Sesion</span> </button>
+                            <button id="btn_perfil" class="btn btn-default navbar-btn" type="button" data-toggle="" data-target="#"> <img src="" class="foto_perfil img-circle" alt="as"><span class="nombre_perfil">NOMBRE</span> </button>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+
+            <!-- MAP SECTION -->
+            <section class="clearfix p0">
+                <div id="map" style="width:100%;height:550px; "></div>
+            </section>
+
+            <!-- CATEGORY SECTION -->
+            <section class="clearfix bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 ">
+                            <div class="bg-search-white">
+                                <form class="form-inline" action="http://themes.iamabdus.com/listty/1.2/category-grid.html" method="">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="nombre de la cancha o zona">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="searchSelectbox">
+                                            <select name="guiest_id3" id="guiest_id3" class="select-drop">
+                                                <option value="0">toda la cuidad</option>
+                                                <option value="1">primer anillo</option>
+                                                <option value="2">segundo anillo</option>
+                                                <option value="3">tercer anillo</option>
+                                                <option value="3">cuarto anillo</option>
+                                                <option value="3">quinto anillo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="searchSelectbox">
+                                            <select name="guiest_id4" id="guiest_id4" class="select-drop">
+                                                <option value="0">Todas Categoria</option>
+                                                <option value="1">Futbol</option>
+                                                <option value="2">Futbol 7</option>
+                                                <option value="3">Tenis</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Buscar </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="sidebarInner sidebarCategory">
+                                <div class="panel panel-default">
+                                    <div style="background-color: #1bac06; text-align: center; color: white; padding: 5px; border-top-left-radius:5px; border-top-right-radius:5px; ">Encontrar Cancha</div>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Nombre de la cancha?" aria-describedby="basic-addon2">
+                                        <a href="#" class="input-group-addon" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sidebarInner sidebarCategory">
+                                <div class="panel panel-default">
+                                    <div style="background-color: #1bac06; text-align: center; color: white; padding: 5px; border-top-left-radius:5px; border-top-right-radius:5px; ">Filtros</div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <div class="searchSelectbox">
+                                                <select name="guiest_id4" id="guiest_id4" class="select-drop">
+                                                    <option value="0">Todas Categoria</option>
+                                                    <option value="1">Futbol</option>
+                                                    <option value="2">Futbol 7</option>
+                                                    <option value="3">Tenis</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="dateSelect">
+                                                <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
+                                                    <input type="text" class="form-control" placeholder="Ingrese Fecha de reserva">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <p>Precio:<input type="range" name="precio" value="50" style="">
+                                        </div>
+                                        <div class="form-group col-xs-12">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox">
+                                                    Canchas <a href="terms-of-services.html">disponibles</a>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Buscar </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-8 col-xs-12">
+                            <div class="resultBar barSpaceAdjust">
+                                <h2>Encontramos <span>8</span> Resultados para usted</h2>
+                                <ul class="list-inline">
+                                    <li><a href="listing-sidebar-map-full.html"><i class="fa fa-th" aria-hidden="true"></i></a></li>
+                                    <li class="active"><a href="listing-sidebar-map-right.html"><i class="fa fa-th-list" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="listContent">
+                                <div class="row">
+                                    <div class="col-sm-5 col-xs-12">
+                                        <div class="categoryImage">
+                                            <img src="img/canchas/cancha2.jpg" alt="Image category" class="img-responsive img-rounded">
+                                            <span class="label label-primary">Cancha Bombonera</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 col-xs-12">
+                                        <div class="categoryDetails">
+                                            <ul class="list-inline rating">
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i>5.8</li>
+                                            </ul>
+                                            <h2>
+                                                <a href="detallecanchas.html" style="color:#222222">La Bombonera</a>
+                                                <span class="likeCount">
+                                                    <i class="fa fa-heart-o" aria-hidden="true"></i> 10 k
+                                                </span>
+                                            </h2>
+                                            <h5>Santa cruz de la sierra</h5>
+                                            <p>
+                                                <i class="icon-listy icon-target" style="color: #1bac06;"></i>
+                                                <span class="placeName"> Av. Angamos Este 1551</span>
+                                            </p>
+                                            <p style="text-align:justify">En La Bombonera contamos con alquiler de canchas deportivas de grass sintético y techadas, canchas adecuadas para el entrenamiento de diferentes tipos de deporte y personal calificado para ofrecerle un servicio con calidad...</p>
+                                            <ul class="list-inline list-tag">
+                                                <li><i class="fa fa-phone" aria-hidden="true"></i></li>
+                                                <li>[591]-77800221</li>
+                                            </ul>
+                                            <ul class="list-inline list-tag">
+                                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#"></a></li>
+                                                <li><a href="#">bombobera@peloteada.com</a></li>
+                                            </ul>
+                                            <ul class="list-inline list-tag">
+                                                <li><button type="submit" style="background-color: #1bac06; color: white; padding: 5px; border-radius:.25em; line-height: 23px; ">Ver mas </button></li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listContent">
+                                <div class="row">
+                                    <div class="col-sm-5 col-xs-12">
+                                        <div class="categoryImage">
+                                            <img src="img/canchas/cancha3.jpg" alt="Image category" class="img-responsive img-rounded">
+                                            <span class="label label-primary">Cancha Amboro</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 col-xs-12">
+                                        <div class="categoryDetails">
+                                            <ul class="list-inline rating">
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            </ul>
+                                            <h2>
+                                                <a href="detallecanchas.html" style="color: #222222">Cancha Amboro</a>
+                                                <span class="likeCount">
+                                                    <i class="fa fa-heart-o" aria-hidden="true"></i> 10 k
+                                                </span>
+                                            </h2>
+                                            <h5>Santa cruz de la sierra</h5>
+                                            <p>
+                                                <i class="icon-listy icon-target" style="color: #1bac06;"></i>
+                                                <span class="placeName">Entre 25 de Mayo y Casilda , Villa Lynch, San Martín, Buenos Aire</span>
+                                            </p>
+                                            <p>En La Bombonera contamos con alquiler de canchas deportivas de grass sintético y techadas, canchas adecuadas para el entrenamiento de diferentes tipos de deporte y personal calificado para ofrecerle un servicio con calidad.Ofrecemos atención a eventos empresariales y deportivos.</p>
+                                            <ul class="list-inline list-tag">
+                                                <li><i class="fa fa-phone" aria-hidden="true"></i></li>
+                                                <li>[591]-72659258</li>
+                                            </ul>
+                                            <ul class="list-inline list-tag">
+                                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#"></a></li>
+                                                <li><a href="#">amboro@peloteada.com</a></li>
+                                            </ul>
+                                            <ul class="list-inline list-tag">
+                                                <li><button type="submit" style="background-color: #1bac06; color: white; padding: 5px; border-radius:.25em; line-height: 23px; ">Ver mas </button></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listContent">
+                                <div class="row">
+                                    <div class="col-sm-5 col-xs-12">
+                                        <div class="categoryImage">
+                                            <img src="img/canchas/cancha4.jpg" alt="Image category" class="img-responsive img-rounded">
+                                            <span class="label label-primary">Mayor San Pablo Soccer - Canchas Sintéticas</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 col-xs-12">
+                                        <div class="categoryDetails">
+                                            <ul class="list-inline rating">
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i>5.8</li>
+                                            </ul>
+                                            <h2>
+                                                <a href="detallecanchas.html" style="color: #222222">Mayor San Pablo Soccer - Canchas Sintéticas</a>
+                                                <span class="likeCount">
+                                                    <i class="fa fa-heart-o" aria-hidden="true"></i> 10 k
+                                                </span>
+                                            </h2>
+                                            <h5>Santa cruz de la sierra</h5>
+                                            <p>
+                                                <i class="icon-listy icon-target" style="color: #1bac06;"></i>
+                                                <span class="placeName"> Av. Angamos Este 1551</span>
+                                            </p>
+                                            <p style="text-align:justify">En La Bombonera contamos con alquiler de canchas deportivas de grass sintético y techadas, canchas adecuadas para el entrenamiento de diferentes tipos de deporte y personal calificado para ofrecerle un servicio con calidad...</p>
+                                            <ul class="list-inline list-tag">
+                                                <li><i class="fa fa-phone" aria-hidden="true"></i></li>
+                                                <li>[591]-77800221</li>
+                                            </ul>
+                                            <ul class="list-inline list-tag">
+                                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#"></a></li>
+                                                <li><a href="#">bombobera@peloteada.com</a></li>
+                                            </ul>
+                                            <ul class="list-inline list-tag">
+                                                <li><button type="submit" style="background-color: #1bac06; color: white; padding: 5px; border-radius:.25em; line-height: 23px; ">Ver mas </button></li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="listContent">
+                                <div class="row">
+                                    <div class="col-sm-5 col-xs-12">
+                                        <div class="categoryImage">
+                                            <img src="img/canchas/cancha5.jpg" alt="Image category" class="img-responsive img-rounded">
+                                            <span class="label label-primary">Remanzo Soccer</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 col-xs-12">
+                                        <div class="categoryDetails">
+                                            <ul class="list-inline rating">
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                                <li><i class="fa fa-star" aria-hidden="true"></i>5.8</li>
+                                            </ul>
+                                            <h2>
+                                                <a href="detallecanchas.html" style="color: #222222">Remanzo Soccer</a>
+                                                <span class="likeCount">
+                                                    <i class="fa fa-heart-o" aria-hidden="true"></i> 10 k
+                                                </span>
+                                            </h2>
+                                            <h5>Santa cruz de la sierra</h5>
+                                            <p>
+                                                <i class="icon-listy icon-target" style="color: #1bac06;"></i>
+                                                <span class="placeName"> Av. Angamos Este 1551</span>
+                                            </p>
+                                            <p style="text-align:justify">En La Bombonera contamos con alquiler de canchas deportivas de grass sintético y techadas, canchas adecuadas para el entrenamiento de diferentes tipos de deporte y personal calificado para ofrecerle un servicio con calidad...</p>
+                                            <ul class="list-inline list-tag">
+                                                <li><i class="fa fa-phone" aria-hidden="true"></i></li>
+                                                <li>[591]-77800221</li>
+                                            </ul>
+                                            <ul class="list-inline list-tag">
+                                                <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#"></a></li>
+                                                <li><a href="#">bombobera@peloteada.com</a></li>
+                                            </ul>
+                                            <ul class="list-inline list-tag">
+                                                <li><button type="submit" style="background-color: #1bac06; color: white; padding: 5px; border-radius:.25em; line-height: 23px; ">Ver mas </button></li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="paginationCommon blogPagination categoryPagination">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination">
+                                        <li>
+                                            <a href="#" aria-label="Previous">
+                                                <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+                                            </a>
+                                        </li>
+                                        <li class="active"><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li>
+                                            <a href="#" aria-label="Next">
+                                                <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- CALL TO ACTION SECTION -->
+            <section class="clearfix callAction">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-sm-9 col-xs-12">
+                            <div class="callInfo">
+                                <h4><span>Registra</span> tus canchas<span> ahora mismo</span> <br> administra tus reservas y clientes.</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-3 col-xs-12">
+                            <div class="btnArea">
+                                <a href="sign-up.html" class="btn btn-primary btn-block">Registrate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- WORKS SECTION -->
+            <section class="clearfix worksArea">
+                <div class="container">
+                    <div class="page-header text-center">
+                        <h2>Como Funciona ? <small>Haci es como funciona <b>Peloteada.com</b></small></h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="thumbnail text-center worksContent">
+                                <img src="img/canchas/buscarmapa.png" alt="Image works">
+                                <div class="caption">
+                                    <a href="how-it-works.html"><h3>Busca las canchas</h3></a>
+                                    <p>Realiza la busqueda de canchas y podras ver su ubicacion en el mapa, asi como ver los horarios, tipos de cancha, etc.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="thumbnail text-center worksContent">
+                                <img src="img/canchas/confirmarreseva.png" alt="Image works">
+                                <div class="caption">
+                                    <a href="how-it-works.html"><h3>Realizar Reserva</h3></a>
+                                    <p>Despues de realizar la busqueda de tu cancha preferia podrias realizar<b> la reserva </b>y resivir una confirmacion.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="thumbnail text-center worksContent">
+                                <img src="img/canchas/PAGOS.png" alt="Image works">
+                                <div class="caption">
+                                    <a href="how-it-works.html"><h3>Formas de pago</h3></a>
+                                    <p>Podras realizar el pago por medio de tarjeta de credio debito, o en efectivo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="btnArea text-center"><a href="#" class="btn btn-primary">Ver Video <i class="fa fa-play-circle" aria-hidden="true"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- APP DOWNLOAD SECTION -->
+            <section class="clearfix appDownload">
+                <div class="container">
+                    <div class="page-header text-center">
+                        <h2>Descargar en PLay Store</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-12" style="display">
+
+                        </div>
+                        <div class="col-sm-4 col-xs-12">
+                            <a href="#" class="btn btn-primary btn-transparent">
+                                <i class="icon-listy icon-playstore"></i><span>available on <br><strong>Google Play</strong></span>
+                            </a>
+                        </div>
+
+                        <div class="col-sm-4 col-xs-12">
+                            <a href="#">
+                                <img src="img/canchas/qr.png" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer style="background-image: url(img/background/canchafooter.jpg);">
+                <!-- FOOTER INFO -->
+                <div class="clearfix footerInfo">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-7 col-xs-12">
+                                <div class="footerText">
+                                    <a href="index.html" class="footerLogo"><img src="img/logo-blue.png" alt="Footer Logo"></a>
+                                    <p><b>Peloteada</b> es una red social diseñada para integrar a los futbolistas aficionados y brindarles múltiples servicios de comunicación para que puedan jugar partidos de fútbol (o fulbito) con mayor frecuencia y con mayores facilidades.</p>
+                                    <ul class="list-styled list-contact">
+                                        <li><i class="fa fa-phone" aria-hidden="true"></i>[591] 77800221</li>
+                                        <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="#">info@peloteada.com</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-xs-12">
+                                <div class="footerInfoTitle">
+                                    <h4>Links</h4>
+                                </div>
+                                <div class="useLink">
+                                    <ul class="list-unstyled">
+                                        <li><a href="contacto.html">Quines Somos</a></li>
+                                        <li><a href="contacto.html">Registrate</a></li>
+                                        <li><a href="contacto.html">Login</a></li>
+                                        <li><a href="contacto.html">Escribenos</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 col-xs-12">
+                                <div class="footerInfoTitle">
+                                    <h4>Compañia</h4>
+                                </div>
+                                <div class="useLink">
+                                    <ul class="list-unstyled">
+                                        <li><a href="contacto.html">Contacto</a></li>
+                                        <li><a href="terms-of-services.html">Terminos y condiciones</a></li>
+                                        <li><a href="how-it-works.html">Como funciona</a></li>
+                                        <li><a href="payment-process.html">Pago</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- COPY RIGHT -->
+                <div class="clearfix copyRight">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="copyRightWrapper">
+                                    <div class="row">
+                                        <div class="col-sm-5 col-sm-push-7 col-xs-12">
+                                            <ul class="list-inline socialLink">
+                                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-7 col-sm-pull-5 col-xs-12">
+                                            <div class="copyRightText">
+                                                <p>Copyright &copy; 2017. Todos los derechos reservados por <a href="#">Servisis</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- LOGIN  MODAL -->
+        <div id="loginModal" tabindex="-1" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Ingrese a su cuenta</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="loginForm">
+                            <div class="form-group">
+                                <button type="button" id="login" class="btn btn-primary btn-block"><i class="fa fa-facebook-square" aria-hidden="true"></i>Iniciar sesión FaceBook</button>
+                                
+                            </div>
+                            <div class="form-group">
+                                <button type="button" id="login_gmail" class="btn btn-primary btn-block">Iniciar sesión gmail</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+	<script>
+	// Load the SDK asynchronously
+	  (function(d, s, id) {
+	    var js, fjs = d.getElementsByTagName(s)[0];
+	    if (d.getElementById(id)) return;
+	    js = d.createElement(s); js.id = id;
+	    js.src = "//connect.facebook.net/en_US/sdk.js";
+	    fjs.parentNode.insertBefore(js, fjs);
+	  }(document, 'script', 'facebook-jssdk'));
+	 </script>
+        <script>
+
+            // If you're adding a number of markers, you may want to drop them on the map
+            // consecutively rather than all at once. This example shows how to use
+            // window.setTimeout() to space your markers' animation.
+
+            var neighborhoods = [
+                {lat: -17.7848688, lng: -63.180835},
+                {lat: -17.7866668, lng: -63.1827876},
+                {lat: -17.7850827, lng: -63.1787751},
+                {lat: -17.780322, lng: -63.1856627},
+                {lat: -17.778115, lng: -63.180266},
+                {lat: -17.781563, lng: -63.192940},
+                {lat: -17.784413, lng: -63.174379},
+                {lat: -17.777273, lng: -63.169891},
+                {lat: -17.783465, lng: -63.166373},
+                {lat: -17.788287, lng: -63.189547}
+            ];
+
+            var markers = [];
+            var map;
+            var descripcion = 'cancha';
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 15,
+                    center: {lat: -17.7848688, lng: -63.180835}
+
+                });
+                for (var i = 0; i < neighborhoods.length; i++) {
+                    addMarkerWithTimeout(neighborhoods[i], i * 200);
+                }
+            }
+
+
+            function addMarkerWithTimeout(position, timeout) {
+                window.setTimeout(function () {
+                    markers.push(new google.maps.Marker({
+                        position: position,
+                        map: map,
+                        title: descripcion,
+                        animation: google.maps.Animation.DROP
+                    }));
+                }, timeout);
+            }
+
+
+        </script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBob08SeANDb-BYOCvJJIk9gG_u3k9tj5I&callback=initMap">
+        </script>
+    </body>
+
+
+    <!-- Mirrored from themes.iamabdus.com/listty/1.2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Dec 2017 01:15:22 GMT -->
+</html>
+

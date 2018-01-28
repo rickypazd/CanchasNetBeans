@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Mis Complejos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+        <link href="../plugins/listtyicons/style.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+        <link href="../plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+        <link href="plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style_cancha.css" rel="stylesheet" type="text/css"/>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="plugins/jQueryUI/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="plugins/timepicker/bootstrap-timepicker.min.js" type="text/javascript"></script>
+        <script src="bower_components/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="js/ver_cancha_admin.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="cargando" id="cargando_foto" ><div id="progressbar" class="progresbar_center"><div class="progress-label"></div></div></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="dashboardBoxBg mb30">
+                        <div class="profileImage">
+                            <img src="img/canchas/perfil.jpg" alt="Image User" id="complejo_perfil" class="img-circle" width="200" height="200"/>
+                            <div class="file-upload profileImageUpload">
+                                <div class="upload-area">
+                                    <button class="browse" type="button" onclick="subir_foto_perfil();">Cargar una imagen <i class="icon-listy icon-upload"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profileUserInfo bt profileName">
+                            <h2>Fotos Del Carrusel</h2>
+                            <p>click para borrar</p>
+                            <div id="fotos_carrusel">
+
+                            </div>
+                            <div class="file-upload profileImageUpload">
+                                <div class="upload-area">
+                                    <button class="browse" type="button" onclick="subir_foto_carrusel();">Cargar una imagen <i class="icon-listy icon-upload"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-7 col-xs-12">
+                    <form>
+                        <div class="dashboardBoxBg">
+                            <div class="profileIntro">
+                                <h2>Editar Complejo</h2>
+                            </div>
+                        </div>
+                        <div class="dashboardBoxBg mt30">
+                            <div class="profileIntro">
+                                <h3>Datos</h3>
+                                <div class="row">
+                                    <div class="form-group  col-xs-12">
+                                        <label for="nombre">Nombre</label>
+                                        <input type="text" class="form-control" id="nombre" placeholder="">
+                                    </div>
+                                    <div class="form-group  col-xs-12">
+                                        <label for="direccion">Direccion</label>
+                                        <input type="text" class="form-control" id="direccion" placeholder="">
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label for="presentacion">Presentacion</label>
+                                        <textarea class="form-control" rows="5" id="presentacion" placeholder=""></textarea>
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label for="politicas">Politicas</label>
+                                        <textarea class="form-control" rows="5" id="politicas" placeholder=""></textarea>
+                                    </div>
+                                    <div class="form-group col-sm-6 col-xs-12">
+                                        <label>Telefonos</label>
+                                        <div id="telefonos">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-6 col-xs-12">
+                                        <label>Emails</label>
+                                        <div id="emails">
+                                            <input type="text" class="form-control" placeholder="Jane@example.com">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-area mt30">
+                            <button class="btn btn-primary" type="button" onclick="guardar_cambio();">Guardar Cambios</button>
+                        </div>
+                        <div class="dashboardBoxBg mt30">
+                            <div class="profileIntro">
+                                <h3>Canchas</h3>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="cancha_conten">
+                                        <img src="../img/canchas/cancha1.jpg" class="img-responsive">
+                                        <div>
+                                            cancha 1
+                                        </div>  
+                                        <div>
+                                            <h2><i class="fa fa-check-circle" aria-hidden="false"></i> Futbol 7</h2>
+                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Sintetica</h5>
+                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Techada</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="cancha_conten">
+                                        <img src="../img/canchas/cancha1.jpg" class="img-responsive">
+                                        <div>
+                                            cancha 1
+                                        </div>  
+                                        <div>
+                                            <h2><i class="fa fa-check-circle" aria-hidden="false"></i> Futbol 7</h2>
+                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Sintetica</h5>
+                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Techada</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="cancha_conten">
+                                        <img src="../img/canchas/cancha1.jpg" class="img-responsive">
+                                        <div>
+                                            cancha 1
+                                        </div>  
+                                        <div>
+                                            <h2><i class="fa fa-check-circle" aria-hidden="false"></i> Futbol 7</h2>
+                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Sintetica</h5>
+                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Techada</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="cancha_conten">
+                                        <img src="../img/canchas/cancha1.jpg" class="img-responsive">
+                                        <div>
+                                            cancha 1
+                                        </div>  
+                                        <div>
+                                            <h2><i class="fa fa-check-circle" aria-hidden="false"></i> Futbol 7</h2>
+                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Sintetica</h5>
+                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Techada</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        <div class="btn-area mt30">
+                            <button class="btn btn-primary" type="button" onclick="crear_cancha();">Crear Cancha</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <form id="formimg_perfil">
+            <input type="hidden" name="evento" value="cargar_foto_perfil_complejo" />
+            <input type="file" name="foto_perfil" accept="image/jpeg,image/png,image/gif" style="display:none" onchange="subir_foto()" />
+            <input type="hidden" name="id_complejo" value="0" />
+        </form>
+        <form id="formimg_carrusel">
+            <input type="hidden" name="evento" value="cargar_foto_carrusel_complejo" />
+            <input type="file" name="foto_carr" accept="image/jpeg,image/png,image/gif" style="display:none" onchange="subir_foto_carrusel_s()" />
+            <input type="hidden" name="id_complejo_c" value="0" />
+        </form>
+
+    </body>
+</html>
