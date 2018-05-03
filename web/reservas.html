@@ -56,43 +56,42 @@
                     </div>
                 </div>
                 <!-- NAVBAR -->
-                <nav id="menuBar" class="navbar navbar-default lightHeader" role="navigation">
-                    <div class="container">
+               <nav id="menuBar" class="navbar navbar-default lightHeader" role="navigation">
+                        <div class="container">
 
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="index.html"><img src="img/logo-blue.png" alt="logo"></a>
-                        </div>
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="index.html"><img src="img/logo-blue.png" alt="logo"></a>
+                            </div>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse navbar-ex1-collapse">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown singleDrop">
-                                    <a href="index.html" role="button" aria-haspopup="true" aria-expanded="false">Inicio</i></a>
-                                </li>
-                                <li class=" dropdown singleDrop">
-                                    <a href="perfil.html" role="button" aria-haspopup="true" aria-expanded="false">Perfil</a>
-                                </li>
-                                <li class=" dropdown singleDrop">
-                                    <a href="canchas.html" role="button" aria-haspopup="true" aria-expanded="false">Canchas</a>
-                                </li>
-                                <li class="active  dropdown singleDrop">
-                                    <a href="reservas.html" role="button" aria-haspopup="true" aria-expanded="false">Reservas</a>
-                                </li>
-                                <li class=" dropdown singleDrop">
-                                    <a href="contacto.html" role="button" aria-haspopup="true" aria-expanded="false">Contacto</a>
-                                </li>
-                            </ul>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="dropdown singleDrop">
+                                        <a href="index.html"  role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home icon-dash" aria-hidden="true"></i>Inicio</a>
+                                    </li>
+                                   
+                                    <li class="dropdown singleDrop">
+                                        <a href="canchas.html"  role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search icon-dash" aria-hidden="true"></i> Canchas</a>
+                                    </li>
+                                    <li id="menu_reserva" class="active  dropdown singleDrop">
+                                        <a href="reservas.html" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-ul icon-dash" aria-hidden="true"></i>Reservas</a>
+                                    </li>
+                                    <li class=" dropdown singleDrop">
+                                        <a href="contacto.html" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-envelope icon-dash" aria-hidden="true"></i>Contacto</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button id="btn_ini_sess" class="btn btn-default navbar-btn" type="button" data-toggle="modal" data-target="#loginModal"> + <span>Iniciar Sesion</span> </button>
+                            <button id="btn_perfil" class="btn btn-default navbar-btn" type="button" data-toggle="modal" data-target="#perfil_modal"> <img src="" class="foto_perfil img-circle" alt="as"><span class="nombre_perfil">NOMBRE</span> </button>
                         </div>
-                        <button class="btn btn-default navbar-btn" type="button" data-toggle="modal" data-target="#loginModal"> + <span>Iniciar Sesion</span> </button>
-                    </div>
-                </nav>
+                    </nav>
             </div>
         
         </header>
@@ -105,177 +104,25 @@
                         <div class="dashboardPageTitle text-center">
                             <h2>Rervas</h2>
                         </div>
-                        <div class="dashboardBoxBg mb30">
-                            <div class="profileIntro">
-                                <div class="row">
-                                    <div class="form-group col-md-4 col-sm-6 col-xs-12">
-                                        <label for="orderId">Reserva ID</label>
-                                        <input type="text" class="form-control" id="orderId" placeholder="Reserva id">
-                                    </div>
-                                    <div class="form-group col-md-4 col-sm-6 col-xs-12">
-                                        <label for="orderStatus">Estado Reserva</label>
-                                        <input type="text" class="form-control" id="orderStatus" placeholder="Estado Reserva">
-                                    </div>
-                                    <div class="form-group col-md-4 col-sm-6 col-xs-12">
-                                        <label for="customer">Cancha</label>
-                                        <input type="text" class="form-control" id="customer" placeholder="Nombre Cancha">
-                                    </div>
-                                    <div class="form-group col-md-4 col-sm-6 col-xs-12">
-                                        <label for="dateAdded">Fecha inicio</label>
-                                        <div class="dateSelect">
-                                            <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-                                                <input type="text" class="form-control" placeholder="mm/dd/yyyy">
-                                                <div class="input-group-addon">
-                                                    <i class="icon-listy icon-calendar"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-4 col-sm-6 col-xs-12">
-                                        <label for="dateModified">Fecha fin</label>
-                                        <div class="dateSelect">
-                                            <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-                                                <input type="text" class="form-control" placeholder="mm/dd/yyyy">
-                                                <div class="input-group-addon">
-                                                    <i class="icon-listy icon-calendar"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-4 col-sm-6 col-xs-12">
-                                        <label for="amount">Monto</label>
-                                        <input type="text" class="form-control" id="amount" placeholder="monto">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-xs-12">
-                        <div class="table-responsive bgAdd" data-pattern="priority-columns">
+                        <div class="table-responsive bgAdd">
                             <table id="ordersTable" class="table table-small-font table-bordered table-striped" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <th>Reserva ID</th>
-                                        <th data-priority="">Cancha</th>
-                                        <th data-priority="2">Tipo de pago</th>
-                                        <th data-priority="2">Monto</th>
-                                        <th data-priority="2">Horas</th>
-                                        <th data-priority="6">Fecha</th>
-                                        <th data-priority="3">Estado</th>
-                                        <th data-priority="2">Accion</th>
+                                        <th >Complejo</th>
+                                        <th >Cancha</th>
+                                        <th >Tipo de pago</th>
+                                        <th >Monto</th>
+                                        <th >Horas</th>
+                                        <th >Fecha</th>
+                                        <th >Estado</th>
+                                        <th >Accion</th>
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th>Reserva ID</th>
-                                        <th data-priority="">Cancha</th>
-                                        <th data-priority="2">Tipo de pago</th>
-                                        <th data-priority="2">Monto</th>
-                                        <th data-priority="2">Horas</th>
-                                        <th data-priority="6">Fecha</th>
-                                        <th data-priority="3">Estado</th>
-                                        <th data-priority="2">Accion</th>
-                                    </tr>
-                                </tfoot>
-                                <tbody>
-                                    <tr>
-                                        <td>2475</td>
-                                        <td>Bombonera</td>
-                                        <td>Efectivo</td>
-                                        <td>500 bs</td>
-                                        <td>2 horas</td>
-                                        <td>15/12/2017</td>
-                                        <td><span class="label label-warning">Pending</span></td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary">Cancelar</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2312</td>
-                                        <td>Bombonera</td>
-                                        <td>Efectivo</td>
-                                        <td>100 bs</td>
-                                        <td>2 horas</td>
-                                        <td>15/12/2017</td>
-                                        <td><span class="label label-danger">Canceled</span></td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary">Cancelar</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4132</td>
-                                        <td>Bombonera</td>
-                                        <td>Tarjeta de credito</td>
-                                        <td>50 bs</td>
-                                        <td>2 horas</td>
-                                        <td>15/12/2017</td>
-                                        <td><span class="label label-success">Confirmada</span></td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary">Cancelar</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2475</td>
-                                        <td>Bombonera</td>
-                                        <td>Efectivo</td>
-                                        <td>500 bs</td>
-                                        <td>2 horas</td>
-                                        <td>15/12/2017</td>
-                                        <td><span class="label label-warning">Pending</span></td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary">Cancelar</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2475</td>
-                                        <td>Bombonera</td>
-                                        <td>Efectivo</td>
-                                        <td>500 bs</td>
-                                        <td>2 horas</td>
-                                        <td>15/12/2017</td>
-                                        <td><span class="label label-warning">Pending</span></td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary">Cancelar</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4132</td>
-                                        <td>Bombonera</td>
-                                        <td>Tarjeta de credito</td>
-                                        <td>50 bs</td>
-                                        <td>2 horas</td>
-                                        <td>15/12/2017</td>
-                                        <td><span class="label label-success">Confirmada</span></td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary">Cancelar</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4132</td>
-                                        <td>Bombonera</td>
-                                        <td>Tarjeta de credito</td>
-                                        <td>50 bs</td>
-                                        <td>2 horas</td>
-                                        <td>15/12/2017</td>
-                                        <td><span class="label label-success">Confirmada</span></td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary">Cancelar</button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tbody id="table_res_usr">
+                                    
 
                                 </tbody>
                             </table>
@@ -360,6 +207,7 @@
     <!-- JAVASCRIPTS -->
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="js/facebook_login.js" type="text/javascript"></script>
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
     <script src="plugins/waypoints/waypoints.min.js"></script>
@@ -374,6 +222,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEDfNcQRmKQEyulDN8nGWjLYPm8s4YB58"></script>
     <script src="js/map.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/reservas.js" type="text/javascript"></script>
 
 </body>
 

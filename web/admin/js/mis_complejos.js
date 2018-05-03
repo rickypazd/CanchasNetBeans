@@ -40,7 +40,7 @@ function cargar_complejos() {
             html += "     </p>";
             html += "     <p style='text-align:justify'>" + obj.PRESENTACION + "</p>";
             html += "    <ul class='list-inline list-tag'>";
-            html += "       <li><button type='button' class='btn_verde' onclick='ver_cancha(" + obj.ID + ")'>Ver mas </button></li>";
+            html += "       <li><button type='button' class='btn_verde' onclick='ver_cancha(" + obj.ID + ")'>editar </button></li>";
             html += "   </ul>";
             html += "  </div>";
             html += "  </div>";

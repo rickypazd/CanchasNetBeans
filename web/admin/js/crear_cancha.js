@@ -132,7 +132,7 @@ function registrar() {
             json += '{"corr":"' + correo + '"},';
         }
     });
-    json = json.substring(0, json.length - 1);
+        json = json.substring(0, json.length - 1);
     json += '],';
     json += '"horario":[';
     var hora_ini;

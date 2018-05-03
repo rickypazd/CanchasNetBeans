@@ -6,11 +6,14 @@
 package CONTROLADOR;
 
 import Conexion.Conexion;
+import MODELO.CANCHA;
 import MODELO.COMPLEJO;
 import MODELO.CORREO;
+import MODELO.COSTOS;
 import MODELO.EVENTOS;
 import MODELO.FOTO_CARRUSEL;
 import MODELO.HORARIO;
+import MODELO.RESERVA;
 import MODELO.TELEFONO;
 import MODELO.TIPO_CANCHA;
 import MODELO.URL;
@@ -19,6 +22,7 @@ import java.io.*;
 
 import java.nio.file.*;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,7 +40,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 /**
  *
  * @author RICKY
@@ -102,6 +105,15 @@ public class adminController extends HttpServlet {
                 case "get_horario_complejo":
                     html = get_horario_complejo(request, con);
                     break;
+                case "agg_cancha":
+                    html = agg_cancha(request, con);
+                    break;
+                case "get_reservas_admin":
+                    html = get_reservas_admin(request, con);
+                    break;
+                case "get_detalle_res":
+                    html = get_detalle_res(request, con);
+                    break;
 
             }
             con.Close();
@@ -112,6 +124,8 @@ public class adminController extends HttpServlet {
             Logger.getLogger(adminController.class.getName()).log(Level.SEVERE, null, ex);
             response.getWriter().write("falso");
         } catch (JSONException ex) {
+            Logger.getLogger(adminController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(adminController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -385,5 +399,48 @@ public class adminController extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         HORARIO hor = new HORARIO(con);
         return hor.todos_de_complejo(id).toString();
+    }
+
+    private String agg_cancha(HttpServletRequest request, Conexion con) throws JSONException, SQLException, ParseException {
+        int id_complejo = Integer.parseInt(request.getParameter("id_complejo"));
+        String nombre = request.getParameter("nombre");
+        int tipo = Integer.parseInt(request.getParameter("tipo"));
+        String json_costos = request.getParameter("costos");
+        JSONArray arr = new JSONArray(json_costos);
+        CANCHA canc = new CANCHA(con);
+        canc.setID_COMPLEJO(id_complejo);
+        canc.setNOMBRE(nombre);
+        canc.setID_TIPO(tipo);
+        int id_cancha = canc.Insertar();
+        JSONObject obj;
+        COSTOS cos;
+        String hora;
+        Time tim;
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        for (int i = 0; i < arr.length(); i++) {
+            obj = arr.getJSONObject(i);
+            cos = new COSTOS(con);
+            cos.setDIA(obj.getInt("dia"));
+            cos.setPRECIO(obj.getInt("precio"));
+            cos.setID_CANCHA(id_cancha);
+            hora = obj.getString("hora");
+            long ms = sdf.parse(hora).getTime();
+            tim = new Time(ms);
+            cos.setHORA(tim);
+            cos.Insertar();
+        }
+        return "exito";
+    }
+
+    private String get_reservas_admin(HttpServletRequest request, Conexion con) throws SQLException, JSONException, IOException {
+        int id= Integer.parseInt(request.getParameter("id"));
+        RESERVA res = new RESERVA(con);
+        return res.get_res_de_admin(id).toString();
+    }
+
+    private String get_detalle_res(HttpServletRequest request, Conexion con) throws SQLException, JSONException, IOException {
+       int id= Integer.parseInt(request.getParameter("id"));
+        RESERVA res = new RESERVA(con);
+        return res.get_res_detalle(id).toString();
     }
 }

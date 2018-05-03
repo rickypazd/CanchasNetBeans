@@ -5,17 +5,13 @@
  */
 var id_cancha;
 var url = "adminController";
-
 $(document).ready(function () {
     rezizar();
     $("#progressbar").css("display", "none");
     $("#cargando_foto").css("display", "none");
     id_cancha = sessionStorage.getItem("id_cancha");
     cargar_cancha();
-
-
 });
-
 function rezizar() {
     var h = $(document).height();
     window.parent.resizes(h + 15);
@@ -52,6 +48,24 @@ function cargar_cancha() {
             html += "  <img src='../" + obj.FOTO + "' alt='Image User' class='img-circle img-carr-b' width='100' height='100' onclick='eliminar_foto_carr(" + obj.ID + ",this);' />";
         });
         $("#fotos_carrusel").html(html);
+        var canchas = cancha.CANCHAS;
+        html = "";
+        $.each(canchas, function (i, obj) {
+            html += "<div class='col-md-4 col-sm-6'>";
+                html += "<div class='cancha_conten'>";
+                    html += "<img src='../img/canchas/cancha1.jpg' class='img-responsive'>";
+                    html += "<div>";
+                    html += obj.NOMBRE;
+                    html += "</div>  ";
+                    html += "<div>";
+                        html += "<h2><i class='fa fa-check-circle' aria-hidden='false'></i> Futbol 7</h2>";
+                    html += "</div>";
+                    html +="<button type='submit' class='btn btn-primary'> editar </button>";
+                html += "</div>";
+            html += "</div>";
+
+        });
+        $("#cont_canchas").html(html);
         rezizar();
     });
 }
@@ -59,7 +73,6 @@ function cargar_cancha() {
 function guardar_cambio() {
     var nombre = $("#nombre").val() || 0;
     var direccion = $("#direccion").val() || 0;
-
     var presentacion = $("#presentacion").val() || 0;
     if (presentacion != 0) {
         presentacion = presentacion.replace(/\n/g, "<br />");
@@ -116,7 +129,6 @@ function subir_foto_carrusel() {
 
 function subir_foto() {
     $("input[name=id_complejo]").val(id_cancha);
-
     var formData = new FormData($("#formimg_perfil")[0]);
     $("#progressbar").css("display", "");
     $("#cargando_foto").css("display", "");
@@ -158,15 +170,12 @@ function subir_foto() {
             $("#progressbar").css("display", "none");
             $("#cargando_foto").css("display", "none");
             $("#complejo_perfil").attr('src', "../" + data);
-
-
         }
     });
 }
 
 function subir_foto_carrusel_s() {
     $("input[name=id_complejo_c]").val(id_cancha);
-
     var formData = new FormData($("#formimg_carrusel")[0]);
     $("#progressbar").css("display", "");
     $("#cargando_foto").css("display", "");
@@ -210,26 +219,23 @@ function subir_foto_carrusel_s() {
             var obj = $.parseJSON(data);
             var html = "  <img src='../" + obj.FOTO + "' alt='Image User' class='img-circle img-carr-b' width='100' height='100' onclick='eliminar_foto_carr(" + obj.ID + ",this);' />";
             $("#fotos_carrusel").append(html);
-
-
         }
     });
 }
 
 function eliminar_foto_carr(id, foto) {
     if (window.confirm("Desea eliminar la foto?")) {
-        $.post(url,{evento:"eliminar_foto_carrusel",id:id}, function (resp) {
-            if(resp=="exito"){
-                   $(foto).css("display", "none");
-            }else{
+        $.post(url, {evento: "eliminar_foto_carrusel", id: id}, function (resp) {
+            if (resp == "exito") {
+                $(foto).css("display", "none");
+            } else {
                 alert("Ocurrio algun error intentelo nuevamente");
             }
-         
-        });
 
+        });
     }
 }
-function crear_cancha(){
+function crear_cancha() {
     change_frame_padre("agg_cancha");
 }
 function change_frame_padre(dir) {

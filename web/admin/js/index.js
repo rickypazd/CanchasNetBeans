@@ -27,7 +27,7 @@ function cargar_admin() {
 
 function change_frame(frame) {
     $("#frame_ini").attr("src", frame + ".html");
-
+    document.body.scrollTop = 0;
 
 }
 function resizes(heig) {
@@ -41,6 +41,6 @@ function desconectarse() {
 }
 
 function cargar_usr() {
-      $(".usr_iten").css('display','');
-    $(".nombre_usr").html(usr_log.NOMBRE+" "+usr_log.APELLIDO);
+    $(".usr_iten").css('display', '');
+    $(".nombre_usr").html(usr_log.NOMBRE + " " + usr_log.APELLIDO);
 }

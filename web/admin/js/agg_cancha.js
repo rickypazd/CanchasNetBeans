@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 var url = "adminController";
-
+var id_cancha;
 $(document).ready(function () {
     $("#registro_2").css("display", "none");
     id_cancha = sessionStorage.getItem("id_cancha");
@@ -197,11 +197,13 @@ function get_dia(dia) {
 function crear() {
     var valido = true;
     var dia;
+    var json = '[';
     $("#tabla_cost tr th").each(function (i, obj) {
         dia = $(obj).attr("class");
         var horas;
         var hora;
         var precio;
+
         if (dia != null) {
             horas = $("#tabla_cost").find("." + dia);
             $.each(horas, function (i, obj) {
@@ -209,8 +211,8 @@ function crear() {
                 if (hora != null) {
                     precio = $(obj).text();
                     if (precio.length > 0) {
+                        json += '{"dia":' + dia + ',"hora":"' + hora + '","precio":"' + precio + '"},';
                         $(obj).css("background", "#ffffff");
-                        
                     } else {
                         $(obj).css("background", "#636363");
                         valido = false;
@@ -219,11 +221,20 @@ function crear() {
             });
         }
 
-
     });
+    json = json.substring(0, json.length - 1);
+    json += ']';
 
     if (valido) {
-        alert("creado");
+        $.post(url, {evento: "agg_cancha",
+            id_complejo: id_cancha,
+            nombre: nombre_cancha,
+            tipo: tipo_cancha,
+            costos: json}, function (resp) {
+            if (resp == 'exito') {
+                   change_frame_padre("ver_cancha_admin");
+            }
+        });
     }
 }
 
@@ -242,4 +253,7 @@ function time_format(d) {
 
 function format_two_digits(n) {
     return n < 10 ? '0' + n : n;
+}
+function change_frame_padre(dir) {
+    window.parent.change_frame(dir);
 }
