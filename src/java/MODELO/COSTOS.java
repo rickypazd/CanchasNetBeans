@@ -71,6 +71,36 @@ public class COSTOS {
         rs.close();
         return json;
     }
+    public JSONArray dias_activos(int id) throws SQLException, JSONException, IOException {
+        String consulta = "select dia from costos where id_cancha="+id+" group by(dia) order by dia";
+        PreparedStatement ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        JSONArray json = new JSONArray();
+        JSONObject obj;
+        while (rs.next()) {
+            obj = new JSONObject();
+            obj.put("DIA", rs.getInt("dia"));
+            json.put(obj);
+        }
+        ps.close();
+        rs.close();
+        return json;
+    }
+    public JSONArray horas(int id) throws SQLException, JSONException, IOException {
+        String consulta = "select hora from costos where id_cancha="+id+" group by(hora) order by hora";
+        PreparedStatement ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        JSONArray json = new JSONArray();
+        JSONObject obj;
+        while (rs.next()) {
+            obj = new JSONObject();
+            obj.put("HORA", rs.getString("hora"));
+            json.put(obj);
+        }
+        ps.close();
+        rs.close();
+        return json;
+    }
 
     public int getID() {
         return ID;

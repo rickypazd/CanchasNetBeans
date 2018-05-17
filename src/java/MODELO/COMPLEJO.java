@@ -184,6 +184,7 @@ public class COMPLEJO {
             obj.put("TELEFONOS", tel.todos_de_complejo(ids));
             obj.put("CORREOS", cor.todos_de_complejo(ids));
             obj.put("HORARIOS", hor.todos_de_complejo(ids));
+            
             json.put(obj);
         }
         ps.close();

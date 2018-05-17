@@ -55,6 +55,7 @@ public class RESERVA {
                 + "from reserva_padre rp, reservas r \n"
                 + "where rp.id_cancha=" + id + " \n"
                 + "and rp.id=r.id_respa \n"
+                + "and rp.estado<>3 "
                 + "and r.fecha BETWEEN '" + fe_ini + "' AND '" + fe_fin + "'";
         PreparedStatement ps = con.statamet(consulta);
         ResultSet rs = ps.executeQuery();

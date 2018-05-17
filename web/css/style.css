@@ -7994,6 +7994,10 @@ body.rtl .checkbox .pull-right.link {
     background: #f4f007 !important;
     color: #f4f007 !important;
 }
+.confirmado{
+    background: #63AA2A !important;
+    color: #63AA2A !important;
+}
 .btn-danger{
     background-color: #d9534f !important;
 }

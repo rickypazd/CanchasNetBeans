@@ -190,12 +190,13 @@ function cargar_fecha() {
                 if ($(obje).data("fecha") == fecha) {
                     $(obje).attr("onclick", "javaScript:void(0)");
                     switch (estado) {
-                        case 0: //confirmado
-
+                        case 2: //confirmado
+                            $(obje).attr("class", "confirmado");
                             break;
                         case 1: //pendiente
                             $(obje).attr("class", "pendiente");
                             break;
+                         
                     }
 
 

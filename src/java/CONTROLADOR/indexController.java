@@ -82,6 +82,9 @@ public class indexController extends HttpServlet {
                 case "get_horario_complejo":
                     html = get_horario_complejo(request, con);
                     break;
+                case "get_dias_activos":
+                    html = get_dias_activos(request, con);
+                    break;
                 case "get_precio_cancha":
                     html = get_precio_cancha(request, con);
                     break;
@@ -238,5 +241,23 @@ public class indexController extends HttpServlet {
         String id = request.getParameter("id");
         RESERVA res = new RESERVA(con);
         return res.get_res_de_usuario(id).toString();
+    }
+
+    private String get_dias_activos(HttpServletRequest request, Conexion con) throws SQLException, JSONException, IOException {
+          int id = Integer.parseInt(request.getParameter("id"));
+        COSTOS cos = new COSTOS(con);
+        JSONArray arrdias=cos.dias_activos(id);
+        JSONArray arrhroas=cos.horas(id);
+        JSONArray arrcostos=cos.todos_de_complejo(id);
+        String fe_ini = request.getParameter("fe_in");
+        String fe_fin = request.getParameter("fe_fin");
+        RESERVA res = new RESERVA(con);
+        JSONArray arrreservas= res.get_res_can(id, fe_ini, fe_fin);
+        JSONObject obj = new JSONObject();
+        obj.put("dias", arrdias);
+        obj.put("horas", arrhroas);
+        obj.put("costos", arrcostos);
+        obj.put("reservas", arrreservas);
+        return obj.toString();
     }
 }

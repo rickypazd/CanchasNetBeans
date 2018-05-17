@@ -73,6 +73,17 @@ public class RESERVA_PA {
         return json;
     }
 
+    public void Cancelar_Reservas_menores_fecha(String fecha) throws SQLException {
+        String consulta = "UPDATE public.reserva_padre\n"
+                + "	SET estado=3\n"
+                + "	WHERE estado=1\n"
+                + "	and fecha   < '"+fecha+"'";
+        PreparedStatement ps = con.statamet(consulta);
+        
+        ps.executeUpdate();     
+        ps.close();
+    }
+
     public int getID() {
         return ID;
     }
@@ -128,5 +139,5 @@ public class RESERVA_PA {
     public void setTIPO_PAGO(int TIPO_PAGO) {
         this.TIPO_PAGO = TIPO_PAGO;
     }
-    
+
 }
