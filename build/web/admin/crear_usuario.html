@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Crear usuario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="js/crear_usuario.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+        <div class="col-md-6">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">CREAR USUARIO</h3>
+                </div>
+             
+                <form class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="nombre" class="col-sm-2 control-label">Nombre</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellidos" class="col-sm-2 control-label">Apellidos</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono" class="col-sm-2 control-label">Telefono</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="telefono" placeholder="Telefono">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="email" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="usuario" class="col-sm-2 control-label">Usuario</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="usuario" placeholder="Usuario">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="rep_password" class="col-sm-2 control-label">Rep Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="rep_password" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                   
+                        <button type="button" class="btn btn-info pull-right" onclick="registrar();">Registrarme</button>
+                    </div>
+                    <!-- /.box-footer -->
+                </form>
+            </div>
+        </div>  
+    </body>
+</html>
