@@ -1,0 +1,1450 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.3
+-- Dumped by pg_dump version 10.3
+
+-- Started on 2018-05-26 21:29:45 -04
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 1 (class 3079 OID 13241)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 3264 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 196 (class 1259 OID 24577)
+-- Name: cancha; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cancha (
+    id integer NOT NULL,
+    nombre character varying(200),
+    id_tipo integer,
+    id_complejo integer
+);
+
+
+ALTER TABLE public.cancha OWNER TO postgres;
+
+--
+-- TOC entry 197 (class 1259 OID 24580)
+-- Name: cancha_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.cancha_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cancha_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3265 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: cancha_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.cancha_id_seq OWNED BY public.cancha.id;
+
+
+--
+-- TOC entry 198 (class 1259 OID 24582)
+-- Name: complejo; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.complejo (
+    id integer NOT NULL,
+    nombre character varying(200),
+    presentacion character varying(1000),
+    lat double precision,
+    lon double precision,
+    direccion character varying(200),
+    id_usr integer,
+    politicas character varying(1000),
+    foto_perfil character varying(400)
+);
+
+
+ALTER TABLE public.complejo OWNER TO postgres;
+
+--
+-- TOC entry 199 (class 1259 OID 24588)
+-- Name: complejo_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.complejo_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.complejo_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3266 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: complejo_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.complejo_id_seq OWNED BY public.complejo.id;
+
+
+--
+-- TOC entry 200 (class 1259 OID 24590)
+-- Name: correos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.correos (
+    id integer NOT NULL,
+    id_complejo integer,
+    correo character varying(200)
+);
+
+
+ALTER TABLE public.correos OWNER TO postgres;
+
+--
+-- TOC entry 201 (class 1259 OID 24593)
+-- Name: correos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.correos_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.correos_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3267 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: correos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.correos_id_seq OWNED BY public.correos.id;
+
+
+--
+-- TOC entry 202 (class 1259 OID 24595)
+-- Name: costos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.costos (
+    id integer NOT NULL,
+    dia integer,
+    hora time without time zone,
+    precio integer,
+    id_cancha integer
+);
+
+
+ALTER TABLE public.costos OWNER TO postgres;
+
+--
+-- TOC entry 203 (class 1259 OID 24598)
+-- Name: costos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.costos_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.costos_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3268 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: costos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.costos_id_seq OWNED BY public.costos.id;
+
+
+--
+-- TOC entry 204 (class 1259 OID 24600)
+-- Name: fotos_carrusel; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.fotos_carrusel (
+    id integer NOT NULL,
+    foto character varying(600),
+    id_complejo integer
+);
+
+
+ALTER TABLE public.fotos_carrusel OWNER TO postgres;
+
+--
+-- TOC entry 205 (class 1259 OID 24606)
+-- Name: fotos_carrusel_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.fotos_carrusel_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.fotos_carrusel_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3269 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: fotos_carrusel_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.fotos_carrusel_id_seq OWNED BY public.fotos_carrusel.id;
+
+
+--
+-- TOC entry 206 (class 1259 OID 24608)
+-- Name: horario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.horario (
+    id integer NOT NULL,
+    id_complejo integer,
+    hora_ini character varying(200),
+    hora_fin character varying(200),
+    dia integer,
+    abierto integer
+);
+
+
+ALTER TABLE public.horario OWNER TO postgres;
+
+--
+-- TOC entry 207 (class 1259 OID 24611)
+-- Name: horario_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.horario_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.horario_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3270 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: horario_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.horario_id_seq OWNED BY public.horario.id;
+
+
+--
+-- TOC entry 208 (class 1259 OID 24613)
+-- Name: reserva_padre; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.reserva_padre (
+    id integer NOT NULL,
+    fecha timestamp without time zone,
+    id_cancha integer,
+    id_usuario character varying(200),
+    estado integer,
+    tipo_pago integer
+);
+
+
+ALTER TABLE public.reserva_padre OWNER TO postgres;
+
+--
+-- TOC entry 209 (class 1259 OID 24616)
+-- Name: reserva_padre_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.reserva_padre_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.reserva_padre_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3271 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: reserva_padre_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.reserva_padre_id_seq OWNED BY public.reserva_padre.id;
+
+
+--
+-- TOC entry 210 (class 1259 OID 24618)
+-- Name: reservas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.reservas (
+    id integer NOT NULL,
+    fecha timestamp without time zone,
+    id_respa integer,
+    costo integer
+);
+
+
+ALTER TABLE public.reservas OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 24621)
+-- Name: reservas_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.reservas_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.reservas_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3272 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: reservas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.reservas_id_seq OWNED BY public.reservas.id;
+
+
+--
+-- TOC entry 212 (class 1259 OID 24623)
+-- Name: telefonos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.telefonos (
+    id integer NOT NULL,
+    id_complejo integer,
+    telefono character varying(200)
+);
+
+
+ALTER TABLE public.telefonos OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 24626)
+-- Name: telefonos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.telefonos_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.telefonos_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3273 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: telefonos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.telefonos_id_seq OWNED BY public.telefonos.id;
+
+
+--
+-- TOC entry 214 (class 1259 OID 24628)
+-- Name: tipo_cancha; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tipo_cancha (
+    id integer NOT NULL,
+    tipo character varying(200)
+);
+
+
+ALTER TABLE public.tipo_cancha OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 24631)
+-- Name: tipo_cancha_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.tipo_cancha_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tipo_cancha_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3274 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: tipo_cancha_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.tipo_cancha_id_seq OWNED BY public.tipo_cancha.id;
+
+
+--
+-- TOC entry 216 (class 1259 OID 24633)
+-- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.usuario (
+    id character varying(200) NOT NULL,
+    nombre character varying(200)
+);
+
+
+ALTER TABLE public.usuario OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 24636)
+-- Name: usuario_admin; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.usuario_admin (
+    id integer NOT NULL,
+    usuario character varying(200),
+    password character varying(200),
+    rol integer,
+    nombre character varying(200),
+    apellidos character varying(200),
+    telefono character varying(200),
+    email character varying(200)
+);
+
+
+ALTER TABLE public.usuario_admin OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 24642)
+-- Name: usuario_admin_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.usuario_admin_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.usuario_admin_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3275 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: usuario_admin_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.usuario_admin_id_seq OWNED BY public.usuario_admin.id;
+
+
+--
+-- TOC entry 3054 (class 2604 OID 24644)
+-- Name: cancha id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cancha ALTER COLUMN id SET DEFAULT nextval('public.cancha_id_seq'::regclass);
+
+
+--
+-- TOC entry 3055 (class 2604 OID 24645)
+-- Name: complejo id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.complejo ALTER COLUMN id SET DEFAULT nextval('public.complejo_id_seq'::regclass);
+
+
+--
+-- TOC entry 3056 (class 2604 OID 24646)
+-- Name: correos id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.correos ALTER COLUMN id SET DEFAULT nextval('public.correos_id_seq'::regclass);
+
+
+--
+-- TOC entry 3057 (class 2604 OID 24647)
+-- Name: costos id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.costos ALTER COLUMN id SET DEFAULT nextval('public.costos_id_seq'::regclass);
+
+
+--
+-- TOC entry 3058 (class 2604 OID 24648)
+-- Name: fotos_carrusel id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.fotos_carrusel ALTER COLUMN id SET DEFAULT nextval('public.fotos_carrusel_id_seq'::regclass);
+
+
+--
+-- TOC entry 3059 (class 2604 OID 24649)
+-- Name: horario id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.horario ALTER COLUMN id SET DEFAULT nextval('public.horario_id_seq'::regclass);
+
+
+--
+-- TOC entry 3060 (class 2604 OID 24650)
+-- Name: reserva_padre id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.reserva_padre ALTER COLUMN id SET DEFAULT nextval('public.reserva_padre_id_seq'::regclass);
+
+
+--
+-- TOC entry 3061 (class 2604 OID 24651)
+-- Name: reservas id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.reservas ALTER COLUMN id SET DEFAULT nextval('public.reservas_id_seq'::regclass);
+
+
+--
+-- TOC entry 3062 (class 2604 OID 24652)
+-- Name: telefonos id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.telefonos ALTER COLUMN id SET DEFAULT nextval('public.telefonos_id_seq'::regclass);
+
+
+--
+-- TOC entry 3063 (class 2604 OID 24653)
+-- Name: tipo_cancha id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_cancha ALTER COLUMN id SET DEFAULT nextval('public.tipo_cancha_id_seq'::regclass);
+
+
+--
+-- TOC entry 3064 (class 2604 OID 24654)
+-- Name: usuario_admin id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario_admin ALTER COLUMN id SET DEFAULT nextval('public.usuario_admin_id_seq'::regclass);
+
+
+--
+-- TOC entry 3234 (class 0 OID 24577)
+-- Dependencies: 196
+-- Data for Name: cancha; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.cancha VALUES (1, 'cancha 1', 1, 1);
+INSERT INTO public.cancha VALUES (2, 'cancha 2', 1, 1);
+INSERT INTO public.cancha VALUES (3, 'cancha 3', 1, 1);
+
+
+--
+-- TOC entry 3236 (class 0 OID 24582)
+-- Dependencies: 198
+-- Data for Name: complejo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.complejo VALUES (1, 'La bombonera', '<p>fasfasfasfsafF A S FA FA F</p>
+', -17.7890855510254973, -63.1754413740470113, '3fasfasfas', 2, '<p>FSSDFSDFSDFF</p>
+
+<p>SDF</p>
+
+<p>SD</p>
+
+<p>F</p>
+
+<p>SD</p>
+
+<p>F</p>
+', NULL);
+INSERT INTO public.complejo VALUES (2, 'Complejo 1', '<p>este es el Complejo deportivo numero 1</p>
+', -17.781381818516973, -63.1773090362548828, 'calle chuquisaca', 2, '<p>complejo</p>
+
+<p>politica1</p>
+
+<p>politica 2</p>
+', 'fondoplaystore.jpg');
+
+
+--
+-- TOC entry 3238 (class 0 OID 24590)
+-- Dependencies: 200
+-- Data for Name: correos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.correos VALUES (1, 1, 'sdknsdpkg@sldkngs');
+INSERT INTO public.correos VALUES (2, 1, 'sdfsdfl@sfksdfsf');
+INSERT INTO public.correos VALUES (3, 2, 'rickypazd@hotmail.com');
+
+
+--
+-- TOC entry 3240 (class 0 OID 24595)
+-- Dependencies: 202
+-- Data for Name: costos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.costos VALUES (1, 0, '08:00:00', 100, 1);
+INSERT INTO public.costos VALUES (2, 0, '09:00:00', 100, 1);
+INSERT INTO public.costos VALUES (3, 0, '10:00:00', 100, 1);
+INSERT INTO public.costos VALUES (4, 0, '11:00:00', 100, 1);
+INSERT INTO public.costos VALUES (5, 0, '12:00:00', 100, 1);
+INSERT INTO public.costos VALUES (6, 0, '13:00:00', 100, 1);
+INSERT INTO public.costos VALUES (7, 0, '14:00:00', 100, 1);
+INSERT INTO public.costos VALUES (8, 0, '15:00:00', 100, 1);
+INSERT INTO public.costos VALUES (9, 0, '16:00:00', 100, 1);
+INSERT INTO public.costos VALUES (10, 0, '17:00:00', 100, 1);
+INSERT INTO public.costos VALUES (11, 0, '18:00:00', 100, 1);
+INSERT INTO public.costos VALUES (12, 0, '19:00:00', 100, 1);
+INSERT INTO public.costos VALUES (13, 0, '20:00:00', 100, 1);
+INSERT INTO public.costos VALUES (14, 1, '09:00:00', 100, 1);
+INSERT INTO public.costos VALUES (15, 1, '10:00:00', 100, 1);
+INSERT INTO public.costos VALUES (16, 1, '11:00:00', 100, 1);
+INSERT INTO public.costos VALUES (17, 1, '12:00:00', 100, 1);
+INSERT INTO public.costos VALUES (18, 1, '13:00:00', 100, 1);
+INSERT INTO public.costos VALUES (19, 1, '14:00:00', 100, 1);
+INSERT INTO public.costos VALUES (20, 1, '15:00:00', 100, 1);
+INSERT INTO public.costos VALUES (21, 1, '16:00:00', 100, 1);
+INSERT INTO public.costos VALUES (22, 1, '17:00:00', 100, 1);
+INSERT INTO public.costos VALUES (23, 1, '18:00:00', 100, 1);
+INSERT INTO public.costos VALUES (24, 1, '19:00:00', 100, 1);
+INSERT INTO public.costos VALUES (25, 1, '20:00:00', 100, 1);
+INSERT INTO public.costos VALUES (26, 1, '21:00:00', 100, 1);
+INSERT INTO public.costos VALUES (27, 1, '22:00:00', 100, 1);
+INSERT INTO public.costos VALUES (28, 2, '08:00:00', 100, 1);
+INSERT INTO public.costos VALUES (29, 2, '09:00:00', 100, 1);
+INSERT INTO public.costos VALUES (30, 2, '10:00:00', 100, 1);
+INSERT INTO public.costos VALUES (31, 2, '11:00:00', 100, 1);
+INSERT INTO public.costos VALUES (32, 2, '12:00:00', 100, 1);
+INSERT INTO public.costos VALUES (33, 2, '13:00:00', 100, 1);
+INSERT INTO public.costos VALUES (34, 2, '14:00:00', 100, 1);
+INSERT INTO public.costos VALUES (35, 2, '15:00:00', 100, 1);
+INSERT INTO public.costos VALUES (36, 2, '16:00:00', 100, 1);
+INSERT INTO public.costos VALUES (37, 2, '17:00:00', 100, 1);
+INSERT INTO public.costos VALUES (38, 2, '18:00:00', 100, 1);
+INSERT INTO public.costos VALUES (39, 2, '19:00:00', 100, 1);
+INSERT INTO public.costos VALUES (40, 2, '20:00:00', 100, 1);
+INSERT INTO public.costos VALUES (41, 2, '21:00:00', 100, 1);
+INSERT INTO public.costos VALUES (42, 3, '09:00:00', 100, 1);
+INSERT INTO public.costos VALUES (43, 3, '10:00:00', 100, 1);
+INSERT INTO public.costos VALUES (44, 3, '11:00:00', 100, 1);
+INSERT INTO public.costos VALUES (45, 3, '12:00:00', 100, 1);
+INSERT INTO public.costos VALUES (46, 3, '13:00:00', 100, 1);
+INSERT INTO public.costos VALUES (47, 3, '14:00:00', 100, 1);
+INSERT INTO public.costos VALUES (48, 3, '15:00:00', 100, 1);
+INSERT INTO public.costos VALUES (49, 3, '16:00:00', 100, 1);
+INSERT INTO public.costos VALUES (50, 3, '17:00:00', 100, 1);
+INSERT INTO public.costos VALUES (51, 3, '18:00:00', 100, 1);
+INSERT INTO public.costos VALUES (52, 3, '19:00:00', 100, 1);
+INSERT INTO public.costos VALUES (53, 3, '20:00:00', 100, 1);
+INSERT INTO public.costos VALUES (54, 3, '21:00:00', 100, 1);
+INSERT INTO public.costos VALUES (55, 3, '22:00:00', 100, 1);
+INSERT INTO public.costos VALUES (56, 4, '10:00:00', 100, 1);
+INSERT INTO public.costos VALUES (57, 4, '11:00:00', 100, 1);
+INSERT INTO public.costos VALUES (58, 4, '12:00:00', 100, 1);
+INSERT INTO public.costos VALUES (59, 4, '13:00:00', 100, 1);
+INSERT INTO public.costos VALUES (60, 4, '14:00:00', 100, 1);
+INSERT INTO public.costos VALUES (61, 4, '15:00:00', 100, 1);
+INSERT INTO public.costos VALUES (62, 4, '16:00:00', 100, 1);
+INSERT INTO public.costos VALUES (63, 4, '17:00:00', 100, 1);
+INSERT INTO public.costos VALUES (64, 4, '18:00:00', 100, 1);
+INSERT INTO public.costos VALUES (65, 4, '19:00:00', 100, 1);
+INSERT INTO public.costos VALUES (66, 4, '20:00:00', 100, 1);
+INSERT INTO public.costos VALUES (67, 4, '21:00:00', 100, 1);
+INSERT INTO public.costos VALUES (68, 4, '22:00:00', 100, 1);
+INSERT INTO public.costos VALUES (69, 4, '23:00:00', 100, 1);
+INSERT INTO public.costos VALUES (70, 6, '08:00:00', 100, 1);
+INSERT INTO public.costos VALUES (71, 6, '09:00:00', 100, 1);
+INSERT INTO public.costos VALUES (72, 6, '10:00:00', 100, 1);
+INSERT INTO public.costos VALUES (73, 6, '11:00:00', 100, 1);
+INSERT INTO public.costos VALUES (74, 6, '12:00:00', 100, 1);
+INSERT INTO public.costos VALUES (75, 6, '13:00:00', 100, 1);
+INSERT INTO public.costos VALUES (76, 6, '14:00:00', 100, 1);
+INSERT INTO public.costos VALUES (77, 6, '15:00:00', 100, 1);
+INSERT INTO public.costos VALUES (78, 6, '16:00:00', 100, 1);
+INSERT INTO public.costos VALUES (79, 6, '17:00:00', 100, 1);
+INSERT INTO public.costos VALUES (80, 6, '18:00:00', 100, 1);
+INSERT INTO public.costos VALUES (81, 6, '19:00:00', 100, 1);
+INSERT INTO public.costos VALUES (82, 6, '20:00:00', 100, 1);
+INSERT INTO public.costos VALUES (83, 6, '21:00:00', 100, 1);
+INSERT INTO public.costos VALUES (84, 0, '08:00:00', 100, 2);
+INSERT INTO public.costos VALUES (85, 0, '09:00:00', 100, 2);
+INSERT INTO public.costos VALUES (86, 0, '10:00:00', 100, 2);
+INSERT INTO public.costos VALUES (87, 0, '11:00:00', 100, 2);
+INSERT INTO public.costos VALUES (88, 0, '12:00:00', 100, 2);
+INSERT INTO public.costos VALUES (89, 0, '13:00:00', 100, 2);
+INSERT INTO public.costos VALUES (90, 0, '14:00:00', 100, 2);
+INSERT INTO public.costos VALUES (91, 0, '15:00:00', 100, 2);
+INSERT INTO public.costos VALUES (92, 0, '16:00:00', 100, 2);
+INSERT INTO public.costos VALUES (93, 0, '17:00:00', 100, 2);
+INSERT INTO public.costos VALUES (94, 0, '18:00:00', 100, 2);
+INSERT INTO public.costos VALUES (95, 0, '19:00:00', 100, 2);
+INSERT INTO public.costos VALUES (96, 0, '20:00:00', 100, 2);
+INSERT INTO public.costos VALUES (97, 1, '09:00:00', 100, 2);
+INSERT INTO public.costos VALUES (98, 1, '10:00:00', 100, 2);
+INSERT INTO public.costos VALUES (99, 1, '11:00:00', 100, 2);
+INSERT INTO public.costos VALUES (100, 1, '12:00:00', 100, 2);
+INSERT INTO public.costos VALUES (101, 1, '13:00:00', 100, 2);
+INSERT INTO public.costos VALUES (102, 1, '14:00:00', 100, 2);
+INSERT INTO public.costos VALUES (103, 1, '15:00:00', 100, 2);
+INSERT INTO public.costos VALUES (104, 1, '16:00:00', 100, 2);
+INSERT INTO public.costos VALUES (105, 1, '17:00:00', 100, 2);
+INSERT INTO public.costos VALUES (106, 1, '18:00:00', 100, 2);
+INSERT INTO public.costos VALUES (107, 1, '19:00:00', 100, 2);
+INSERT INTO public.costos VALUES (108, 1, '20:00:00', 100, 2);
+INSERT INTO public.costos VALUES (109, 1, '21:00:00', 100, 2);
+INSERT INTO public.costos VALUES (110, 1, '22:00:00', 100, 2);
+INSERT INTO public.costos VALUES (111, 2, '08:00:00', 100, 2);
+INSERT INTO public.costos VALUES (112, 2, '09:00:00', 100, 2);
+INSERT INTO public.costos VALUES (113, 2, '10:00:00', 100, 2);
+INSERT INTO public.costos VALUES (114, 2, '11:00:00', 100, 2);
+INSERT INTO public.costos VALUES (115, 2, '12:00:00', 100, 2);
+INSERT INTO public.costos VALUES (116, 2, '13:00:00', 100, 2);
+INSERT INTO public.costos VALUES (117, 2, '14:00:00', 100, 2);
+INSERT INTO public.costos VALUES (118, 2, '15:00:00', 100, 2);
+INSERT INTO public.costos VALUES (119, 2, '16:00:00', 100, 2);
+INSERT INTO public.costos VALUES (120, 2, '17:00:00', 100, 2);
+INSERT INTO public.costos VALUES (121, 2, '18:00:00', 100, 2);
+INSERT INTO public.costos VALUES (122, 2, '19:00:00', 100, 2);
+INSERT INTO public.costos VALUES (123, 2, '20:00:00', 100, 2);
+INSERT INTO public.costos VALUES (124, 2, '21:00:00', 100, 2);
+INSERT INTO public.costos VALUES (125, 3, '09:00:00', 100, 2);
+INSERT INTO public.costos VALUES (126, 3, '10:00:00', 100, 2);
+INSERT INTO public.costos VALUES (127, 3, '11:00:00', 100, 2);
+INSERT INTO public.costos VALUES (128, 3, '12:00:00', 100, 2);
+INSERT INTO public.costos VALUES (129, 3, '13:00:00', 100, 2);
+INSERT INTO public.costos VALUES (130, 3, '14:00:00', 100, 2);
+INSERT INTO public.costos VALUES (131, 3, '15:00:00', 100, 2);
+INSERT INTO public.costos VALUES (132, 3, '16:00:00', 100, 2);
+INSERT INTO public.costos VALUES (133, 3, '17:00:00', 100, 2);
+INSERT INTO public.costos VALUES (134, 3, '18:00:00', 100, 2);
+INSERT INTO public.costos VALUES (135, 3, '19:00:00', 100, 2);
+INSERT INTO public.costos VALUES (136, 3, '20:00:00', 100, 2);
+INSERT INTO public.costos VALUES (137, 3, '21:00:00', 100, 2);
+INSERT INTO public.costos VALUES (138, 3, '22:00:00', 100, 2);
+INSERT INTO public.costos VALUES (139, 4, '10:00:00', 100, 2);
+INSERT INTO public.costos VALUES (140, 4, '11:00:00', 100, 2);
+INSERT INTO public.costos VALUES (141, 4, '12:00:00', 100, 2);
+INSERT INTO public.costos VALUES (142, 4, '13:00:00', 100, 2);
+INSERT INTO public.costos VALUES (143, 4, '14:00:00', 100, 2);
+INSERT INTO public.costos VALUES (144, 4, '15:00:00', 100, 2);
+INSERT INTO public.costos VALUES (145, 4, '16:00:00', 100, 2);
+INSERT INTO public.costos VALUES (146, 4, '17:00:00', 100, 2);
+INSERT INTO public.costos VALUES (147, 4, '18:00:00', 100, 2);
+INSERT INTO public.costos VALUES (148, 4, '19:00:00', 100, 2);
+INSERT INTO public.costos VALUES (149, 4, '20:00:00', 100, 2);
+INSERT INTO public.costos VALUES (150, 4, '21:00:00', 100, 2);
+INSERT INTO public.costos VALUES (151, 4, '22:00:00', 100, 2);
+INSERT INTO public.costos VALUES (152, 4, '23:00:00', 100, 2);
+INSERT INTO public.costos VALUES (153, 6, '08:00:00', 100, 2);
+INSERT INTO public.costos VALUES (154, 6, '09:00:00', 100, 2);
+INSERT INTO public.costos VALUES (155, 6, '10:00:00', 100, 2);
+INSERT INTO public.costos VALUES (156, 6, '11:00:00', 100, 2);
+INSERT INTO public.costos VALUES (157, 6, '12:00:00', 100, 2);
+INSERT INTO public.costos VALUES (158, 6, '13:00:00', 100, 2);
+INSERT INTO public.costos VALUES (159, 6, '14:00:00', 100, 2);
+INSERT INTO public.costos VALUES (160, 6, '15:00:00', 100, 2);
+INSERT INTO public.costos VALUES (161, 6, '16:00:00', 100, 2);
+INSERT INTO public.costos VALUES (162, 6, '17:00:00', 100, 2);
+INSERT INTO public.costos VALUES (163, 6, '18:00:00', 100, 2);
+INSERT INTO public.costos VALUES (164, 6, '19:00:00', 100, 2);
+INSERT INTO public.costos VALUES (165, 6, '20:00:00', 100, 2);
+INSERT INTO public.costos VALUES (166, 6, '21:00:00', 100, 2);
+INSERT INTO public.costos VALUES (167, 0, '08:00:00', 80, 3);
+INSERT INTO public.costos VALUES (168, 0, '09:00:00', 80, 3);
+INSERT INTO public.costos VALUES (169, 0, '10:00:00', 80, 3);
+INSERT INTO public.costos VALUES (170, 0, '11:00:00', 80, 3);
+INSERT INTO public.costos VALUES (171, 0, '12:00:00', 80, 3);
+INSERT INTO public.costos VALUES (172, 0, '13:00:00', 80, 3);
+INSERT INTO public.costos VALUES (173, 0, '14:00:00', 80, 3);
+INSERT INTO public.costos VALUES (174, 0, '15:00:00', 80, 3);
+INSERT INTO public.costos VALUES (175, 0, '16:00:00', 80, 3);
+INSERT INTO public.costos VALUES (176, 0, '17:00:00', 80, 3);
+INSERT INTO public.costos VALUES (177, 0, '18:00:00', 80, 3);
+INSERT INTO public.costos VALUES (178, 0, '19:00:00', 80, 3);
+INSERT INTO public.costos VALUES (179, 0, '20:00:00', 80, 3);
+INSERT INTO public.costos VALUES (180, 1, '09:00:00', 80, 3);
+INSERT INTO public.costos VALUES (181, 1, '10:00:00', 80, 3);
+INSERT INTO public.costos VALUES (182, 1, '11:00:00', 80, 3);
+INSERT INTO public.costos VALUES (183, 1, '12:00:00', 80, 3);
+INSERT INTO public.costos VALUES (184, 1, '13:00:00', 80, 3);
+INSERT INTO public.costos VALUES (185, 1, '14:00:00', 80, 3);
+INSERT INTO public.costos VALUES (186, 1, '15:00:00', 80, 3);
+INSERT INTO public.costos VALUES (187, 1, '16:00:00', 80, 3);
+INSERT INTO public.costos VALUES (188, 1, '17:00:00', 80, 3);
+INSERT INTO public.costos VALUES (189, 1, '18:00:00', 80, 3);
+INSERT INTO public.costos VALUES (190, 1, '19:00:00', 80, 3);
+INSERT INTO public.costos VALUES (191, 1, '20:00:00', 80, 3);
+INSERT INTO public.costos VALUES (192, 1, '21:00:00', 80, 3);
+INSERT INTO public.costos VALUES (193, 1, '22:00:00', 80, 3);
+INSERT INTO public.costos VALUES (194, 2, '08:00:00', 80, 3);
+INSERT INTO public.costos VALUES (195, 2, '09:00:00', 80, 3);
+INSERT INTO public.costos VALUES (196, 2, '10:00:00', 80, 3);
+INSERT INTO public.costos VALUES (197, 2, '11:00:00', 80, 3);
+INSERT INTO public.costos VALUES (198, 2, '12:00:00', 80, 3);
+INSERT INTO public.costos VALUES (199, 2, '13:00:00', 80, 3);
+INSERT INTO public.costos VALUES (200, 2, '14:00:00', 80, 3);
+INSERT INTO public.costos VALUES (201, 2, '15:00:00', 80, 3);
+INSERT INTO public.costos VALUES (202, 2, '16:00:00', 80, 3);
+INSERT INTO public.costos VALUES (203, 2, '17:00:00', 80, 3);
+INSERT INTO public.costos VALUES (204, 2, '18:00:00', 80, 3);
+INSERT INTO public.costos VALUES (205, 2, '19:00:00', 80, 3);
+INSERT INTO public.costos VALUES (206, 2, '20:00:00', 80, 3);
+INSERT INTO public.costos VALUES (207, 2, '21:00:00', 80, 3);
+INSERT INTO public.costos VALUES (208, 3, '09:00:00', 80, 3);
+INSERT INTO public.costos VALUES (209, 3, '10:00:00', 80, 3);
+INSERT INTO public.costos VALUES (210, 3, '11:00:00', 80, 3);
+INSERT INTO public.costos VALUES (211, 3, '12:00:00', 80, 3);
+INSERT INTO public.costos VALUES (212, 3, '13:00:00', 80, 3);
+INSERT INTO public.costos VALUES (213, 3, '14:00:00', 80, 3);
+INSERT INTO public.costos VALUES (214, 3, '15:00:00', 80, 3);
+INSERT INTO public.costos VALUES (215, 3, '16:00:00', 80, 3);
+INSERT INTO public.costos VALUES (216, 3, '17:00:00', 80, 3);
+INSERT INTO public.costos VALUES (217, 3, '18:00:00', 80, 3);
+INSERT INTO public.costos VALUES (218, 3, '19:00:00', 80, 3);
+INSERT INTO public.costos VALUES (219, 3, '20:00:00', 80, 3);
+INSERT INTO public.costos VALUES (220, 3, '21:00:00', 80, 3);
+INSERT INTO public.costos VALUES (221, 3, '22:00:00', 80, 3);
+INSERT INTO public.costos VALUES (222, 4, '10:00:00', 80, 3);
+INSERT INTO public.costos VALUES (223, 4, '11:00:00', 80, 3);
+INSERT INTO public.costos VALUES (224, 4, '12:00:00', 80, 3);
+INSERT INTO public.costos VALUES (225, 4, '13:00:00', 80, 3);
+INSERT INTO public.costos VALUES (226, 4, '14:00:00', 80, 3);
+INSERT INTO public.costos VALUES (227, 4, '15:00:00', 80, 3);
+INSERT INTO public.costos VALUES (228, 4, '16:00:00', 80, 3);
+INSERT INTO public.costos VALUES (229, 4, '17:00:00', 80, 3);
+INSERT INTO public.costos VALUES (230, 4, '18:00:00', 80, 3);
+INSERT INTO public.costos VALUES (231, 4, '19:00:00', 80, 3);
+INSERT INTO public.costos VALUES (232, 4, '20:00:00', 80, 3);
+INSERT INTO public.costos VALUES (233, 4, '21:00:00', 80, 3);
+INSERT INTO public.costos VALUES (234, 4, '22:00:00', 80, 3);
+INSERT INTO public.costos VALUES (235, 4, '23:00:00', 80, 3);
+INSERT INTO public.costos VALUES (236, 6, '08:00:00', 80, 3);
+INSERT INTO public.costos VALUES (237, 6, '09:00:00', 80, 3);
+INSERT INTO public.costos VALUES (238, 6, '10:00:00', 80, 3);
+INSERT INTO public.costos VALUES (239, 6, '11:00:00', 80, 3);
+INSERT INTO public.costos VALUES (240, 6, '12:00:00', 80, 3);
+INSERT INTO public.costos VALUES (241, 6, '13:00:00', 80, 3);
+INSERT INTO public.costos VALUES (242, 6, '14:00:00', 80, 3);
+INSERT INTO public.costos VALUES (243, 6, '15:00:00', 80, 3);
+INSERT INTO public.costos VALUES (244, 6, '16:00:00', 80, 3);
+INSERT INTO public.costos VALUES (245, 6, '17:00:00', 80, 3);
+INSERT INTO public.costos VALUES (246, 6, '18:00:00', 80, 3);
+INSERT INTO public.costos VALUES (247, 6, '19:00:00', 80, 3);
+INSERT INTO public.costos VALUES (248, 6, '20:00:00', 80, 3);
+INSERT INTO public.costos VALUES (249, 6, '21:00:00', 80, 3);
+
+
+--
+-- TOC entry 3242 (class 0 OID 24600)
+-- Dependencies: 204
+-- Data for Name: fotos_carrusel; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.fotos_carrusel VALUES (1, '31945609_1771634856215986_5119416328943304704_o.jpg', 1);
+INSERT INTO public.fotos_carrusel VALUES (2, 'map-marker-hi.png', 1);
+
+
+--
+-- TOC entry 3244 (class 0 OID 24608)
+-- Dependencies: 206
+-- Data for Name: horario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.horario VALUES (1, 1, '08:00 AM', '08:00 PM', 0, 1);
+INSERT INTO public.horario VALUES (2, 1, '09:00 AM', '10:00 PM', 1, 1);
+INSERT INTO public.horario VALUES (3, 1, '08:45 AM', '09:00 PM', 2, 1);
+INSERT INTO public.horario VALUES (4, 1, '09:00 AM', '10:00 PM', 3, 1);
+INSERT INTO public.horario VALUES (5, 1, '10:00 AM', '11:00 PM', 4, 1);
+INSERT INTO public.horario VALUES (6, 1, '00:00 PM', '00:00 PM', 5, 0);
+INSERT INTO public.horario VALUES (7, 1, '08:00 AM', '09:00 PM', 6, 1);
+INSERT INTO public.horario VALUES (8, 2, '09:00 AM', '08:45 PM', 0, 1);
+INSERT INTO public.horario VALUES (9, 2, '09:00 AM', '09:45 PM', 1, 1);
+INSERT INTO public.horario VALUES (10, 2, '09:00 AM', '07:45 PM', 2, 1);
+INSERT INTO public.horario VALUES (11, 2, '00:00 PM', '00:00 PM', 3, 0);
+INSERT INTO public.horario VALUES (12, 2, '09:00 AM', '10:00 PM', 4, 1);
+INSERT INTO public.horario VALUES (13, 2, '09:00 AM', '08:45 PM', 5, 1);
+INSERT INTO public.horario VALUES (14, 2, '00:00 PM', '00:00 PM', 6, 0);
+
+
+--
+-- TOC entry 3246 (class 0 OID 24613)
+-- Dependencies: 208
+-- Data for Name: reserva_padre; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.reserva_padre VALUES (2, '2018-05-04 04:10:19.695', 1, '10215201034605060', 2, 1);
+INSERT INTO public.reserva_padre VALUES (3, '2018-05-17 03:23:27.615', 1, '10215201034605060', 2, 1);
+INSERT INTO public.reserva_padre VALUES (4, '2018-05-17 03:35:05.661', 1, '10215201034605060', 2, 1);
+INSERT INTO public.reserva_padre VALUES (5, '2018-05-17 03:37:39.066', 1, '10215201034605060', 2, 1);
+INSERT INTO public.reserva_padre VALUES (6, '2018-05-17 03:39:32.286', 1, '10215201034605060', 2, 1);
+INSERT INTO public.reserva_padre VALUES (7, '2018-05-17 03:41:22.599', 1, '10215201034605060', 2, 1);
+INSERT INTO public.reserva_padre VALUES (8, '2018-05-17 03:42:42.108', 1, '10215201034605060', 2, 1);
+INSERT INTO public.reserva_padre VALUES (9, '2018-05-17 03:44:04.946', 1, '10215201034605060', 3, 1);
+INSERT INTO public.reserva_padre VALUES (10, '2018-05-17 03:48:05.461', 1, '10215201034605060', 3, 1);
+INSERT INTO public.reserva_padre VALUES (11, '2018-05-17 03:53:14.049', 1, '10215201034605060', 3, 1);
+INSERT INTO public.reserva_padre VALUES (12, '2018-05-17 03:58:56.023', 1, '10215201034605060', 3, 1);
+INSERT INTO public.reserva_padre VALUES (13, '2018-05-17 04:00:08.181', 1, '10215201034605060', 3, 1);
+INSERT INTO public.reserva_padre VALUES (14, '2018-05-17 04:02:08.69', 1, '10215201034605060', 3, 1);
+INSERT INTO public.reserva_padre VALUES (15, '2018-05-17 04:04:28.141', 1, '10215201034605060', 3, 1);
+
+
+--
+-- TOC entry 3248 (class 0 OID 24618)
+-- Dependencies: 210
+-- Data for Name: reservas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.reservas VALUES (1, '2018-05-04 12:00:00', 2, 100);
+INSERT INTO public.reservas VALUES (2, '2018-05-04 13:00:00', 2, 100);
+INSERT INTO public.reservas VALUES (3, '2018-05-04 14:00:00', 2, 100);
+INSERT INTO public.reservas VALUES (4, '2018-05-18 13:00:00', 3, 100);
+INSERT INTO public.reservas VALUES (5, '2018-05-18 14:00:00', 3, 100);
+INSERT INTO public.reservas VALUES (6, '2018-05-18 15:00:00', 3, 100);
+INSERT INTO public.reservas VALUES (7, '2018-05-18 16:00:00', 4, 100);
+INSERT INTO public.reservas VALUES (8, '2018-05-18 17:00:00', 4, 100);
+INSERT INTO public.reservas VALUES (9, '2018-05-18 18:00:00', 4, 100);
+INSERT INTO public.reservas VALUES (10, '2018-05-17 14:00:00', 5, 100);
+INSERT INTO public.reservas VALUES (11, '2018-05-17 15:00:00', 5, 100);
+INSERT INTO public.reservas VALUES (12, '2018-05-17 16:00:00', 5, 100);
+INSERT INTO public.reservas VALUES (13, '2018-05-20 14:00:00', 6, 100);
+INSERT INTO public.reservas VALUES (14, '2018-05-20 15:00:00', 6, 100);
+INSERT INTO public.reservas VALUES (15, '2018-05-20 16:00:00', 6, 100);
+INSERT INTO public.reservas VALUES (16, '2018-05-18 20:00:00', 7, 100);
+INSERT INTO public.reservas VALUES (17, '2018-05-18 21:00:00', 7, 100);
+INSERT INTO public.reservas VALUES (18, '2018-05-18 22:00:00', 7, 100);
+INSERT INTO public.reservas VALUES (19, '2018-05-20 19:00:00', 8, 100);
+INSERT INTO public.reservas VALUES (20, '2018-05-20 20:00:00', 8, 100);
+INSERT INTO public.reservas VALUES (21, '2018-05-20 21:00:00', 8, 100);
+INSERT INTO public.reservas VALUES (22, '2018-05-20 09:00:00', 9, 100);
+INSERT INTO public.reservas VALUES (23, '2018-05-20 10:00:00', 9, 100);
+INSERT INTO public.reservas VALUES (24, '2018-05-20 11:00:00', 9, 100);
+INSERT INTO public.reservas VALUES (25, '2018-05-20 08:00:00', 10, 100);
+INSERT INTO public.reservas VALUES (26, '2018-05-20 12:00:00', 10, 100);
+INSERT INTO public.reservas VALUES (27, '2018-05-20 13:00:00', 10, 100);
+INSERT INTO public.reservas VALUES (28, '2018-05-20 10:00:00', 11, 100);
+INSERT INTO public.reservas VALUES (29, '2018-05-20 11:00:00', 11, 100);
+INSERT INTO public.reservas VALUES (30, '2018-05-20 10:00:00', 12, 100);
+INSERT INTO public.reservas VALUES (31, '2018-05-20 11:00:00', 12, 100);
+INSERT INTO public.reservas VALUES (32, '2018-05-20 12:00:00', 12, 100);
+INSERT INTO public.reservas VALUES (33, '2018-05-20 10:00:00', 13, 100);
+INSERT INTO public.reservas VALUES (34, '2018-05-20 11:00:00', 13, 100);
+INSERT INTO public.reservas VALUES (35, '2018-05-20 12:00:00', 13, 100);
+INSERT INTO public.reservas VALUES (36, '2018-05-20 10:00:00', 14, 100);
+INSERT INTO public.reservas VALUES (37, '2018-05-20 11:00:00', 14, 100);
+INSERT INTO public.reservas VALUES (38, '2018-05-20 12:00:00', 14, 100);
+INSERT INTO public.reservas VALUES (39, '2018-05-20 10:00:00', 15, 100);
+INSERT INTO public.reservas VALUES (40, '2018-05-20 11:00:00', 15, 100);
+INSERT INTO public.reservas VALUES (41, '2018-05-20 12:00:00', 15, 100);
+INSERT INTO public.reservas VALUES (42, '2018-05-20 13:00:00', 15, 100);
+
+
+--
+-- TOC entry 3250 (class 0 OID 24623)
+-- Dependencies: 212
+-- Data for Name: telefonos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.telefonos VALUES (1, 1, '65568568');
+INSERT INTO public.telefonos VALUES (2, 1, '5685685');
+INSERT INTO public.telefonos VALUES (3, 2, '760803096');
+
+
+--
+-- TOC entry 3252 (class 0 OID 24628)
+-- Dependencies: 214
+-- Data for Name: tipo_cancha; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.tipo_cancha VALUES (1, 'Futbol 7');
+INSERT INTO public.tipo_cancha VALUES (2, 'Futbol 11');
+
+
+--
+-- TOC entry 3254 (class 0 OID 24633)
+-- Dependencies: 216
+-- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.usuario VALUES ('10215201034605060', 'Ricardo Paz Demiquel');
+
+
+--
+-- TOC entry 3255 (class 0 OID 24636)
+-- Dependencies: 217
+-- Data for Name: usuario_admin; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.usuario_admin VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'ricky', 'paz', '76080396', 'rickypazd@hotmail.com');
+INSERT INTO public.usuario_admin VALUES (2, 'ricky', '56ea8b83122449e814e0fd7bfb5f220a', 2, 'ricky', 'paz ', '76080396', 'rickypazd@hotmail.com');
+
+
+--
+-- TOC entry 3276 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: cancha_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.cancha_id_seq', 3, true);
+
+
+--
+-- TOC entry 3277 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: complejo_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.complejo_id_seq', 2, true);
+
+
+--
+-- TOC entry 3278 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: correos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.correos_id_seq', 3, true);
+
+
+--
+-- TOC entry 3279 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: costos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.costos_id_seq', 249, true);
+
+
+--
+-- TOC entry 3280 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: fotos_carrusel_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.fotos_carrusel_id_seq', 2, true);
+
+
+--
+-- TOC entry 3281 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: horario_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.horario_id_seq', 14, true);
+
+
+--
+-- TOC entry 3282 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: reserva_padre_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.reserva_padre_id_seq', 15, true);
+
+
+--
+-- TOC entry 3283 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: reservas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.reservas_id_seq', 42, true);
+
+
+--
+-- TOC entry 3284 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: telefonos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.telefonos_id_seq', 3, true);
+
+
+--
+-- TOC entry 3285 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: tipo_cancha_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.tipo_cancha_id_seq', 2, true);
+
+
+--
+-- TOC entry 3286 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: usuario_admin_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.usuario_admin_id_seq', 2, true);
+
+
+--
+-- TOC entry 3066 (class 2606 OID 24656)
+-- Name: cancha cancha_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cancha
+    ADD CONSTRAINT cancha_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3070 (class 2606 OID 24658)
+-- Name: complejo complejo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.complejo
+    ADD CONSTRAINT complejo_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3073 (class 2606 OID 24660)
+-- Name: correos correos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.correos
+    ADD CONSTRAINT correos_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3076 (class 2606 OID 24662)
+-- Name: costos costos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.costos
+    ADD CONSTRAINT costos_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3080 (class 2606 OID 24664)
+-- Name: fotos_carrusel fotos_carrusel_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.fotos_carrusel
+    ADD CONSTRAINT fotos_carrusel_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3083 (class 2606 OID 24666)
+-- Name: horario horario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.horario
+    ADD CONSTRAINT horario_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3087 (class 2606 OID 24668)
+-- Name: reserva_padre reserva_padre_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.reserva_padre
+    ADD CONSTRAINT reserva_padre_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3090 (class 2606 OID 24670)
+-- Name: reservas reservas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.reservas
+    ADD CONSTRAINT reservas_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3093 (class 2606 OID 24672)
+-- Name: telefonos telefonos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.telefonos
+    ADD CONSTRAINT telefonos_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3095 (class 2606 OID 24674)
+-- Name: tipo_cancha tipo_cancha_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tipo_cancha
+    ADD CONSTRAINT tipo_cancha_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3099 (class 2606 OID 24676)
+-- Name: usuario_admin usuario_admin_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario_admin
+    ADD CONSTRAINT usuario_admin_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3097 (class 2606 OID 24678)
+-- Name: usuario usuario_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT usuario_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3101 (class 2606 OID 24680)
+-- Name: usuario_admin usuariounic; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.usuario_admin
+    ADD CONSTRAINT usuariounic UNIQUE (usuario);
+
+
+--
+-- TOC entry 3067 (class 1259 OID 24681)
+-- Name: fki_cancha_as_complejo; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_cancha_as_complejo ON public.cancha USING btree (id_complejo);
+
+
+--
+-- TOC entry 3068 (class 1259 OID 24682)
+-- Name: fki_cancha_as_tipo; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_cancha_as_tipo ON public.cancha USING btree (id_tipo);
+
+
+--
+-- TOC entry 3071 (class 1259 OID 24683)
+-- Name: fki_complejo_as_usr; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_complejo_as_usr ON public.complejo USING btree (id_usr);
+
+
+--
+-- TOC entry 3074 (class 1259 OID 24684)
+-- Name: fki_correos_as_complejo; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_correos_as_complejo ON public.correos USING btree (id_complejo);
+
+
+--
+-- TOC entry 3078 (class 1259 OID 24685)
+-- Name: fki_foto_as_complejo; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_foto_as_complejo ON public.fotos_carrusel USING btree (id_complejo);
+
+
+--
+-- TOC entry 3081 (class 1259 OID 24686)
+-- Name: fki_horario_as_complejo; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_horario_as_complejo ON public.horario USING btree (id_complejo);
+
+
+--
+-- TOC entry 3084 (class 1259 OID 24687)
+-- Name: fki_id_cli_as_clien; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_id_cli_as_clien ON public.reserva_padre USING btree (id_usuario);
+
+
+--
+-- TOC entry 3088 (class 1259 OID 24688)
+-- Name: fki_id_res_as_pa; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_id_res_as_pa ON public.reservas USING btree (id_respa);
+
+
+--
+-- TOC entry 3077 (class 1259 OID 24689)
+-- Name: fki_idcancha_as_cancha; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_idcancha_as_cancha ON public.costos USING btree (id_cancha);
+
+
+--
+-- TOC entry 3085 (class 1259 OID 24690)
+-- Name: fki_res_as_cancha; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_res_as_cancha ON public.reserva_padre USING btree (id_cancha);
+
+
+--
+-- TOC entry 3091 (class 1259 OID 24691)
+-- Name: fki_tele_as_complejo; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX fki_tele_as_complejo ON public.telefonos USING btree (id_complejo);
+
+
+--
+-- TOC entry 3102 (class 2606 OID 24692)
+-- Name: cancha cancha_as_complejo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cancha
+    ADD CONSTRAINT cancha_as_complejo FOREIGN KEY (id_complejo) REFERENCES public.complejo(id);
+
+
+--
+-- TOC entry 3103 (class 2606 OID 24697)
+-- Name: cancha cancha_as_tipo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cancha
+    ADD CONSTRAINT cancha_as_tipo FOREIGN KEY (id_tipo) REFERENCES public.tipo_cancha(id);
+
+
+--
+-- TOC entry 3104 (class 2606 OID 24702)
+-- Name: complejo complejo_as_usr; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.complejo
+    ADD CONSTRAINT complejo_as_usr FOREIGN KEY (id_usr) REFERENCES public.usuario_admin(id);
+
+
+--
+-- TOC entry 3105 (class 2606 OID 24707)
+-- Name: correos correos_as_complejo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.correos
+    ADD CONSTRAINT correos_as_complejo FOREIGN KEY (id_complejo) REFERENCES public.complejo(id);
+
+
+--
+-- TOC entry 3107 (class 2606 OID 24712)
+-- Name: fotos_carrusel foto_as_complejo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.fotos_carrusel
+    ADD CONSTRAINT foto_as_complejo FOREIGN KEY (id_complejo) REFERENCES public.complejo(id);
+
+
+--
+-- TOC entry 3108 (class 2606 OID 24717)
+-- Name: horario horario_as_complejo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.horario
+    ADD CONSTRAINT horario_as_complejo FOREIGN KEY (id_complejo) REFERENCES public.complejo(id);
+
+
+--
+-- TOC entry 3109 (class 2606 OID 24722)
+-- Name: reserva_padre id_cli_as_clien; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.reserva_padre
+    ADD CONSTRAINT id_cli_as_clien FOREIGN KEY (id_usuario) REFERENCES public.usuario(id);
+
+
+--
+-- TOC entry 3111 (class 2606 OID 24727)
+-- Name: reservas id_res_as_pa; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.reservas
+    ADD CONSTRAINT id_res_as_pa FOREIGN KEY (id_respa) REFERENCES public.reserva_padre(id);
+
+
+--
+-- TOC entry 3106 (class 2606 OID 24732)
+-- Name: costos idcancha_as_cancha; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.costos
+    ADD CONSTRAINT idcancha_as_cancha FOREIGN KEY (id_cancha) REFERENCES public.cancha(id);
+
+
+--
+-- TOC entry 3110 (class 2606 OID 24737)
+-- Name: reserva_padre res_as_cancha; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.reserva_padre
+    ADD CONSTRAINT res_as_cancha FOREIGN KEY (id_cancha) REFERENCES public.cancha(id);
+
+
+--
+-- TOC entry 3112 (class 2606 OID 24742)
+-- Name: telefonos tele_as_complejo; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.telefonos
+    ADD CONSTRAINT tele_as_complejo FOREIGN KEY (id_complejo) REFERENCES public.complejo(id);
+
+
+-- Completed on 2018-05-26 21:29:46 -04
+
+--
+-- PostgreSQL database dump complete
+--
+
