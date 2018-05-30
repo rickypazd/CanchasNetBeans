@@ -42,6 +42,12 @@ function cargar_cancha() {
             html += "<input type='text' class='form-control' name='" + obj.ID + "' placeholder='" + obj.CORREO + "'/>";
         });
         $("#emails").html(html);
+        var caracter = cancha.CARACTERISTICAS;
+        html = "";
+        $.each(caracter, function (i, obj) {
+            html += "<input type='text' class='form-control' name='" + obj.ID + "' placeholder='" + obj.CARACTERISTICA + "'/>";
+        });
+        $("#caracteriscas").html(html);
         var carrusel = cancha.FOTOS_CARRUSEL;
         html = "";
         $.each(carrusel, function (i, obj) {
@@ -105,6 +111,18 @@ function guardar_cambio() {
     });
     json = json.substring(0, json.length - 1);
     json += ']}';
+    var json_caract = '{"caracteristicas":[';
+    var input_caract = $("#caracteriscas").children("input");
+    var caracter;
+    $.each(input_caract, function (i, obj) {
+        caracter = $(obj).val() || 0;
+        id = $(obj).attr("name") || 0;
+        if (caracter != 0) {
+            json_caract += '{"caract":"' + caracter + '","id":' + id + '},';
+        }
+    });
+    json_caract = json_caract.substring(0, json_caract.length - 1);
+    json_caract += ']}';
     $.post(url, {evento: "editar_cancha",
         tele: json_tel,
         corre: json,
@@ -112,6 +130,7 @@ function guardar_cambio() {
         politicas: politicas,
         id_cancha: id_cancha,
         nombre: nombre,
+        caracteristicas:json_caract,
         direccion: direccion}, function (resp) {
         if (resp == "EXITO") {
             alert("Complejo creado, Desde el panel de administracion de complejos podra agregar fotos y editar datos del mismo.");

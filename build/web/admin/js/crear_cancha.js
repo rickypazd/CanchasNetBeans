@@ -91,6 +91,9 @@ function add_telefono() {
 function add_email() {
     $("#div_email").append("<input type='email' class='form-control' placeholder='email'>");
 }
+function add_caracteristica() {
+    $("#div_caracteristica").append("<input type='text' class='form-control' placeholder='caracteristica'>");
+}
 function registrar() {
     var json = '{"telefonos":[';
     var input_telefonos = $("#div_telefonos").children("input");
@@ -130,6 +133,27 @@ function registrar() {
         if (correo <= 0) {
         } else {
             json += '{"corr":"' + correo + '"},';
+        }
+    });
+        json = json.substring(0, json.length - 1);
+    json += '],';
+    json += '"caracteristicas":[';
+    var input_carct = $("#div_caracteristica").children("input");
+    var caract;
+    $.each(input_carct, function (i, obj) {
+        caract = $(obj).val() || 0;
+        if (i == 0) {
+            if (caract <= 0) {
+                $(obj).css("background", "#F09C84");
+                $(obj).focus();
+                return;
+            } else {
+                $(obj).css("background", "#ffffff");
+            }
+        }
+        if (caract <= 0) {
+        } else {
+            json += '{"caract":"' + caract + '"},';
         }
     });
         json = json.substring(0, json.length - 1);

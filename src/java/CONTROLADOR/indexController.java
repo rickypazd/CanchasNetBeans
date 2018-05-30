@@ -7,6 +7,7 @@ package CONTROLADOR;
 
 import Conexion.Conexion;
 import MODELO.CANCHA;
+import MODELO.COMENTARIO;
 import MODELO.COMPLEJO;
 import MODELO.CORREO;
 import MODELO.COSTOS;
@@ -99,6 +100,9 @@ public class indexController extends HttpServlet {
                     break;
                 case "get_mis_reservas":
                     html = get_mis_reservas(request, con);
+                    break;
+                case "comentar_complejo":
+                    html = comentar_complejo(request, con);
                     break;
             }
             con.Close();
@@ -259,5 +263,18 @@ public class indexController extends HttpServlet {
         obj.put("costos", arrcostos);
         obj.put("reservas", arrreservas);
         return obj.toString();
+    }
+
+    private String comentar_complejo(HttpServletRequest request, Conexion con) throws SQLException {
+      int id_com=Integer.parseInt(request.getParameter("id_com"));
+      int clasi=Integer.parseInt(request.getParameter("clasi"));
+      String id_usr = request.getParameter("id_usr");
+      String coment = request.getParameter("coment");
+        COMENTARIO come = new COMENTARIO(con);
+        come.setID_USR(id_usr);
+        come.setID_COMPLEJO(id_com);
+        come.setCOMENTARIO(coment);
+        come.setCLASIFICACION(clasi);
+       return come.Insertar()+"";
     }
 }

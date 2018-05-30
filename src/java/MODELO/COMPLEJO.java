@@ -121,6 +121,7 @@ public class COMPLEJO {
         JSONArray json = new JSONArray();
         TELEFONO tel = new TELEFONO(con);
         CORREO cor = new CORREO(con);
+        CARACTERISTICA car = new CARACTERISTICA(con);
         HORARIO hor = new HORARIO(con);
         JSONObject obj;
         int ids;
@@ -145,6 +146,7 @@ public class COMPLEJO {
             obj.put("LNG", rs.getDouble("lon"));
             obj.put("TELEFONOS", tel.todos_de_complejo(ids));
             obj.put("CORREOS", cor.todos_de_complejo(ids));
+            obj.put("CARACTERISTICAS", car.todos_de_complejo(ids));
             obj.put("HORARIOS", hor.todos_de_complejo(ids));
             json.put(obj);
         }
@@ -152,12 +154,14 @@ public class COMPLEJO {
         rs.close();
         return json;
     }
+
     public JSONArray todos() throws SQLException, JSONException, IOException {
         String consulta = "select * from complejo";
         PreparedStatement ps = con.statamet(consulta);
         ResultSet rs = ps.executeQuery();
         JSONArray json = new JSONArray();
         TELEFONO tel = new TELEFONO(con);
+        CARACTERISTICA car = new CARACTERISTICA(con);
         CORREO cor = new CORREO(con);
         HORARIO hor = new HORARIO(con);
         JSONObject obj;
@@ -183,8 +187,9 @@ public class COMPLEJO {
             obj.put("LNG", rs.getDouble("lon"));
             obj.put("TELEFONOS", tel.todos_de_complejo(ids));
             obj.put("CORREOS", cor.todos_de_complejo(ids));
+            obj.put("CARACTERISTICAS", car.todos_de_complejo(ids));
             obj.put("HORARIOS", hor.todos_de_complejo(ids));
-            
+
             json.put(obj);
         }
         ps.close();
@@ -201,6 +206,7 @@ public class COMPLEJO {
         CORREO cor = new CORREO(con);
         HORARIO hor = new HORARIO(con);
         FOTO_CARRUSEL fot = new FOTO_CARRUSEL(con);
+        CARACTERISTICA car = new CARACTERISTICA(con);
         CANCHA can = new CANCHA(con);
         JSONObject obj = new JSONObject();
         int ids;
@@ -226,19 +232,21 @@ public class COMPLEJO {
             obj.put("CORREOS", cor.todos_de_complejo(ids));
             obj.put("HORARIOS", hor.todos_de_complejo(ids));
             obj.put("FOTOS_CARRUSEL", fot.todos_de_complejo(ids));
-            obj.put("CANCHAS",can.todas_de_complejo(ids));
+            obj.put("CARACTERISTICAS", car.todos_de_complejo(ids));
+            obj.put("CANCHAS", can.todas_de_complejo(ids));
         }
         ps.close();
         rs.close();
         return obj;
     }
+
     public int get_cant_resul() throws SQLException, JSONException, IOException {
         String consulta = "select count(id) as cant from complejo";
         PreparedStatement ps = con.statamet(consulta);
         ResultSet rs = ps.executeQuery();
-        int resul=0;
+        int resul = 0;
         if (rs.next()) {
-           resul = rs.getInt("cant");
+            resul = rs.getInt("cant");
         }
         ps.close();
         rs.close();
