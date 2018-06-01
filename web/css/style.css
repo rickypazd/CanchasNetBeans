@@ -8041,3 +8041,8 @@ body.rtl .checkbox .pull-right.link {
     left: 1px;
     z-index: 12;
 }
+.result_canchas div:hover{
+    cursor: pointer;
+    background-color: #666666;
+    color: white;
+}

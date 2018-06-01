@@ -3,19 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/js/reserva.js</file>
-            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/src/java/MODELO/CANCHA.java</file>
-            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/js/custom.js</file>
-            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/detallecanchas.html</file>
-            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/src/java/hilos/hilo.java</file>
-            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/src/java/MODELO/URL.java</file>
-            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/src/java/MODELO/USUARIO.java</file>
+            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/src/java/MODELO/RESERVA.java</file>
+            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/src/java/CONTROLADOR/adminController.java</file>
+            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/admin/js/reserva_detalle.js</file>
             <file>file:/Users/ricardopazdemiquel/Desktop/canchas/src/java/MODELO/RESERVA_PA.java</file>
-            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/js/facebook_login.js</file>
-            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/js/detallecancha.js</file>
-            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/admin/js/agg_cancha.js</file>
-            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/src/java/MODELO/COMPLEJO.java</file>
-            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/admin/js/crear_cancha.js</file>
+            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/index.html</file>
+            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/admin/index.html</file>
+            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/admin/js/reservas.js</file>
+            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/admin/inicio.html</file>
+            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/admin/mis_complejos.html</file>
+            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/js/index.js</file>
+            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/src/java/CONTROLADOR/indexController.java</file>
+            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/admin/js/index.js</file>
+            <file>file:/Users/ricardopazdemiquel/Desktop/canchas/web/admin/login.html</file>
         </group>
     </open-files>
 </project-private>

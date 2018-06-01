@@ -218,7 +218,7 @@ function change_nombre(input) {
             var html="";
             var json = $.parseJSON(resp);
             $.each(json,function(i,obj){
-               html+="<div>";
+               html+="<div onclick='ver_mas("+obj.ID+")'>";
                html+=obj.NOMBRE;
                html+="</div>";
             });
