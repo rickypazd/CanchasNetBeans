@@ -8034,3 +8034,10 @@ body.rtl .checkbox .pull-right.link {
  color: white;
  font-weight: 800;
 }
+.result_canchas{
+    width: 100%;
+    position: absolute;
+    background-color: rgba(250,250,250,0.8);
+    left: 1px;
+    z-index: 12;
+}

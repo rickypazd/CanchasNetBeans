@@ -186,10 +186,13 @@ function cargar_fecha() {
                 if ($(obje).data("fecha") == fecha) {
                     $(obje).attr("onclick", "javaScript:void(0)");
                     switch (estado) {
-                        case 0: //confirmado
-
+                        case 2: //confirmado
+                             $(obje).attr("class", "pendiente"); 
                             break;
                         case 1: //pendiente
+                            $(obje).attr("class", "pendiente");
+                            break;
+                        case 3: //cancelado
                             $(obje).attr("class", "pendiente");
                             break;
                     }
@@ -297,14 +300,10 @@ function siguiente_semana() {
 function anterior_semana() {
 
     var aux = domingo_selec.clone().last().sunday();
-    var dia_ac = Date.today().moveToDayOfWeek(0, -1);
-
-    if (dia_ac.isAfter(aux)) {
-        alert("No puede ver reservas anteriores a la fecha");
-        return;
-    } else {
+ 
+ 
         domingo_selec = aux;
         cargar_fecha();
-    }
+    
 
 }

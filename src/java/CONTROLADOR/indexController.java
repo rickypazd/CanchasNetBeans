@@ -104,6 +104,12 @@ public class indexController extends HttpServlet {
                 case "comentar_complejo":
                     html = comentar_complejo(request, con);
                     break;
+                case "get_canchas_x_nombre":
+                    html = get_canchas_x_nombre(request, con);
+                    break;
+                case "get_tipo_cancha":
+                    html = get_tipo_cancha(request, con);
+                    break;
             }
             con.Close();
             if (retornar) {
@@ -276,5 +282,16 @@ public class indexController extends HttpServlet {
         come.setCOMENTARIO(coment);
         come.setCLASIFICACION(clasi);
        return come.Insertar()+"";
+    }
+
+    private String get_canchas_x_nombre(HttpServletRequest request, Conexion con) throws SQLException, JSONException, IOException {
+         String text = request.getParameter("tex");
+        COMPLEJO com = new COMPLEJO(con);
+        return com.get_complejo_x_nombre(text).toString();
+    }
+
+    private String get_tipo_cancha(HttpServletRequest request, Conexion con) throws SQLException, JSONException, IOException {
+          TIPO_CANCHA tipo = new TIPO_CANCHA(con);
+        return tipo.todos().toString();
     }
 }

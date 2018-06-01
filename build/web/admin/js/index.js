@@ -23,6 +23,7 @@ $(document).ready(function () {
 function cargar_admin() {
     $(".admin_iten").css('display', '');
     $(".nombre_usr").html(usr_log.USUARIO);
+    
 }
 
 function change_frame(frame) {

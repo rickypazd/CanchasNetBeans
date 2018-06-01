@@ -162,6 +162,7 @@ public class COMPLEJO {
         JSONArray json = new JSONArray();
         TELEFONO tel = new TELEFONO(con);
         CARACTERISTICA car = new CARACTERISTICA(con);
+        COMENTARIO coment = new COMENTARIO(con);
         CORREO cor = new CORREO(con);
         HORARIO hor = new HORARIO(con);
         JSONObject obj;
@@ -189,7 +190,7 @@ public class COMPLEJO {
             obj.put("CORREOS", cor.todos_de_complejo(ids));
             obj.put("CARACTERISTICAS", car.todos_de_complejo(ids));
             obj.put("HORARIOS", hor.todos_de_complejo(ids));
-
+            obj.put("COMENTARIOS", coment.todos_de_complejo(ids));
             json.put(obj);
         }
         ps.close();
@@ -207,6 +208,7 @@ public class COMPLEJO {
         HORARIO hor = new HORARIO(con);
         FOTO_CARRUSEL fot = new FOTO_CARRUSEL(con);
         CARACTERISTICA car = new CARACTERISTICA(con);
+        COMENTARIO coment = new COMENTARIO(con);
         CANCHA can = new CANCHA(con);
         JSONObject obj = new JSONObject();
         int ids;
@@ -234,10 +236,60 @@ public class COMPLEJO {
             obj.put("FOTOS_CARRUSEL", fot.todos_de_complejo(ids));
             obj.put("CARACTERISTICAS", car.todos_de_complejo(ids));
             obj.put("CANCHAS", can.todas_de_complejo(ids));
+            obj.put("COMENTARIOS", coment.todos_de_complejo(ids));
         }
         ps.close();
         rs.close();
         return obj;
+    }
+    
+        public JSONArray get_complejo_x_nombre(String text) throws SQLException, JSONException, IOException {
+        String consulta = "SELECT * \n"
+                + "from complejo\n"
+                + "where upper(complejo.nombre) like upper('%" + text + "%')";
+        PreparedStatement ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        JSONObject obj;
+        int ids;
+         TELEFONO tel = new TELEFONO(con);
+        CORREO cor = new CORREO(con);
+        HORARIO hor = new HORARIO(con);
+        FOTO_CARRUSEL fot = new FOTO_CARRUSEL(con);
+        CARACTERISTICA car = new CARACTERISTICA(con);
+        COMENTARIO coment = new COMENTARIO(con);
+        CANCHA can = new CANCHA(con);
+        JSONArray arr = new JSONArray();
+        while (rs.next()) {
+            obj = new JSONObject();
+            ids = rs.getInt("id");
+            obj.put("ID", ids);
+            obj.put("NOMBRE", rs.getString("nombre"));
+            obj.put("PRESENTACION", rs.getString("presentacion"));
+            obj.put("DIRECCION", rs.getString("direccion"));
+            obj.put("POLITICAS", rs.getString("politicas"));
+
+            String foto = rs.getString("foto_perfil") + "";
+            String b64 = "";
+            if (foto.length() > 0 && !foto.equals("null")) {
+                b64 = URL.ruta_complejo_perfil + ids + URL.barra + foto;
+            }
+            obj.put("FOTO_PERFIL", b64);
+            obj.put("B64", b64);
+            obj.put("ID_USR", rs.getInt("id_usr"));
+            obj.put("LAT", rs.getDouble("lat"));
+            obj.put("LNG", rs.getDouble("lon"));
+            obj.put("TELEFONOS", tel.todos_de_complejo(ids));
+            obj.put("CORREOS", cor.todos_de_complejo(ids));
+            obj.put("HORARIOS", hor.todos_de_complejo(ids));
+            obj.put("FOTOS_CARRUSEL", fot.todos_de_complejo(ids));
+            obj.put("CARACTERISTICAS", car.todos_de_complejo(ids));
+            obj.put("CANCHAS", can.todas_de_complejo(ids));
+            obj.put("COMENTARIOS", coment.todos_de_complejo(ids));
+            arr.put(obj);
+        }
+        ps.close();
+        rs.close();
+        return arr;
     }
 
     public int get_cant_resul() throws SQLException, JSONException, IOException {

@@ -69,6 +69,7 @@ $(function () {
             $('.nombre_perfil').text(response.name);
               $('#menu_reserva').css('display', "");
             sessionStorage.setItem("id_log", response.id);
+            sessionStorage.setItem("facebook_data",JSON.stringify(response));
         });
     };
 
@@ -98,6 +99,8 @@ $(function () {
                     $('#btn_perfil').css('display', "none");
                        $('#menu_reserva').css('display', "none");
                     sessionStorage.removeItem("id_log");
+                    sessionStorage.removeItem("facebook_data");
+                    window.location.href="index.html";
                 });
             }
         });

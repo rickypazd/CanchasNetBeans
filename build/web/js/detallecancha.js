@@ -118,6 +118,52 @@ function cargar_complejos() {
             html += "           </div>";
         });
         $("#container").html(html);
+        
+         var comentarios = complejo.COMENTARIOS;
+         var clasificacion=0;
+         var html="";
+         var totalclasi=0;
+         $.each(comentarios,function(i,obj){
+               clasificacion=obj.CLASIFICACION;
+               totalclasi+=clasificacion;
+                html+="<div class='media media-comment'>";
+                html+="                        <div class='media-left'>";
+                html+="                            <img src='http://graph.facebook.com/" + obj.ID_USR + "/picture?type=large' class='media-object img-circle' alt='Image User'>";
+                html+="                        </div>";
+                html+="                        <div class='media-body'>";
+                html+="                            <h4 class='media-heading'>"+obj.NOMBRE+"</h4>";
+                html+="                            <ul class='list-inline rating'>";
+                
+                for (var i = 0; i < 5; i++) {
+                    if(i>=clasificacion){
+                          html+="<li><i class='fa fa-star-o' aria-hidden='true'></i></li>";
+                    }else{
+                          html+="<li><i class='fa fa-star' aria-hidden='true'></i></li>";
+                    }
+                }
+                html+="                            </ul>";
+                html+="                            <p>";
+                html+=obj.COMENTARIO;
+                html+="                           </p>";
+                html+="                        </div>";
+                html+="                    </div>";
+             
+         });
+          $("#conten-comentario").append(html);
+           $("#cant_comentario").html(comentarios.length);
+           
+           totalclasi=totalclasi/comentarios.length;
+           $("#cant_reviu").html(totalclasi+" puntos ( "+comentarios.length+" Reviews)");
+           var total=Math.round(totalclasi);
+            var html_review="";
+                 for (var i = 0; i < 5; i++) {
+                    if(i>=total){
+                          html_review+="<li><i class='fa fa-star-o' aria-hidden='true'></i></li>";
+                    }else{
+                          html_review+="<li><i class='fa fa-star' aria-hidden='true'></i></li>";
+                    }
+                }
+                $("#clasificaciones").html(html_review);
         initialize();
     });
 }
@@ -204,25 +250,33 @@ function comentar() {
             if(resp=="falso"){
                 alert("Ocurrio un error al efectuar su comentario");
             }else{
+                var response = $.parseJSON(sessionStorage.getItem("facebook_data"));
                 var html="";
                 html+="<div class='media media-comment'>";
                 html+="                        <div class='media-left'>";
-                html+="                            <img src='img/listing/list-user-1.jpg' class='media-object img-circle' alt='Image User'>";
+                html+="                            <img src='http://graph.facebook.com/" + response.id + "/picture?type=large' class='media-object img-circle' alt='Image User'>";
                 html+="                        </div>";
                 html+="                        <div class='media-body'>";
-                html+="                            <h4 class='media-heading'>Jessica Brown</h4>";
+                html+="                            <h4 class='media-heading'>"+response.name+"</h4>";
                 html+="                            <ul class='list-inline rating'>";
-                html+="                                <li><i class='fa fa-star' aria-hidden='true'></i></li>";
-                html+="                                <li><i class='fa fa-star' aria-hidden='true'></i></li>";
-                html+="                                <li><i class='fa fa-star' aria-hidden='true'></i></li>";
-                html+="                                <li><i class='fa fa-star' aria-hidden='true'></i></li>";
-                html+="                                <li><i class='fa fa-star' aria-hidden='true'></i></li>";
+                
+                for (var i = 0; i < 5; i++) {
+                    if(i>=clasificacion){
+                          html+="<li><i class='fa fa-star-o' aria-hidden='true'></i></li>";
+                    }else{
+                          html+="<li><i class='fa fa-star' aria-hidden='true'></i></li>";
+                    }
+                }
                 html+="                            </ul>";
                 html+="                            <p>";
                 html+=coment;
                 html+="                           </p>";
                 html+="                        </div>";
                 html+="                    </div>";
+                $("#conten-comentario").append(html);
+                var cant = parseInt($("#cant_comentario").html());
+                cant+=1;
+                $("#cant_comentario").html(cant);
             }
         });
     }else{

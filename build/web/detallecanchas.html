@@ -36,8 +36,8 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <script src="js/jquery.js"></script>
-        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBob08SeANDb-BYOCvJJIk9gG_u3k9tj5I"></script>
+     
+        
         <style type="text/css">
             .mapa {
                 width: 100%;
@@ -90,9 +90,6 @@
                                         <a href="index.html"  role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home icon-dash" aria-hidden="true"></i>Inicio</a>
                                     </li>
 
-                                    <li class=" dropdown singleDrop">
-                                        <a href="canchas.html"  role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search icon-dash" aria-hidden="true"></i> Canchas</a>
-                                    </li>
                                     <li id="menu_reserva" class=" dropdown singleDrop">
                                         <a href="reservas.html" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-ul icon-dash" aria-hidden="true"></i>Reservas</a>
                                     </li>
@@ -149,17 +146,15 @@
                                 <h2 id="nombre_cancha">La Bombonera</h2>
 
                                 <div class="listingReview">
-                                    <ul class="list-inline rating">
+                                    <ul class="list-inline rating" id="clasificaciones">
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                         <li><i class="fa fa-star" aria-hidden="true"></i></li>
                                         <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
                                     </ul>
-                                    <span>( 5 Reviews )</span>
-                                    <ul class="list-inline captionItem">
-                                        <li><i class="fa fa-heart-o" aria-hidden="true"></i> 10 k</li>
-                                    </ul>
+                                    <span id="cant_reviu">( 5 Reviews )</span>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -253,122 +248,7 @@
                             </div>
                             <h3>Canchas</h3>
                             <div class="row isotopeContainer" id="container">
-                                <div class="col-md-4 col-sm-6 col-xs-12 isotopeSelector featuredItem">
-                                    <article class="">
-                                        <figure>
-                                            <img src="img/canchas/cancha1.jpg" alt="Image Protfolio" class="img-responsive">
-                                            <div class="overlay-background">
-                                                <div class="inner"></div>
-                                            </div>
-                                            <span class="label label-primary">Cancha 1</span>
-                                            <a href="category-grid.html">
-                                                <div class="overlay">
-                                                    <div class="overlayInfo">
-                                                        <span class="label label-primary">Cancha 1</span>
-                                                        <span class="label label-primary">Reservar</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </figure>
-                                        <div class="figureBody">
-                                            <h2><i class="fa fa-check-circle" aria-hidden="false"></i> Futbol 7</h2>
-                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Sintetica</h5>
-                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Techada</h5>
-                                        </div>
-                                        <div class="figureFooter">
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary">Reservar </button>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="col-md-4 col-sm-6 col-xs-12 isotopeSelector featuredItem">
-                                    <article class="">
-                                        <figure>
-                                            <img src="img/canchas/cancha1.jpg" alt="Image Protfolio" class="img-responsive">
-                                            <div class="overlay-background">
-                                                <div class="inner"></div>
-                                            </div>
-                                            <span class="label label-primary">Cancha 2</span>
-                                            <a href="category-grid.html">
-                                                <div class="overlay">
-                                                    <div class="overlayInfo">
-                                                        <span class="label label-primary">Cancha 2</span>
-                                                        <span class="label label-primary">Reservar</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </figure>
-                                        <div class="figureBody">
-                                            <h2><i class="fa fa-check-circle" aria-hidden="false"></i> Futbol 3</h2>
-                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Sintetica</h5>
-                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Techada</h5>
-                                        </div>
-                                        <div class="figureFooter">
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary">Reservar </button>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="col-md-4 col-sm-6 col-xs-12 isotopeSelector featuredItem">
-                                    <article class="">
-                                        <figure>
-                                            <img src="img/canchas/cancha1.jpg" alt="Image Protfolio" class="img-responsive">
-                                            <div class="overlay-background">
-                                                <div class="inner"></div>
-                                            </div>
-                                            <span class="label label-primary">Cancha 3</span>
-                                            <a href="category-grid.html">
-                                                <div class="overlay">
-                                                    <div class="overlayInfo">
-                                                        <span class="label label-primary">Cancha 3</span>
-                                                        <span class="label label-primary">Reservar</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </figure>
-                                        <div class="figureBody">
-                                            <h2><i class="fa fa-check-circle" aria-hidden="false"></i> Futbol 4</h2>
-                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Sintetica</h5>
-                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Techada</h5>
-                                        </div>
-                                        <div class="figureFooter">
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary">Reservar </button>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                                <div class="col-md-4 col-sm-6 col-xs-12 isotopeSelector featuredItem">
-                                    <article class="">
-                                        <figure>
-                                            <img src="img/canchas/cancha1.jpg" alt="Image Protfolio" class="img-responsive">
-                                            <div class="overlay-background">
-                                                <div class="inner"></div>
-                                            </div>
-                                            <span class="label label-primary">Cancha 4</span>
-                                            <a href="category-grid.html">
-                                                <div class="overlay">
-                                                    <div class="overlayInfo">
-                                                        <span class="label label-primary">Cancha 4</span>
-                                                        <span class="label label-primary">Reservar</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </figure>
-                                        <div class="figureBody">
-                                            <h2><i class="fa fa-check-circle" aria-hidden="false"></i> Futbol 7</h2>
-                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Sintetica</h5>
-                                            <h5><i class="fa fa-check-circle" aria-hidden="false"></i> Techada</h5>
-                                        </div>
-                                        <div class="figureFooter">
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-primary">Reservar </button>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -384,65 +264,9 @@
                         <div class="col-sm-8 col-xs-12">
                             <div class="listDetailsInfo">
 
-                                <div class="detailsInfoBox">
-                                    <h3>Comentarios (3)</h3>
-                                    <div class="media media-comment">
-                                        <div class="media-left">
-                                            <img src="img/listing/list-user-1.jpg" class="media-object img-circle" alt="Image User">
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">Jessica Brown</h4>
-                                            <ul class="list-inline rating">
-                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            </ul>
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan
-                                                totam rem ape riam,
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="media media-comment">
-                                        <div class="media-left">
-                                            <img src="img/listing/list-user-2.jpg" class="media-object img-circle" alt="Image User">
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">Jessica Brown</h4>
-                                            <ul class="list-inline rating">
-                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                                            </ul>
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan
-                                                totam rem ape riam,
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="media media-comment">
-                                        <div class="media-left">
-                                            <img src="img/listing/list-user-3.jpg" class="media-object img-circle" alt="Image User">
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="media-heading">Jessica Brown</h4>
-                                            <ul class="list-inline rating">
-                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                                            </ul>
-                                            <p>
-                                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan
-                                                totam rem ape riam,
-                                            </p>
-                                        </div>
-                                    </div>
+                                <div class="detailsInfoBox" id="conten-comentario">
+                                    <h3 >Comentarios (<span id="cant_comentario">0</span>)</h3>
+                                    
                                 </div>
                                 <div class="detailsInfoBox">
                                     <h3>Escribe un Comentario </h3>
@@ -551,35 +375,42 @@
         <!-- LOGIN  MODAL -->
         <div id="loginModal" tabindex="-1" class="modal fade" role="dialog">
             <div class="modal-dialog">
+
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Log In to your Account</h4>
+                        <h4 class="modal-title">Ingrese a su cuenta</h4>
                     </div>
                     <div class="modal-body">
                         <form class="loginForm">
                             <div class="form-group">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                                <input type="email" class="form-control" id="email" placeholder="Email">
+                                <button type="button" id="login" class="btn btn-primary btn-block"><i class="fa fa-facebook-square" aria-hidden="true"></i>Iniciar sesión FaceBook</button>
+
                             </div>
                             <div class="form-group">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
-                                <input type="password" class="form-control" id="pwd" placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Log In</button>
-                            </div>
-                            <div class="checkbox">
-                                <label><input type="checkbox"> Remember me</label>
-                                <a href="#" class="pull-right link">Fogot Password?</a>
+                                <button type="button" id="login_gmail" class="btn btn-primary btn-block">Iniciar sesión gmail</button>
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <p>Don’t have an Account? <a href="#" class="link">Sign up</a></p>
+                </div>
+
+            </div>
+        </div>
+        <div id="perfil_modal" tabindex="-1" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">perfil</h4>
+                    </div>
+                    <div id="bod_modal_log" class="modal-body">
+
                     </div>
                 </div>
+
             </div>
         </div>
         <!-- JAVASCRIPTS -->

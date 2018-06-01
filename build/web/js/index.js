@@ -32,7 +32,7 @@ function addMarkerWithTimeout(obj, timeout) {
             map: map,
             title: obj.NOMBRE,
             animation: google.maps.Animation.DROP,
-            icon: 'img/blue_circle.png'
+            icon: 'img/marker-verde.png'
         });
         var infow = "<div class='container' style='width:400px;'>";
         infow += "<div class='col-md-6'>";
@@ -44,21 +44,21 @@ function addMarkerWithTimeout(obj, timeout) {
         infow += "               <i class='icon-listy icon-target' style='color: #1bac06; '></i>";
         infow += "               <span class='placeName'>" + obj.DIRECCION + "</span>";
         infow += "                </div>";
-       infow += "</div>";
+        infow += "</div>";
         infow += "</div>";
         infow += "<div>";
-          infow += "<span >" + obj.PRESENTACION + "</span>";
-          infow += "</div>";
+        infow += "<span >" + obj.PRESENTACION + "</span>";
+        infow += "</div>";
         infow += "<div>";
         infow += "<i class='fa fa-phone' aria-hidden='true'></i>";
-        infow += obj.TELEFONOS[0].TELEFONO ;
+        infow += obj.TELEFONOS[0].TELEFONO;
         infow += "</div>";
         infow += "<div >";
         infow += "<i class='fa fa-envelope' aria-hidden='true'></i><a href='#'></a>";
         infow += "<a href='#'>" + obj.CORREOS[0].CORREO + "</a>";
         infow += "</div>";
-            infow += "<button type='button' onclick='ver_mas(" + obj.ID + ");' style='background-color: #1bac06; color: white; padding: 5px; border-radius:.25em;'>Ver mas </button>";
-       
+        infow += "<button type='button' onclick='ver_mas(" + obj.ID + ");' style='background-color: #1bac06; color: white; padding: 5px; border-radius:.25em;'>Ver mas </button>";
+
         var infowindow = new google.maps.InfoWindow({
             content: infow
         });
@@ -77,6 +77,9 @@ function cargar_complejos(json) {
     cant_paginas = npag;
     var cont = 0;
     var cont_pag = 0;
+    var comentarios;
+    var total_clasi;
+    var clasificacion;
     $.each(json, function (i, obj) {
         var b64 = "img/sin-imagen.png";
         if (obj.B64 != "") {
@@ -98,8 +101,28 @@ function cargar_complejos(json) {
         html += "       <div class='categoryDetails'>";
         html += "            <h2>";
         html += "                <a href='detallecanchas.html?id=" + obj.ID + "' style='color:#222222'>" + obj.NOMBRE + "</a>";
+        comentarios = obj.COMENTARIOS;
+        total_clasi = 0;
+        $.each(comentarios, function (i, obj) {
+            total_clasi += obj.CLASIFICACION;
+        });
+        total_clasi = total_clasi / comentarios.length;
+        clasificacion = Math.round(total_clasi);
+        if (isNaN(clasificacion)) {
+            clasificacion = 0;
+            total_clasi = 0;
+        }
         html += "               <span class='likeCount'>";
-        html += "                <i class='fa fa-heart-o' aria-hidden='true'></i> 10 k";
+        html += "                            <ul class='list-inline rating' id='clasificaciones'>";
+        for (var i = 0; i < 5; i++) {
+            if (i >= clasificacion) {
+                html += "<li><i class='fa fa-star-o' aria-hidden='true'></i></li>";
+            } else {
+                html += "<li><i class='fa fa-star' aria-hidden='true'></i></li>";
+            }
+        }
+        html += "                            </ul>";
+        html += "                           <span id='cant_reviu'>( " + total_clasi + " Puntos )</span>";
         html += "               </span>";
         html += "           </h2>";
         html += "           <h5>Santa cruz de la sierra</h5>";
@@ -186,4 +209,30 @@ function siguiente() {
     if (pag <= cant_paginas) {
         ver_pagina(pag);
     }
+}
+
+function change_nombre(input) {
+    var val = $(input).val();
+    if (val.length > 0) {
+        $.post(url, {evento: "get_canchas_x_nombre", tex: val}, function (resp) {
+            var html="";
+            var json = $.parseJSON(resp);
+            $.each(json,function(i,obj){
+               html+="<div>";
+               html+=obj.NOMBRE;
+               html+="</div>";
+            });
+            $("#resul_canchas_id").html(html);
+        });
+    }else{
+          $("#resul_canchas_id").html("");
+    }
+
+}
+
+function buscar_canchas(){
+    var nombre=$("#inp_nombre_busqueda").val();
+    var tipo;
+    var fecha;
+    var hora;
 }

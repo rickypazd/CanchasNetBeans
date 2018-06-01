@@ -97,10 +97,7 @@
                                     <li class="active dropdown singleDrop">
                                         <a href="index.html"  role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home icon-dash" aria-hidden="true"></i>Inicio</a>
                                     </li>
-                                   
-                                    <li class=" dropdown singleDrop">
-                                        <a href="canchas.html"  role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search icon-dash" aria-hidden="true"></i> Canchas</a>
-                                    </li>
+                           
                                     <li id="menu_reserva" class=" dropdown singleDrop">
                                         <a href="reservas.html" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-ul icon-dash" aria-hidden="true"></i>Reservas</a>
                                     </li>
@@ -122,23 +119,15 @@
                             <div style="background-color: #1bac06; text-align: center; color: white; padding: 5px; border-top-left-radius:5px; border-top-right-radius:5px; ">Buscar Cancha</div>
                             <div class="sidebarInner">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Nombre de la cancha?" aria-describedby="basic-addon2">
+                                    <input type="text" id="inp_nombre_busqueda" class="form-control" placeholder="Nombre de la cancha?" aria-describedby="basic-addon2" onkeyup="change_nombre(this);">
                                     <a href="#" class="input-group-addon" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                    
+                                </div>
+                                <div class="result_canchas" id="resul_canchas_id">
+                                      
                                 </div>
                                 <br />
-                                <div class="form-group">
-                                    <div class="searchSelectbox">
-                                        <select name="guiest_id3" id="guiest_id3" class="select-drop">
-                                            <option value="0">toda la cuidad</option>
-                                            <option value="1">primer anillo</option>
-                                            <option value="2">segundo anillo</option>
-                                            <option value="3">tercer anillo</option>
-                                            <option value="3">cuarto anillo</option>
-                                            <option value="3">quinto anillo</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <br />
+                                
                                 <br />
                                 <div class="form-group">
                                     <div class="dateSelect">
@@ -164,7 +153,7 @@
                                 <br />
                                 <br />
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Buscar </button>
+                                    <button type="button" class="btn btn-primary" onclick="buscar_canchas();">Buscar </button>
                                 </div>
                             </div>
                         </div>
@@ -188,54 +177,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-4 col-xs-12">
-                            <div style="background-color: #1bac06; text-align: center; color: white; padding: 5px; border-top-left-radius:5px; border-top-right-radius:5px; ">Filtros</div>
-                            <div class="sidebarInner">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Nombre de la cancha" aria-describedby="basic-addon2">
-                                    <a href="#" class="input-group-addon" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                </div>
-                                <br />
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Zona o direccion" aria-describedby="basic-addon2">
-                                    <a href="#" class="input-group-addon" id="basic-addon2"><i class="icon-listy icon-target" aria-hidden="true"></i></a>
-                                </div>
-                                <br />
-                                <div class="form-group col-xs-12">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">
-                                            Wifi <a href="terms-of-services.html">gratis</a>
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox">
-                                            Pasto <a href="terms-of-services.html">sintetico</a>
-                                        </label>
-                                    </div>
-                                    <label>
-                                        <input type="checkbox">
-                                        Chuhrrasquera <a href="terms-of-services.html">disponibles</a>
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <div class="dateSelect">
-                                        <div class="input-group date ed-datepicker filterDate" data-provide="datepicker">
-                                            <input type="text" class="form-control" placeholder="Ingrese Fecha de reserva">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <p>Precio:<input type="range" name="precio" value="50" style="">
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Buscar </button>
-                                </div>
-                            </div>
+                           
+                           
                         </div>
                         <div class="col-sm-8 col-xs-12">
                             <div class="resultBar barSpaceAdjust">

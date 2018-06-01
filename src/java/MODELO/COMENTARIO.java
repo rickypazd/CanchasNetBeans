@@ -54,8 +54,7 @@ public class COMENTARIO {
 
 
     public JSONArray todos_de_complejo(int id) throws SQLException, JSONException, IOException {
-        String consulta = "select * from comentario a where a.id_complejo"
-                + "=" + id;
+        String consulta = "select a.*, u.nombre from comentario a, usuario u where a.id_usr=u.id and a.id_complejo =" +id;
         PreparedStatement ps = con.statamet(consulta);
         ResultSet rs = ps.executeQuery();
         JSONArray json = new JSONArray();
@@ -65,6 +64,7 @@ public class COMENTARIO {
             obj.put("ID", rs.getInt("id"));
             obj.put("CLASIFICACION", rs.getInt("clasificacion"));
             obj.put("COMENTARIO", rs.getString("comentario"));
+            obj.put("NOMBRE", rs.getString("nombre"));
             obj.put("ID_USR", rs.getString("id_usr"));
             json.put(obj);
         }

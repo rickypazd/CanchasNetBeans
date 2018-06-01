@@ -24,7 +24,11 @@ function cargar_reservas() {
             html += "<td>" + obj.HORAS + "</td>";
             html += "<td>" + obj.FECHA.substring(0,16); + "</td>";
             html += "<td>" + get_estado(obj.ESTADO) + "</td>";
-            html += "<td><div class='btn-group'><button type='button' class='btn btn-primary'>Cancelar</button></div></td>";
+            if(obj.ESTADO===1){
+                  html += "<td><div class='btn-group'><button type='button' class='btn btn-primary'>Cancelar</button></div></td>";
+            }else{
+                   html += "<td><div class='btn-group'></div></td>";
+            }
             html += "</tr>";
         });
         $("#table_res_usr").html(html);
