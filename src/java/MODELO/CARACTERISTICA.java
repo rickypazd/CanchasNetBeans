@@ -10,35 +10,33 @@ import java.text.SimpleDateFormat;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.CallableStatement;
-import java.sql.Time;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class CANCHA {
+public class CARACTERISTICA {
 
     private int ID;
-    private String NOMBRE;
-    private int ID_TIPO;
+    private String CARACTERISTICA;
     private int ID_COMPLEJO;
+
     private Conexion con = null;
 
-    public CANCHA(Conexion con) {
+    public CARACTERISTICA(Conexion con) {
         this.con = con;
     }
 
     public int Insertar() throws SQLException {
-        String consulta = "INSERT INTO public.cancha(\n"
-                + "	 nombre, id_tipo, id_complejo)\n"
-                + "	VALUES ( ?, ?, ?);";
+        String consulta = "INSERT INTO public.caracteristica(\n"
+                + "	 id_complejo, caracteristica)\n"
+                + "	VALUES (?, ?);";
         PreparedStatement ps = con.statamet(consulta);
 
-        ps.setString(1, getNOMBRE());
-        ps.setInt(2, getID_TIPO());
-        ps.setInt(3, getID_COMPLEJO());
+        ps.setInt(1, getID_COMPLEJO());
+        ps.setString(2, getCARACTERISTICA());
         ps.execute();
 
-        consulta = "select last_value from cancha_id_seq";
+        consulta = "select last_value from caracteristicas_id_seq";
         ps = con.statamet(consulta);
         ResultSet rs = ps.executeQuery();
         int id = 0;
@@ -50,20 +48,29 @@ public class CANCHA {
         return id;
     }
 
-    public JSONArray todas_de_complejo(int id) throws SQLException, JSONException, IOException {
-        String consulta = "select ca.*, ti.tipo from cancha ca, tipo_cancha ti\n"
-                + "where ca.id_tipo=ti.id and ca.id_complejo=" + id;
+    public String update_caracteristica() throws SQLException {
+        String consulta = "UPDATE public.caracteristica\n"
+                + "	SET caracteristica=?\n"
+                + "	WHERE id=" + getID();
+        PreparedStatement ps = con.statamet(consulta);
+        ps.setString(1, getCARACTERISTICA());
+        ps.execute();
+        ps.close();
+        return "exito";
+    }
+
+    public JSONArray todos_de_complejo(int id) throws SQLException, JSONException, IOException {
+        String consulta = "select * from caracteristica a where a.id_complejo"
+                + "=" + id;
         PreparedStatement ps = con.statamet(consulta);
         ResultSet rs = ps.executeQuery();
         JSONArray json = new JSONArray();
         JSONObject obj;
         while (rs.next()) {
             obj = new JSONObject();
+
             obj.put("ID", rs.getInt("id"));
-            obj.put("NOMBRE", rs.getString("nombre"));
-            obj.put("NOMBRE_TIPO", rs.getString("tipo"));
-            obj.put("ID_TIPO", rs.getInt("id_tipo"));
-            obj.put("ID_COMPLEJO", rs.getInt("id_complejo"));
+            obj.put("CARACTERISTICA", rs.getString("caracteristica"));
             json.put(obj);
         }
         ps.close();
@@ -79,22 +86,15 @@ public class CANCHA {
         this.ID = ID;
     }
 
-    public String getNOMBRE() {
-        return NOMBRE;
+    public String getCARACTERISTICA() {
+        return CARACTERISTICA;
     }
 
-    public void setNOMBRE(String NOMBRE) {
-        this.NOMBRE = NOMBRE;
+    public void setCARACTERISTICA(String CARACTERISTICA) {
+        this.CARACTERISTICA = CARACTERISTICA;
     }
-
-    public int getID_TIPO() {
-        return ID_TIPO;
-    }
-
-    public void setID_TIPO(int ID_TIPO) {
-        this.ID_TIPO = ID_TIPO;
-    }
-
+    
+  
     public int getID_COMPLEJO() {
         return ID_COMPLEJO;
     }

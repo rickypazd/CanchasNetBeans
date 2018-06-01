@@ -26,6 +26,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff" rel="stylesheet">
         <!-- CUSTOM CSS -->
+        <link href="css/5star.css" rel="stylesheet" type="text/css"/>
         <link href="css/style.css" rel="stylesheet">
         <!-- FAVICON -->
         <link href="img/favicon.png" rel="shortcut icon">
@@ -88,7 +89,7 @@
                                     <li class="dropdown singleDrop">
                                         <a href="index.html"  role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home icon-dash" aria-hidden="true"></i>Inicio</a>
                                     </li>
-                                   
+
                                     <li class=" dropdown singleDrop">
                                         <a href="canchas.html"  role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search icon-dash" aria-hidden="true"></i> Canchas</a>
                                     </li>
@@ -245,14 +246,7 @@
                                 </div>
                                 <div class="detailsInfoBox">
                                     <h3>Caracteristicas</h3>
-                                    <ul class="list-inline featuresItems">
-                                        <li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Wi-Fi</li>
-                                        <li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Estacionamiento</li>
-                                        <li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Alcohol</li>
-                                        <li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Churrasqueria</li>
-                                        <li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Rervaciones</li>
-                                        <li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Mascotas</li>
-                                        <li><i class="fa fa-check-circle-o" aria-hidden="true"></i>  Aceptamos Tarjetas de credito</li>
+                                    <ul class="list-inline featuresItems" id="caracteristicas">
                                     </ul>
                                 </div>
 
@@ -454,21 +448,21 @@
                                     <h3>Escribe un Comentario </h3>
                                     <div class="listingReview">
                                         <span>( 5 Reviews )</span>
-                                        <ul class="list-inline rating rating-review">
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                        </ul>
+                                        <div class="rate-area">
+                                                <input type="radio" id="5-star" name="rating" value="5"><label for="5-star" title="Amazing">5 stars</label>
+                                                <input type="radio" id="4-star" name="rating" value="4"><label for="4-star" title="Good">4 stars</label>
+                                                <input type="radio" id="3-star" name="rating" value="3"><label for="3-star" title="Average">3 stars</label>
+                                                <input type="radio" id="2-star" name="rating" value="2"><label for="2-star" title="Not Good">2 stars</label>
+                                                <input type="radio" id="1-star" name="rating" value="1"><label for="1-star" title="Bad">1 star</label>
+                                        </div>
                                     </div>
-                                    <form action="#">
+                                    <form >
                                         <div class="formSection formSpace">
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="3" placeholder="Comentario"></textarea>
+                                                <textarea id="ta_coment" class="form-control" rows="3" placeholder="Comentario"></textarea>
                                             </div>
                                             <div class="form-group mb0">
-                                                <button type="submit" class="btn btn-primary">Enviar Comentario</button>
+                                                <button type="button" class="btn btn-primary" onclick="comentar();">Enviar Comentario</button>
                                             </div>
                                         </div>
                                     </form>
@@ -589,7 +583,8 @@
             </div>
         </div>
         <!-- JAVASCRIPTS -->
-        <script src="plugins/jquery/jquery.min.js"></script>
+
+        <script src="plugins/jquery/jquery.min.js" type="text/javascript"></script>
         <script src="js/facebook_login.js" type="text/javascript"></script>
         <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
         <script src="plugins/bootstrap/js/bootstrap.min.js"></script>

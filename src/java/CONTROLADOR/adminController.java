@@ -7,6 +7,7 @@ package CONTROLADOR;
 
 import Conexion.Conexion;
 import MODELO.CANCHA;
+import MODELO.CARACTERISTICA;
 import MODELO.COMPLEJO;
 import MODELO.CORREO;
 import MODELO.COSTOS;
@@ -227,6 +228,7 @@ public class adminController extends HttpServlet {
         JSONArray jso_tel = obj.getJSONArray("telefonos");
         JSONArray jso_corr = obj.getJSONArray("correos");
         JSONArray jso_horarios = obj.getJSONArray("horario");
+        JSONArray jso_caracteristica = obj.getJSONArray("caracteristicas");
         TELEFONO telefono;
         JSONObject obje_tel;
         for (int i = 0; i < jso_tel.length(); i++) {
@@ -244,6 +246,15 @@ public class adminController extends HttpServlet {
             correo.setID_COMPLEJO(id_comp);
             correo.setCORREO(obje_corr.getString("corr"));
             correo.Insertar();
+        }
+        CARACTERISTICA caract;
+        JSONObject obje_caract;
+        for (int i = 0; i < jso_caracteristica.length(); i++) {
+            obje_caract = jso_caracteristica.getJSONObject(i);
+            caract = new CARACTERISTICA(con);
+            caract.setID_COMPLEJO(id_comp);
+            caract.setCARACTERISTICA(obje_caract.getString("caract"));
+            caract.Insertar();
         }
         HORARIO horario;
         JSONObject obje_hora;
@@ -326,6 +337,23 @@ public class adminController extends HttpServlet {
                 correo.setID(obje_corr.getInt("id"));
                 correo.setCORREO(obje_corr.getString("corr"));
                 correo.update_correo();
+            }
+
+        } catch (JSONException ex) {
+            Logger.getLogger(adminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            String jso = request.getParameter("caracteristicas");
+            JSONObject obj = new JSONObject(jso);
+            JSONArray json_caract = obj.getJSONArray("caracteristicas");
+            CARACTERISTICA caract;
+            JSONObject obje_carac;
+            for (int i = 0; i < json_caract.length(); i++) {
+                obje_carac = json_caract.getJSONObject(i);
+                caract = new CARACTERISTICA(con);
+                caract.setID(obje_carac.getInt("id"));
+                caract.setCARACTERISTICA(obje_carac.getString("caract"));
+                caract.update_caracteristica();
             }
 
         } catch (JSONException ex) {
