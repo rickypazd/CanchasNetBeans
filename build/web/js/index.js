@@ -16,8 +16,8 @@ function initMap() {
         $.post(url, {evento: "get_complejos"}, function (resp) {
             json = $.parseJSON(resp);
             map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
-                center: {lat: -17.7848688, lng: -63.180835}
+                zoom:13,
+                center: {lat: -17.7797787, lng: -63.1882631}
 
             });
             var cant = json.length;
@@ -103,14 +103,14 @@ function cargar_complejos(json) {
         html += "    <div class='row'>";
         html += "       <div class='col-sm-5 col-xs-12'>";
         html += "           <div class='categoryImage'>";
-        html += "               <img src='" + b64 + "' alt='Image category' class='img-responsive img-rounded'>";
+        html += "               <img src='" + b64 + "' alt='Image category' class='img-responsive img-rounded' style='width:300px;height:200px;max-width:300px;max-height:200px;'>";
         html += "               <span class='label label-primary'>" + obj.NOMBRE + "</span>";
         html += "       </div>";
         html += "    </div>";
         html += "    <div class='col-sm-7 col-xs-12'>";
         html += "       <div class='categoryDetails'>";
         html += "            <h2>";
-        html += "                <a href='detallecanchas.html?id=" + obj.ID + "' style='color:#222222'>" + obj.NOMBRE + "</a>";
+        html += "                <a href='detallecanchas.html?id=" + obj.ID + "' style='font-size:15px;font-family:Exo 2 ;color:#1bac06;font-size:30px'>" +obj.NOMBRE + "</a>";
         comentarios = obj.COMENTARIOS;
         total_clasi = 0;
         $.each(comentarios, function (i, obj) {
@@ -131,26 +131,28 @@ function cargar_complejos(json) {
                 html += "<li><i class='fa fa-star' aria-hidden='true'></i></li>";
             }
         }
+        
         html += "                            </ul>";
         html += "                           <span id='cant_reviu'>( " + total_clasi + " Puntos )</span>";
         html += "               </span>";
         html += "           </h2>";
         html += "           <h5>Santa cruz de la sierra</h5>";
         html += "               <p>";
-        html += "               <i class='icon-listy icon-target' style='color: #1bac06; '></i>";
+        html += "               <i class='fa fa-map-marker' style='color: #1bac06; '></i>";
         html += "               <span class='placeName'>" + obj.DIRECCION + "</span>";
         html += "                </p>";
-        html += "               <p style='text-align:justify'>" + obj.PRESENTACION + "</p>";
+        html += "               <p style='text-align:justify'>" + obj.PRESENTACION + "</p>";''
         html += "               <ul class='list-inline list-tag'>";
         html += "                    <li><i class='fa fa-phone' aria-hidden='true'></i></li>";
         html += "                   <li>" + obj.TELEFONOS[0].TELEFONO + "</li>";
+        
         html += "                </ul>";
         html += "               <ul class='list-inline list-tag'>";
         html += "                   <li><i class='fa fa-envelope' aria-hidden='true'></i><a href='#'></a></li>";
         html += "                   <li><a href='#'>" + obj.CORREOS[0].CORREO + "</a></li>";
         html += "               </ul>";
-        html += "               <ul class='list-inline list-tag'>";
-        html += "                    <li><button type='button' onclick='ver_mas(" + obj.ID + ");' style='background-color: #1bac06; color: white; padding: 5px; border-radius:.25em; line-height: 23px;'>Ver mas </button></li>";
+        html += "               <ul class='list-inline list-tag' style='padding:15px'>";
+        html += "                    <li><button type='button' onclick='ver_mas(" + obj.ID + ");' style='cursor: pointer;border-radius: 6px;padding: 5px 15px;line-height:14px;font-size:20px;border: 0;color:white;background-color: #ea0a0a;padding:10px'>Reservar </button></li>";
         html += "                </ul>";
         html += "            </div>";
         html += "       </div>";

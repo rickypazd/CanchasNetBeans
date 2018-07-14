@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="es-bo">
-    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    
     <head>
         <!-- SITE TITTLE -->
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +11,7 @@
         <meta name="author" content="Servisis">
         <meta itemprop="title" content="Peloteada reservas de canchas de futbol." />
         <meta name="description" content="Peloteada reservas de canchas de futbol de santa cruz de la sierra." />
-        <meta name="twitter:image" content="img/logo-blue.png" />
+
 
         <!-- PLUGINS CSS STYLE -->
         <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
@@ -60,9 +61,7 @@
         <div class="main-wrapper">
             <!-- HEADER -->
             <header id="pageTop" class="header">
-
                 <!-- TOP INFO BAR -->
-
                 <div class="nav-wrapper navbarWhite">
 
                     <div class="container-fluid header-bg">
@@ -95,14 +94,14 @@
                             <div class="collapse navbar-collapse navbar-ex1-collapse">
                                 <ul class="nav navbar-nav navbar-right">
                                     <li class="active dropdown singleDrop">
-                                        <a href="index.html"  role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home icon-dash" aria-hidden="true"></i>Inicio</a>
+                                        <a href="index.html" aria-haspopup="true" aria-expanded="false"><i class="fa fa-home icon-dash" aria-hidden="true"></i>Inicio</a>
                                     </li>
-                           
+
                                     <li id="menu_reserva" class=" dropdown singleDrop">
-                                        <a href="reservas.html" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-ul icon-dash" aria-hidden="true"></i>Reservas</a>
+                                        <a href="reservas.html" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-ul icon-dash" aria-hidden="true"></i>Reservas</a>
                                     </li>
                                     <li class=" dropdown singleDrop">
-                                        <a href="contacto.html" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-envelope icon-dash" aria-hidden="true"></i>Contacto</a>
+                                        <a href="contacto.html" aria-haspopup="true" aria-expanded="false"><i class="fa fa-envelope icon-dash" aria-hidden="true"></i>Contacto</a>
                                     </li>
                                 </ul>
                             </div>
@@ -115,19 +114,22 @@
             <section class="clearfix">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-4 col-xs-12">
-                            <div style="background-color: #1bac06; text-align: center; color: white; padding: 5px; border-top-left-radius:5px; border-top-right-radius:5px; ">Buscar Cancha</div>
-                            <div class="sidebarInner">
+                        <div class="col-sm-3 col-xs-12">
+                            <div style="background-color: #1bac06; text-align: center; font-size:20px;font-family:Exo 2 ; color: white; padding:15px; border-top-left-radius:15px; border-top-right-radius:15px;-webkit-box-shadow: 0 0 10px #676f75 ">Buscar Cancha</div>
+                            <div class="sidebarInner" style="background-color: #1bac06; text-align:center; color:white; padding:10px;-webkit-box-shadow: 0 0 10px #676f75">
+                                <br>
                                 <div class="input-group">
                                     <input type="text" id="inp_nombre_busqueda" class="form-control" placeholder="Nombre de la cancha?" aria-describedby="basic-addon2" onkeyup="change_nombre(this);">
                                     <a href="#" class="input-group-addon" id="basic-addon2"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                    
                                 </div>
-                                <div class="result_canchas" id="resul_canchas_id">
-                                      
+                                   <div class="result_canchas" id="resul_canchas_id">
                                 </div>
-                                <br />
-                                
+                                <br>
+                                <div class="input-group">
+                                    <input type="text" id="inp_nombre_busqueda" class="form-control" placeholder="cuidad o departamento" aria-describedby="basic-addon2" onkeyup="change_nombre(this);">
+                                    <a href="#" class="input-group-addon" id="basic-addon2"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                                </div>
+                             
                                 <br />
                                 <div class="form-group">
                                     <div class="dateSelect">
@@ -139,24 +141,32 @@
                                         </div>
                                     </div>
                                 </div>
-                                <br />
                                 <div class="form-group">
                                     <div class="searchSelectbox">
                                         <select name="guiest_id4" id="guiest_id4" class="select-drop">
+                                            <option value="0">Seleccione una categoria</option>
+                                            <option value="1">Futbol</option>
+                                            <option value="2">Futbol 7</option>
+                                            <option value="3">Tenis</option>
                                             <option value="0">Todas Categoria</option>
                                         </select>
                                     </div>
                                 </div>
-                                <br />
-                                <br />
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-primary" onclick="buscar_canchas();">Buscar </button>
+                                    <button type="button" style="cursor: pointer;
+                                            border-radius: 6px;
+                                            padding: 5px 15px;
+                                            line-height:14px;
+                                            font-size: 15px;
+                                            border: 0;
+                                            color: #fffff;
+                                            background-color: #ea0a0a" onclick="buscar_canchas();">Buscar </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-8 col-xs-12">
+                        <div class="col-sm-9 col-xs-12">
                             <div class="resultBar barSpaceAdjust">
-                                <h2>Encontramos <span id="cantidad_en_mapa">8</span> Resultados para usted</h2>
+                              <p style="font-family:Exo 2;font-size:20px;color:black"><b>Encontramos</b> <span id="cantidad_en_mapa"></span><b> resultados para usted</b></p>
                             </div>
                             <div class="listContent">
                                 <div class="row">
@@ -173,21 +183,19 @@
             <section class="clearfix bg-light">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-4 col-xs-12">
-                           
-                           
+                        <div class="col-sm-3 col-xs-12">
+
                         </div>
-                        <div class="col-sm-8 col-xs-12">
+                        <div class="col-sm-9 col-xs-12">
                             <div class="resultBar barSpaceAdjust">
-                                <h2>Encontramos <span id="resultados_b">8</span> Resultados para usted</h2>
+                                <p style="font-family:Exo 2;font-size:20px;color:black"><b>Encontramos</b> <span id="resultados_b"></span><b> resultados para usted</b></p>
                             </div>
                             <div id="conten_paginas_comp">
-                                
                             </div>
                             <div class="paginationCommon blogPagination categoryPagination">
                                 <nav aria-label="Page navigation">
                                     <ul class="pagination" id="paginat_cont">
-                                       
+
                                     </ul>
                                 </nav>
                             </div>
