@@ -27,13 +27,10 @@ public class Conexion
         loggedIn=false;
         this.usr = usr;
         this.pass = pass;
-<<<<<<< HEAD
+
         this.baseDatos="canchasProduccion";
         this.puerto="5432";
-=======
-        this.baseDatos="canchas";
-        this.puerto="5433";
->>>>>>> 7e2a679c00e18a8b3d1b37b9b726533e6b5cdb64
+
         this.ip="localhost";
         ifConnected();       
     }

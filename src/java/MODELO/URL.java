@@ -17,13 +17,10 @@ public class URL {
     public static final String ruta_complejo_carrusel= "canchas/complejo/carrusel/";
     public static final String barra="/";
    
-<<<<<<< HEAD
+
    // public static final String db_usr="postgres";
    // public static final String db_pass="rickypina123";
-=======
-    public static final String db_usr="postgres";
-    public static final String db_pass="postgres";
->>>>>>> 7e2a679c00e18a8b3d1b37b9b726533e6b5cdb64
+
      //LINUX //////////
    public static final String db_usr="postgres";
    public static final String db_pass="Poloclub78";
