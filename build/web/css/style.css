@@ -669,7 +669,7 @@ section {
 }
 
 .form-control {
-    height: 50px;
+    height:33px;
     box-shadow: none;
     padding-left: 18px;
     border-color: #e5e5e5;
@@ -5607,7 +5607,7 @@ figure:hover .overlay {
 }
 
 .sidebarInner .input-group-addon {
-    background-color: transparent;
+    background-color:white;
     border-color: #e5e5e5;
 }
 

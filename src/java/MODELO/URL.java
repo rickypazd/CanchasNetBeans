@@ -18,7 +18,7 @@ public class URL {
     public static final String barra="/";
    
     public static final String db_usr="postgres";
-    public static final String db_pass="rickypina123";
+    public static final String db_pass="postgres";
      //LINUX //////////
    //public static final String db_usr="postgres";
    //public static final String db_pass="RRPdrjhsad8102*";

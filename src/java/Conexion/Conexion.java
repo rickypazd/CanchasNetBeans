@@ -28,7 +28,7 @@ public class Conexion
         this.usr = usr;
         this.pass = pass;
         this.baseDatos="canchas";
-        this.puerto="5432";
+        this.puerto="5433";
         this.ip="localhost";
         ifConnected();       
     }
