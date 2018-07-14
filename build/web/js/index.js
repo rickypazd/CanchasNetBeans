@@ -5,21 +5,31 @@ var descripcion = 'cancha';
 var cant_paginas;
 var pag_selec;
 function initMap() {
-    $.post(url, {evento: "get_complejos"}, function (resp) {
-        json = $.parseJSON(resp);
-        map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 15,
-            center: {lat: -17.7848688, lng: -63.180835}
-
-        });
-        var cant = json.length;
-        $("#cantidad_en_mapa").html(json.length);
-        $("#resultados_b").html(json.length);
+    $.post(url, {evento: "get_tipo_cancha"}, function (resp) {
+        var html = "";
+        var json = $.parseJSON(resp);
         $.each(json, function (i, obj) {
-            addMarkerWithTimeout(obj, i * 200);
+            html += "<option value='" + obj.ID + "'>" + obj.TIPO + "</option>";
         });
-        cargar_complejos(json);
+        $("#guiest_id4").append(html);
+        // $('.select-drop').selectbox();
+        $.post(url, {evento: "get_complejos"}, function (resp) {
+            json = $.parseJSON(resp);
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: {lat: -17.7848688, lng: -63.180835}
+
+            });
+            var cant = json.length;
+            $("#cantidad_en_mapa").html(json.length);
+            $("#resultados_b").html(json.length);
+            $.each(json, function (i, obj) {
+                addMarkerWithTimeout(obj, i * 200);
+            });
+            cargar_complejos(json);
+        });
     });
+
 }
 function addMarkerWithTimeout(obj, timeout) {
     var b64 = "img/sin-imagen.png";
@@ -215,24 +225,25 @@ function change_nombre(input) {
     var val = $(input).val();
     if (val.length > 0) {
         $.post(url, {evento: "get_canchas_x_nombre", tex: val}, function (resp) {
-            var html="";
+            var html = "";
             var json = $.parseJSON(resp);
-            $.each(json,function(i,obj){
-               html+="<div onclick='ver_mas("+obj.ID+")'>";
-               html+=obj.NOMBRE;
-               html+="</div>";
+            $.each(json, function (i, obj) {
+                html += "<div onclick='ver_mas(" + obj.ID + ")'>";
+                html += obj.NOMBRE;
+                html += "</div>";
             });
             $("#resul_canchas_id").html(html);
         });
-    }else{
-          $("#resul_canchas_id").html("");
+    } else {
+        $("#resul_canchas_id").html("");
     }
 
 }
 
-function buscar_canchas(){
-    var nombre=$("#inp_nombre_busqueda").val();
-    var tipo;
-    var fecha;
+function buscar_canchas() {
+    var nombre = $("#inp_nombre_busqueda").val();
+    var tipo=$("#guiest_id4").val();
+    var fecha=$("#input_fecha_busque").val();
+    alert(fecha);
     var hora;
 }
