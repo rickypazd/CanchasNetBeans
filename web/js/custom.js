@@ -2,7 +2,7 @@ jQuery(document).ready(function(){
     'use strict';
     $(window).load(function(){
         $(".page-loader").fadeOut();});
-    $('.select-drop').selectbox();
+   
     $('.navbar a.dropdown-toggle').on('click',function(e){
         var elmnt=$(this).parent().parent();
         if(!elmnt.hasClass('nav')){
