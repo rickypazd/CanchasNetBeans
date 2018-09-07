@@ -44,6 +44,6 @@ function getQueryVariable(varia) {
 function ok_reservar(){
     var strin=JSON.stringify(json_res);
     $.post(url,{evento:"ok_res_sin_targeta",id_can:id_cancha,id_usr:id_log,json:strin},function(resp){
-        alert("exito");
+              window.location.href="reservas.html";
     });
 }

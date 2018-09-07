@@ -105,9 +105,10 @@ public class RESERVA {
     public JSONArray get_res_de_usuario(String id) throws SQLException, JSONException, IOException {
         String consulta = "select com.nombre as nombre_comp, c.nombre ,rp.* ,sum(costo) as total, count(r.id) as horas \n"
                 + "from complejo com , cancha c, usuario us ,reserva_padre rp, reservas r \n"
-                + "where us.id='" + id + "' and us.id=rp.id_usuario and rp.id_cancha=c.id  and c.id_complejo=com.id and rp.id=r.id_respa \n"
-                + "group by (rp.id, com.nombre , c.nombre) order by(fecha) desc";
+                + "where us.id=? and us.id=rp.id_usuario and rp.id_cancha=c.id  and c.id_complejo=com.id and rp.id=r.id_respa \n"
+                + "group by rp.id, com.nombre , c.nombre order by(fecha) desc";
         PreparedStatement ps = con.statamet(consulta);
+        ps.setString(1, id);
         ResultSet rs = ps.executeQuery();
         JSONArray json = new JSONArray();
         JSONObject obj;
@@ -131,23 +132,48 @@ public class RESERVA {
     }
 
     public JSONObject get_res_detalle(int id) throws SQLException, JSONException, IOException {
-        String consulta = "select com.id as id_com, com.nombre as nombre_com, c.id as id_ca, c.nombre as nombre_ca, us.id as id_usr, us.nombre as nombre_usr\n"
+        String consulta = "select rp.* ,com.id as id_com, com.nombre as nombre_com, c.id as id_ca, c.nombre as nombre_ca, us.id as id_usr, us.nombre as nombre_usr\n"
                 + "from reserva_padre rp, cancha c, complejo com, usuario us\n"
-                + "where rp.id="+id+" and c.id=rp.id_cancha and com.id=c.id_complejo and rp.id_usuario=us.id";
+                + "where rp.id=" + id + " and c.id=rp.id_cancha and com.id=c.id_complejo and rp.id_usuario=us.id";
         PreparedStatement ps = con.statamet(consulta);
         ResultSet rs = ps.executeQuery();
+        
         JSONObject obj = new JSONObject();
+        int estado=0;
         if (rs.next()) {
-             obj.put("ID_COM", rs.getInt("id_com"));
-             obj.put("ID_CA", rs.getInt("id_ca"));
+            obj.put("ID_COM", rs.getInt("id_com"));
+            obj.put("ID_CA", rs.getInt("id_ca"));
             obj.put("ID_USR", rs.getString("id_usr"));
+            estado=rs.getInt("estado");
+            obj.put("ESTADO", estado);
             obj.put("NOMBRE_CA", rs.getString("nombre_ca"));
             obj.put("NOMBRE_COM", rs.getString("nombre_com"));
             obj.put("NOMBRE_USR", rs.getString("nombre_usr"));
+            obj.put("DETALLE",get_detalle_reserva_hijo(id,estado));
         }
         ps.close();
         rs.close();
         return obj;
+    }
+
+    public JSONArray get_detalle_reserva_hijo(int id, int estado) throws SQLException, JSONException, IOException {
+        String consulta = "select * from reservas \n"
+                + "where id_respa="+id;
+        PreparedStatement ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        JSONArray json = new JSONArray();
+        JSONObject obj;
+        while (rs.next()) {
+            obj = new JSONObject();
+            obj.put("ID", rs.getInt("id"));
+            obj.put("COSTO", rs.getInt("costo"));
+            obj.put("FECHA", rs.getString("fecha"));
+             obj.put("ESTADO",estado);
+            json.put(obj);
+        }
+        ps.close();
+        rs.close();
+        return json;
     }
 
     public int getID() {

@@ -22,7 +22,9 @@ $(document).ready(function(){
         $("#nombre_usr").html(json_detalle.NOMBRE_USR);
         id_comp=json_detalle.ID_COM;
         id_cancha=json_detalle.ID_CA;
-        
+         var hora = json_detalle.DETALLE[0].FECHA;
+          domingo_selec= Date.parseExact(hora, "yyyy-MM-dd HH:mm:ss").moveToDayOfWeek(0, -1);
+          
         cargar_tabla_costos(id_comp);
     });
 });
@@ -196,6 +198,25 @@ function cargar_fecha() {
                             $(obje).attr("class", "pendiente");
                             break;
                     }
+
+
+                }
+            });
+
+        });
+        var jsreserva=json_detalle.DETALLE;
+        $.each(jsreserva, function (i, obj) {
+            fech = Date.parseExact(obj.FECHA, "yyyy-MM-dd HH:mm:ss");
+            fecha = fech.toString("dd/MM/yy");
+            hora = fech.toString("HH:mm");
+            estado = obj.ESTADO;
+            var itens = $("#ordersTable").find("td[data-hora='" + hora + "']");
+            $.each(itens, function (i, obje) {
+                if ($(obje).data("fecha") == fecha) {
+                    $(obje).attr("onclick", "javaScript:void(0)");
+                            
+                             $(obje).attr("class", "actual"); 
+
 
 
                 }
