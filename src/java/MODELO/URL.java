@@ -11,19 +11,17 @@ package MODELO;
  */
 public class URL {
     // WINDOWS/////////
-    
-    
+
     public static final String ruta_complejo_perfil= "canchas/complejo/perfil/";
     public static final String ruta_complejo_carrusel= "canchas/complejo/carrusel/";
     public static final String barra="/";
    
-
-    public static final String db_usr="postgres";
-    public static final String db_pass="rickypina123";
+    //public static final String db_usr="postgres";
+    //public static final String db_pass="rickypina123";
 
      //LINUX //////////
-  //public static final String db_usr="postgres";
-   //public static final String db_pass="Poloclub78";
+  public static final String db_usr="postgres";
+   public static final String db_pass="Poloclub78";
    
     /*
     public static final String ruta_perfil = "/u01/ruizpetrol/perfil/";
