@@ -23,7 +23,9 @@ public class USUARIO {
     private String APELLIDO;
     private String TELEFONO;
     private String EMAIL;
+    private String CORREO;
     private int ROL;
+    private String ID_FACE;
 
     private Conexion con = null;
 
@@ -58,6 +60,30 @@ public class USUARIO {
         return id;
     }
 
+    public int Insertar_face() throws SQLException {
+        String consulta = "INSERT INTO public.usuario(\n"
+                + "	nombre,apellidos, id_face,  correo, telefono)\n"
+                + "	VALUES (?, ?, ?, ?, ?);";
+        PreparedStatement ps = con.statamet(consulta);
+        ps.setString(1, getNOMBRE());
+        ps.setString(2, getAPELLIDO());
+        ps.setString(3, getID_FACE());
+        ps.setString(4, getCORREO());
+        ps.setString(5, getTELEFONO());
+        
+        ps.execute();
+        consulta = "select last_value from usuario_id_seq ";
+        ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        int id = 0;
+        if (rs.next()) {
+            id = rs.getInt("last_value");
+        }
+        rs.close();
+        ps.close();
+        return id;
+    }
+
     public JSONObject Buscar_por_usr_y_pass() throws SQLException, JSONException {
         String consulta = "select * from public.usuario_admin where usuario='" + getUSUARIO() + "' and password='" + getPASSWORD() + "'";
         PreparedStatement ps = con.statamet(consulta);
@@ -75,6 +101,54 @@ public class USUARIO {
             obj.put("TELEFONO", rs.getString("telefono"));
             obj.put("EMAIL", rs.getString("email"));
             obj.put("ID", rs.getInt("id"));
+        }
+        ps.close();
+        rs.close();
+        return obj;
+    }
+
+    public JSONObject getCliente_por_usr_y_pass(String usr, String pass) throws SQLException, JSONException {
+        String consulta = "select * from public.usuario where usuario='" + getUSUARIO() + "' and password='" + getPASSWORD() + "'";
+        PreparedStatement ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        JSONObject obj = new JSONObject();
+        int tipo = 0;
+        int tipo_usr = 0;
+        if (rs.next()) {
+            obj.put("PASSWORD", rs.getString("password"));
+            obj.put("USUARIO", rs.getString("usuario"));
+            obj.put("NOMBRE", rs.getString("nombre"));
+            obj.put("APELLIDO", rs.getString("apellidos"));
+            obj.put("FOTO_PEFIL", rs.getString("foto_perfil"));
+            obj.put("ID", rs.getInt("id"));
+            obj.put("ID_FACE", rs.getString("id_face"));
+        obj.put("exito", "si");
+        } else {
+            obj.put("exito", "no");
+        }
+        ps.close();
+        rs.close();
+        return obj;
+    }
+
+    public JSONObject getClienteFace(String id) throws SQLException, JSONException {
+        String consulta = "select * from public.usuario where id_face='" + id + "'";
+        PreparedStatement ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        JSONObject obj = new JSONObject();
+        int tipo = 0;
+        int tipo_usr = 0;
+        if (rs.next()) {
+            obj.put("PASSWORD", rs.getString("password"));
+            obj.put("USUARIO", rs.getString("usuario"));
+            obj.put("NOMBRE", rs.getString("nombre"));
+            obj.put("APELLIDO", rs.getString("apellidos"));
+            obj.put("FOTO_PEFIL", rs.getString("foto_perfil"));
+            obj.put("ID", rs.getInt("id"));
+            obj.put("ID_FACE", rs.getString("id_face"));
+            obj.put("exito", "si");
+        } else {
+            obj.put("exito", "no");
         }
         ps.close();
         rs.close();
@@ -112,8 +186,6 @@ public class USUARIO {
     public void setROL(int ROL) {
         this.ROL = ROL;
     }
-
-
 
     public Conexion getCon() {
         return con;
@@ -153,6 +225,22 @@ public class USUARIO {
 
     public void setEMAIL(String EMAIL) {
         this.EMAIL = EMAIL;
+    }
+
+    public String getCORREO() {
+        return CORREO;
+    }
+
+    public void setCORREO(String CORREO) {
+        this.CORREO = CORREO;
+    }
+
+    public String getID_FACE() {
+        return ID_FACE;
+    }
+
+    public void setID_FACE(String ID_FACE) {
+        this.ID_FACE = ID_FACE;
     }
 
 }

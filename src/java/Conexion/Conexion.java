@@ -30,8 +30,7 @@ public class Conexion
 
         this.baseDatos="canchas";
         this.puerto="5432";
-
-        this.ip="localhost";
+        this.ip="204.93.196.61";
         ifConnected();       
     }
    

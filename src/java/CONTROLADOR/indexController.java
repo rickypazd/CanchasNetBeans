@@ -86,11 +86,17 @@ public class indexController extends HttpServlet {
                 case "get_dias_activos":
                     html = get_dias_activos(request, con);
                     break;
+                case "get_dia":
+                    html = get_dia(request, con);
+                    break;
                 case "get_precio_cancha":
                     html = get_precio_cancha(request, con);
                     break;
                 case "login_facebook":
                     html = login_facebook(request, con);
+                    break;
+                case "login_cliente":
+                    html = login_cliente(request, con);
                     break;
                 case "ok_res_sin_targeta":
                     html = ok_res_sin_targeta(request, con);
@@ -109,6 +115,12 @@ public class indexController extends HttpServlet {
                     break;
                 case "get_tipo_cancha":
                     html = get_tipo_cancha(request, con);
+                    break;
+                case "registrar_usuario_face":
+                    html = registrar_usuario_face(request, con);
+                    break;
+                case "get_usuario_face":
+                    html = get_usuario_face(request, con);
                     break;
             }
             con.Close();
@@ -254,15 +266,15 @@ public class indexController extends HttpServlet {
     }
 
     private String get_dias_activos(HttpServletRequest request, Conexion con) throws SQLException, JSONException, IOException {
-          int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         COSTOS cos = new COSTOS(con);
-        JSONArray arrdias=cos.dias_activos(id);
-        JSONArray arrhroas=cos.horas(id);
-        JSONArray arrcostos=cos.todos_de_complejo(id);
+        JSONArray arrdias = cos.dias_activos(id);
+        JSONArray arrhroas = cos.horas(id);
+        JSONArray arrcostos = cos.todos_de_complejo(id);
         String fe_ini = request.getParameter("fe_in");
         String fe_fin = request.getParameter("fe_fin");
         RESERVA res = new RESERVA(con);
-        JSONArray arrreservas= res.get_res_can(id, fe_ini, fe_fin);
+        JSONArray arrreservas = res.get_res_can(id, fe_ini, fe_fin);
         JSONObject obj = new JSONObject();
         obj.put("dias", arrdias);
         obj.put("horas", arrhroas);
@@ -272,26 +284,96 @@ public class indexController extends HttpServlet {
     }
 
     private String comentar_complejo(HttpServletRequest request, Conexion con) throws SQLException {
-      int id_com=Integer.parseInt(request.getParameter("id_com"));
-      int clasi=Integer.parseInt(request.getParameter("clasi"));
-      String id_usr = request.getParameter("id_usr");
-      String coment = request.getParameter("coment");
+        int id_com = Integer.parseInt(request.getParameter("id_com"));
+        int clasi = Integer.parseInt(request.getParameter("clasi"));
+        String id_usr = request.getParameter("id_usr");
+        String coment = request.getParameter("coment");
         COMENTARIO come = new COMENTARIO(con);
         come.setID_USR(id_usr);
         come.setID_COMPLEJO(id_com);
         come.setCOMENTARIO(coment);
         come.setCLASIFICACION(clasi);
-       return come.Insertar()+"";
+        return come.Insertar() + "";
     }
 
     private String get_canchas_x_nombre(HttpServletRequest request, Conexion con) throws SQLException, JSONException, IOException {
-         String text = request.getParameter("tex");
+        String text = request.getParameter("tex");
         COMPLEJO com = new COMPLEJO(con);
         return com.get_complejo_x_nombre(text).toString();
     }
 
     private String get_tipo_cancha(HttpServletRequest request, Conexion con) throws SQLException, JSONException, IOException {
-          TIPO_CANCHA tipo = new TIPO_CANCHA(con);
+        TIPO_CANCHA tipo = new TIPO_CANCHA(con);
         return tipo.todos().toString();
     }
+
+    private String get_dia(HttpServletRequest request, Conexion con) throws SQLException, JSONException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int dia = Integer.parseInt(request.getParameter("dia"));
+        COSTOS cos = new COSTOS(con);
+        JSONArray arrcostos = cos.todos_de_complejo_dia(id, dia);
+        String fe_ini = request.getParameter("fe_in");
+        String fe_fin = request.getParameter("fe_fin");
+        RESERVA res = new RESERVA(con);
+        JSONArray arrreservas = res.get_res_can(id, fe_ini, fe_fin);
+        JSONObject obj = new JSONObject();
+        obj.put("costos", arrcostos);
+        obj.put("reservas", arrreservas);
+        return obj.toString();
+    }
+
+    private String login_cliente(HttpServletRequest request, Conexion con) throws SQLException, JSONException {
+        String usuario = request.getParameter("usuario");
+        String pass = request.getParameter("pass");
+//        String token = request.getParameter("token");
+        USUARIO usr = new USUARIO(con);
+        JSONObject obj = usr.getCliente_por_usr_y_pass(usuario, pass);
+        if (obj.getString("exito").equals("si")) {
+//           TOKEN tok = new TOKEN(con);
+//            tok.remove_Token(token);
+//            tok.setTOKEN(token);
+//            tok.setID_USR(obj.getInt("id"));
+//            tok.Insertar();
+        }
+        return obj.toString();
+    }
+
+    private String get_usuario_face(HttpServletRequest request, Conexion con) throws SQLException, JSONException {
+        String id = request.getParameter("id_usr");
+//        String token = request.getParameter("token");
+        USUARIO usr = new USUARIO(con);
+        String resp = usr.getClienteFace(id).toString();
+        JSONObject obj = new JSONObject(resp);
+        if (obj.getString("exito").equals("si")) {
+//            TOKEN tok = new TOKEN(con);
+//            tok.remove_Token(token);
+//            tok.setTOKEN(token);
+//            tok.setID_USR(obj.getInt("id"));
+//            tok.Insertar();
+        }
+        return obj.toString();
+    }
+
+    private String registrar_usuario_face(HttpServletRequest request, Conexion con) throws SQLException, SQLException, JSONException {
+        String nombre = request.getParameter("nombre");
+        String apellidos = request.getParameter("apellidos");
+        String telefonos = request.getParameter("telefonos");
+        String correo = request.getParameter("correo");
+        String id = request.getParameter("id");
+//            String token=request.getParameter("token"); 
+        USUARIO usr = new USUARIO(con);
+        usr.setNOMBRE(nombre);
+        usr.setAPELLIDO(apellidos);
+        usr.setCORREO(correo);
+        usr.setTELEFONO(telefonos);
+
+        usr.setID_FACE(id);
+        int idusr = usr.Insertar_face();
+//            TOKEN tok = new TOKEN(con);
+//            tok.setTOKEN(token);
+//            tok.setID_USR(idusr);
+//            tok.Insertar();
+        return usr.getClienteFace(id).toString();
+    }
+
 }

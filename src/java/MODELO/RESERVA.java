@@ -53,7 +53,7 @@ public class RESERVA {
     public JSONArray get_res_can(int id, String fe_ini, String fe_fin) throws SQLException, JSONException, IOException {
         String consulta = "select r.id, rp.estado, r.fecha, rp.id_usuario \n"
                 + "from reserva_padre rp, reservas r \n"
-                + "where rp.id_cancha=" + id + " \n"
+                + "where rp.id_cancha=" + id +   " \n"
                 + "and rp.id=r.id_respa \n"
                 + "and rp.estado<>3 "
                 + "and r.fecha BETWEEN '" + fe_ini + "' AND '" + fe_fin + "'";

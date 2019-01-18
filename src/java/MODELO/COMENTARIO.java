@@ -65,7 +65,7 @@ public class COMENTARIO {
             obj.put("CLASIFICACION", rs.getInt("clasificacion"));
             obj.put("COMENTARIO", rs.getString("comentario"));
             obj.put("NOMBRE", rs.getString("nombre"));
-            obj.put("ID_USR", rs.getString("id_usr"));
+            obj.put("ID_USR", rs.getInt("id_usr"));
             json.put(obj);
         }
         ps.close();
