@@ -125,6 +125,10 @@ and open the template in the editor.
     background: #f4f007 !important;
     color: #f4f007 !important;
 }
+.reservada{
+    background: #6edba1 !important;
+    color: #6edba1 !important;
+}
 .actual{
     background: #d35757 !important;
     color: #d35757 !important;

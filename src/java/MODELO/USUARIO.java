@@ -70,7 +70,7 @@ public class USUARIO {
         ps.setString(3, getID_FACE());
         ps.setString(4, getCORREO());
         ps.setString(5, getTELEFONO());
-        
+
         ps.execute();
         consulta = "select last_value from usuario_id_seq ";
         ps = con.statamet(consulta);
@@ -98,7 +98,7 @@ public class USUARIO {
             obj.put("USUARIO", rs.getString("usuario"));
             obj.put("NOMBRE", rs.getString("nombre"));
             obj.put("APELLIDO", rs.getString("apellidos"));
-            obj.put("TELEFONO", rs.getString("telefono"));
+               obj.put("TELEFONO", rs.getString("telefono") != null ? rs.getString("telefono") : "");
             obj.put("EMAIL", rs.getString("email"));
             obj.put("ID", rs.getInt("id"));
         }
@@ -122,7 +122,7 @@ public class USUARIO {
             obj.put("FOTO_PEFIL", rs.getString("foto_perfil"));
             obj.put("ID", rs.getInt("id"));
             obj.put("ID_FACE", rs.getString("id_face"));
-        obj.put("exito", "si");
+            obj.put("exito", "si");
         } else {
             obj.put("exito", "no");
         }
@@ -144,6 +144,7 @@ public class USUARIO {
             obj.put("NOMBRE", rs.getString("nombre"));
             obj.put("APELLIDO", rs.getString("apellidos"));
             obj.put("FOTO_PEFIL", rs.getString("foto_perfil"));
+            obj.put("TELEFONO", rs.getString("telefono") != null ? rs.getString("telefono") : "");
             obj.put("ID", rs.getInt("id"));
             obj.put("ID_FACE", rs.getString("id_face"));
             obj.put("exito", "si");

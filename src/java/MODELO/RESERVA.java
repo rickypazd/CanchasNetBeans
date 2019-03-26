@@ -50,10 +50,20 @@ public class RESERVA {
         return id;
     }
 
+    public String update(int id) throws SQLException {
+        String consulta = "UPDATE public.reserva_padre\n"
+                + "	SET estado = 2\n"
+                + "	WHERE id=" + id;
+        PreparedStatement ps = con.statamet(consulta);
+        int ex = ps.executeUpdate();
+        ps.close();
+        return "exito";
+    }
+
     public JSONArray get_res_can(int id, String fe_ini, String fe_fin) throws SQLException, JSONException, IOException {
         String consulta = "select r.id, rp.estado, r.fecha, rp.id_usuario \n"
                 + "from reserva_padre rp, reservas r \n"
-                + "where rp.id_cancha=" + id +   " \n"
+                + "where rp.id_cancha=" + id + " \n"
                 + "and rp.id=r.id_respa \n"
                 + "and rp.estado<>3 "
                 + "and r.fecha BETWEEN '" + fe_ini + "' AND '" + fe_fin + "'";
@@ -137,19 +147,19 @@ public class RESERVA {
                 + "where rp.id=" + id + " and c.id=rp.id_cancha and com.id=c.id_complejo and rp.id_usuario=us.id";
         PreparedStatement ps = con.statamet(consulta);
         ResultSet rs = ps.executeQuery();
-        
+
         JSONObject obj = new JSONObject();
-        int estado=0;
+        int estado = 0;
         if (rs.next()) {
             obj.put("ID_COM", rs.getInt("id_com"));
             obj.put("ID_CA", rs.getInt("id_ca"));
             obj.put("ID_USR", rs.getString("id_usr"));
-            estado=rs.getInt("estado");
+            estado = rs.getInt("estado");
             obj.put("ESTADO", estado);
             obj.put("NOMBRE_CA", rs.getString("nombre_ca"));
             obj.put("NOMBRE_COM", rs.getString("nombre_com"));
             obj.put("NOMBRE_USR", rs.getString("nombre_usr"));
-            obj.put("DETALLE",get_detalle_reserva_hijo(id,estado));
+            obj.put("DETALLE", get_detalle_reserva_hijo(id, estado));
         }
         ps.close();
         rs.close();
@@ -158,7 +168,7 @@ public class RESERVA {
 
     public JSONArray get_detalle_reserva_hijo(int id, int estado) throws SQLException, JSONException, IOException {
         String consulta = "select * from reservas \n"
-                + "where id_respa="+id;
+                + "where id_respa=" + id;
         PreparedStatement ps = con.statamet(consulta);
         ResultSet rs = ps.executeQuery();
         JSONArray json = new JSONArray();
@@ -168,7 +178,7 @@ public class RESERVA {
             obj.put("ID", rs.getInt("id"));
             obj.put("COSTO", rs.getInt("costo"));
             obj.put("FECHA", rs.getString("fecha"));
-             obj.put("ESTADO",estado);
+            obj.put("ESTADO", estado);
             json.put(obj);
         }
         ps.close();

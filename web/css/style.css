@@ -1853,7 +1853,7 @@ a.link:hover {
 .navbar-nav {
     height: 300px;
     overflow-x: hidden;
-    background-color: #ffffff;
+    background-image: url(../img/fondobarra.jpg);
     transition: height 0.3s ease;
     margin-top: 0;
 }
@@ -1861,6 +1861,7 @@ a.link:hover {
 @media (min-width: 768px) {
     .navbar-nav {
         height: auto;
+        background-image: none;
         overflow-x: visible;
         overflow-y: visible;
     }
@@ -1890,7 +1891,7 @@ a.link:hover {
 
 .navbar-brand {
     height: auto;
-    float: left;
+
     position: absolute;
     z-index: 1000;
     background-color: transparent;
@@ -2410,7 +2411,7 @@ a.link:hover {
 
 @media (min-width: 768px) {
     .nav-wrapper .lightHeader {
-        height: 97px;
+        height: 120px;
     }
 }
 
@@ -2749,7 +2750,7 @@ a.link:hover {
     font-weight: 500;
     box-shadow: none;
     position: absolute;
-    right: 70px;
+    left: 70px;
     top: 0;
     margin-top: 15px;
     margin-bottom: 13px;
@@ -2775,7 +2776,7 @@ a.link:hover {
 @media (min-width: 768px) {
     .navbar-btn {
         position: absolute;
-        right: 15px;
+        left: 15px;
         top: 0;
         margin-top: 28px;
         margin-bottom: 24px;
@@ -2795,8 +2796,7 @@ a.link:hover {
 }
 
 .navbar-collapse {
-    margin-left: -15px;
-    margin-right: -15px;
+
 }
 
 .navbar-brand {
@@ -2819,20 +2819,20 @@ a.link:hover {
 }
 
 .navbarWhite .navbar-default {
-    background-color:  #1bac06;
+    background-image: url("../img/fondobarra.jpg");
 }
 
 .navbarWhite .navbar-default .navbar-nav > li > a {
-    color: #151615;
+    color: #fff;
 }
 
 .navbarWhite .navbar-default .navbar-nav > li > a:hover {
-    color:  #ffffff;
+    color:  #019b4b;
 }
 
 .navbarWhite .navbar-default .navbar-nav > li.active > a {
     opacity: 1;
-    color:  #ffffff;
+    color:  #019b4b;
 }
 
 .navbarWhite .navbar-btn {
@@ -7981,7 +7981,7 @@ body.rtl .checkbox .pull-right.link {
 }
 
 #btn_ini_sess{
-    background-color: #ffffff;
+    /*    background-color: #ffffff;*/
 }
 .table_reserva td{
     border: 1px solid #e5e5e5 !important;
@@ -8024,17 +8024,17 @@ body.rtl .checkbox .pull-right.link {
     border-radius: 100px;
     text-align: center;
     padding-top: 30px;
- z-index:1001;
- background-image: url("../img/bola verde.png");
- background-size: 100px;
- color: white;
+    z-index:1001;
+    background-image: url("../img/bola verde.png");
+    background-size: 100px;
+    color: white;
 }
 #draggable:hover{ 
     cursor: pointer;
 }
 #draggable p{ 
- color: white;
- font-weight: 800;
+    color: white;
+    font-weight: 800;
 }
 .result_canchas{
     width:100%;
@@ -8054,4 +8054,97 @@ body.rtl .checkbox .pull-right.link {
     background-color: white;
     border: 1px solid #eeeeee;
     color:#b2a9a9;
+}
+.complejo_iten{
+    height: 280px;
+    margin-top: 50px;
+
+
+}
+.com_iten_map{
+    height: 180px;
+}
+.complejo_iten:hover{
+    cursor: pointer;
+    padding: 10px;
+
+}
+.complejo_div{
+
+    height: 90%;
+    width: 48%;
+    margin-top: 15px;
+    display: inline-block;
+    position: absolute;
+    margin-left: -20px;
+
+    padding-left: 8px;
+    border-right: 30px solid transparent;
+    border-left: 0px solid transparent;
+    border-top: 250px solid #fff;
+
+}
+.comple_mapa{
+    border-top: 150px solid #666;
+    padding-left: 2px;
+}
+.comple_mapa div{
+    margin-top: -150px;
+
+}
+.comple_mapa div p{
+    margin: 0;
+    padding-top: 0;
+    color: #fff;
+    font-size: 12px;
+
+}
+.comple_mapa div h3{
+    padding-top: 16px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 800;
+    padding-bottom: 8px;
+}
+
+.complejo_div h3{
+    padding-top: 16px;
+    font-size: 18px;
+    color: #019b4b;
+    font-weight: 800;
+    padding-bottom: 16px;
+}
+.complejo_div p{
+    line-height: 1;
+}
+.complejo_div p i{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.complejo-cont{
+    margin-top: -250px;
+}
+
+.complejo_iten img{
+    width: 100%;
+    height: 100%;
+    -webkit-box-shadow: 6px 3px 31px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 6px 3px 31px 0px rgba(0,0,0,0.75);
+    box-shadow: 6px 3px 31px 0px rgba(0,0,0,0.75);
+}
+.mapas-iten{
+
+}
+.complejo_map{
+    width: 50px;
+
+}
+.conten-buscador{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    overflow: scroll;
+    background-color: #fff;
+    height: 100%;
+    z-index: 9;
 }
