@@ -10,11 +10,15 @@ var id_comp;
 var id_cancha;
 var domingo_selec;
 var json_horario;
+var id_res;
 $(document).ready(function(){
-    var id_res=sessionStorage.getItem("id_res_detalle");
+     id_res=sessionStorage.getItem("id_res_detalle");
       domingo_selec = Date.today().moveToDayOfWeek(0, -1);
     $.post(urlad,{evento:"get_detalle_res",id:id_res},function(resp){
         json_detalle=$.parseJSON(resp);
+        if(json_detalle.ESTADO == 1){
+            $("#btn_aceptar").css("display","");
+        }
         $("#id_com").html(json_detalle.ID_COM);
         $("#id_ca").html(json_detalle.ID_CA);
         $("#nombre_com").html(json_detalle.NOMBRE_COM);
@@ -189,7 +193,7 @@ function cargar_fecha() {
                     $(obje).attr("onclick", "javaScript:void(0)");
                     switch (estado) {
                         case 2: //confirmado
-                             $(obje).attr("class", "pendiente"); 
+                             $(obje).attr("class", "reservada"); 
                             break;
                         case 1: //pendiente
                             $(obje).attr("class", "pendiente");
@@ -328,3 +332,12 @@ function anterior_semana() {
     
 
 }
+
+function aceptar_reserva(){
+    if(id_res > 0 ){
+      $.post(urlad,{evento:"confirmar_reserva", id: id_res},function(resp){
+          alert(resp);
+      });
+    }
+}
+

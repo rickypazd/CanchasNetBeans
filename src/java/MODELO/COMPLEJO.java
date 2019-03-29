@@ -198,6 +198,124 @@ public class COMPLEJO {
         return json;
     }
 
+    public JSONArray todos_opti() throws SQLException, JSONException, IOException {
+        String consulta = "select co.id, co.nombre, co.presentacion, co.direccion, co.foto_perfil, co.lat, co.lon,\n"
+                + "		(select tel.telefono from telefonos tel where tel.id_complejo = co.id limit 1),\n"
+                + "		(select cor.correo from correos cor where cor.id_complejo = co.id limit 1 ) \n"
+                + "from complejo co";
+        PreparedStatement ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        JSONArray json = new JSONArray();
+        JSONObject obj;
+        int ids;
+        while (rs.next()) {
+            obj = new JSONObject();
+            ids = rs.getInt("id");
+            obj.put("ID", ids);
+            obj.put("NOMBRE", rs.getString("nombre"));
+            obj.put("PRESENTACION", rs.getString("presentacion"));
+            obj.put("DIRECCION", rs.getString("direccion"));
+            obj.put("TELEFONO", rs.getString("telefono"));
+            obj.put("CORREO", rs.getString("correo"));
+            obj.put("LAT", rs.getDouble("lat"));
+            obj.put("LNG", rs.getDouble("lon"));
+            String foto = rs.getString("foto_perfil") + "";
+            String b64 = "";
+            if (foto.length() > 0 && !foto.equals("null")) {
+                b64 = URL.ruta_complejo_perfil + ids + URL.barra + foto;
+            }
+            obj.put("FOTO_PERFIL", b64);
+
+            json.put(obj);
+        }
+        ps.close();
+        rs.close();
+        return json;
+    }
+
+    public JSONArray todos_android() throws SQLException, JSONException, IOException {
+        String consulta = "select co.id, co.nombre, co.presentacion, co.direccion, co.foto_perfil, co.lat, co.lon,\n"
+                + "		(select tel.telefono from telefonos tel where tel.id_complejo = co.id limit 1),\n"
+                + "		(select cor.correo from correos cor where cor.id_complejo = co.id limit 1 ) \n"
+                + "from complejo co";
+        PreparedStatement ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        JSONArray json = new JSONArray();
+        JSONObject obj;
+        int ids;
+        while (rs.next()) {
+            obj = new JSONObject();
+            ids = rs.getInt("id");
+            obj.put("ID", ids);
+            obj.put("NOMBRE", rs.getString("nombre"));
+            obj.put("PRESENTACION", rs.getString("presentacion"));
+            obj.put("DIRECCION", rs.getString("direccion"));
+            String foto = rs.getString("foto_perfil") + "";
+            String b64 = "";
+            if (foto.length() > 0 && !foto.equals("null")) {
+                b64 = URL.ruta_complejo_perfil + ids + URL.barra + foto;
+            }
+            obj.put("FOTO_PERFIL", b64);
+            obj.put("TELEFONO", rs.getString("telefono"));
+            obj.put("CORREO", rs.getString("correo"));
+            obj.put("LAT", rs.getDouble("lat"));
+            obj.put("LNG", rs.getDouble("lon"));
+
+            json.put(obj);
+        }
+        ps.close();
+        rs.close();
+        return json;
+    }
+
+    public JSONArray get_complejos_filtro_fecha(int dia, String Hora_inicio, String Hora_fin, String fecha) throws SQLException, JSONException, IOException {
+        String consulta = "select co.id, co.nombre, co.presentacion, co.direccion, co.foto_perfil, co.lat, co.lon,\n"
+                + "               	(select tel.telefono from telefonos tel where tel.id_complejo = co.id limit 1),\n"
+                + "               	(select cor.correo from correos cor where cor.id_complejo = co.id limit 1 )\n"
+                + "from costos cos, cancha ca, complejo co\n"
+                + "where cos.hora between '"+Hora_inicio+"' and '"+Hora_fin+"'\n"
+                + "and cos.dia = "+dia+"\n"
+                + "and (\n"
+                + "	select rp.estado  \n"
+                + "	from reserva_padre rp , reservas res\n"
+                + "	where rp.id_cancha = cos.id_cancha\n"
+                + "	and res.id_respa = rp.id\n"
+                + "	and res.fecha = to_timestamp(concat('"+fecha+" ',cos.hora),'dd/MM/yyyy HH24:MI')\n"
+                + "	and estado < 3\n"
+                + ") is null\n"
+                + "and cos.id_cancha = ca.id\n"
+                + "and ca.id_complejo = co.id\n"
+                + "group by (co.id)";
+        PreparedStatement ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        JSONArray json = new JSONArray();
+        JSONObject obj;
+        int ids;
+        while (rs.next()) {
+            obj = new JSONObject();
+            ids = rs.getInt("id");
+            obj.put("ID", ids);
+            obj.put("NOMBRE", rs.getString("nombre"));
+            obj.put("PRESENTACION", rs.getString("presentacion"));
+            obj.put("DIRECCION", rs.getString("direccion"));
+            String foto = rs.getString("foto_perfil") + "";
+            String b64 = "";
+            if (foto.length() > 0 && !foto.equals("null")) {
+                b64 = URL.ruta_complejo_perfil + ids + URL.barra + foto;
+            }
+            obj.put("FOTO_PERFIL", b64);
+            obj.put("TELEFONO", rs.getString("telefono"));
+            obj.put("CORREO", rs.getString("correo"));
+            obj.put("LAT", rs.getDouble("lat"));
+            obj.put("LNG", rs.getDouble("lon"));
+
+            json.put(obj);
+        }
+        ps.close();
+        rs.close();
+        return json;
+    }
+
     public JSONObject get_complejo_x_id(int id) throws SQLException, JSONException, IOException {
         String consulta = "select * from complejo where id"
                 + "=" + id;
@@ -242,8 +360,8 @@ public class COMPLEJO {
         rs.close();
         return obj;
     }
-    
-        public JSONArray get_complejo_x_nombre(String text) throws SQLException, JSONException, IOException {
+
+    public JSONArray get_complejo_x_nombre(String text) throws SQLException, JSONException, IOException {
         String consulta = "SELECT * \n"
                 + "from complejo\n"
                 + "where upper(complejo.nombre) like upper('%" + text + "%')";
@@ -251,7 +369,7 @@ public class COMPLEJO {
         ResultSet rs = ps.executeQuery();
         JSONObject obj;
         int ids;
-         TELEFONO tel = new TELEFONO(con);
+        TELEFONO tel = new TELEFONO(con);
         CORREO cor = new CORREO(con);
         HORARIO hor = new HORARIO(con);
         FOTO_CARRUSEL fot = new FOTO_CARRUSEL(con);

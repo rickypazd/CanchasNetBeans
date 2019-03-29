@@ -115,6 +115,9 @@ public class adminController extends HttpServlet {
                 case "get_detalle_res":
                     html = get_detalle_res(request, con);
                     break;
+                case "confirmar_reserva":
+                    html = confirmar_reserva(request, con);
+                    break;
 
             }
             con.Close();
@@ -470,5 +473,11 @@ public class adminController extends HttpServlet {
        int id= Integer.parseInt(request.getParameter("id"));
         RESERVA res = new RESERVA(con);
         return res.get_res_detalle(id).toString();
+    }
+
+    private String confirmar_reserva(HttpServletRequest request, Conexion con) throws SQLException {
+      int id = Integer.parseInt(request.getParameter("id"));
+      RESERVA res = new RESERVA(con);
+      return res.update(id);
     }
 }

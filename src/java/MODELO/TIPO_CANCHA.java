@@ -46,10 +46,32 @@ public class TIPO_CANCHA {
         return id;
     }
 
- 
-
     public JSONArray todos() throws SQLException, JSONException, IOException {
         String consulta = "select * from tipo_cancha";
+        PreparedStatement ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        JSONArray json = new JSONArray();
+        JSONObject obj;
+        while (rs.next()) {
+            obj = new JSONObject();
+            obj.put("ID", rs.getInt("id"));
+            obj.put("TIPO", rs.getString("tipo"));
+            json.put(obj);
+        }
+        ps.close();
+        rs.close();
+        return json;
+    }
+
+    public JSONArray todos_complejo(int id_complejo) throws SQLException, JSONException, IOException {
+        String consulta = "select * \n"
+                + "from (\n"
+                + "select ca.id_tipo, ca.id_complejo \n"
+                + "from cancha ca\n"
+                + "where ca.id_complejo = "+id_complejo+"\n"
+                + "group by (ca.id_tipo, ca.id_complejo)\n"
+                + "	) com, tipo_cancha tc\n"
+                + "	where com.id_tipo = tc.id";
         PreparedStatement ps = con.statamet(consulta);
         ResultSet rs = ps.executeQuery();
         JSONArray json = new JSONArray();
@@ -88,6 +110,5 @@ public class TIPO_CANCHA {
     public void setCon(Conexion con) {
         this.con = con;
     }
-
 
 }

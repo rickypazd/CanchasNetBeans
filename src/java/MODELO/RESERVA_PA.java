@@ -23,7 +23,7 @@ public class RESERVA_PA {
     private int ID_CANCHA;
     private int TIPO_PAGO;
     private Date FECHA;
-    private String ID_USUARIO;
+    private int ID_USUARIO;
     private Conexion con = null;
 
     public RESERVA_PA(Conexion con) {
@@ -39,7 +39,7 @@ public class RESERVA_PA {
         ps.setInt(1, getESTADO());
         ps.setTimestamp(2, new Timestamp(getFECHA().getTime()));
         ps.setInt(3, getID_CANCHA());
-        ps.setString(4, getID_USUARIO());
+        ps.setInt(4, getID_USUARIO());
         ps.setInt(5, getTIPO_PAGO());
         ps.execute();
         consulta = "select last_value from reserva_padre_id_seq";
@@ -65,7 +65,122 @@ public class RESERVA_PA {
             obj.put("ID", rs.getInt("id"));
             obj.put("ESTADO", rs.getInt("estado"));
             obj.put("FECHA", rs.getString("fecha"));
-            obj.put("ID_USR", rs.getString("id_usuario"));
+            obj.put("ID_USR", rs.getInt("id_usuario"));
+            json.put(obj);
+        }
+        ps.close();
+        rs.close();
+        return json;
+    }
+
+    public JSONArray get_reservas_usuario(int id) throws SQLException, JSONException, IOException {
+        String consulta = "select \n"
+                + "rp.id,\n"
+                + "rp.estado,\n"
+                + "rp.tipo_pago,\n"
+                + "rp.id_usuario,\n"
+                + "ca.nombre as nombre_cancha,\n"
+                + "com.nombre as nombre_complejo,(\n"
+                + "		select re.fecha::timestamp::time\n"
+                + "		from reservas re \n"
+                + "		where re.id_respa = rp.id\n"
+                + "		limit 1\n"
+                + ") as hora_incio,(\n"
+                + "		select re.fecha::timestamp::time\n"
+                + "		from reservas re \n"
+                + "		where re.id_respa = rp.id\n"
+                + "		order by fecha desc\n"
+                + "		limit 1\n"
+                + ") as hora_fin,(\n"
+                + "		select re.fecha::timestamp::date\n"
+                + "		from reservas re \n"
+                + "		where re.id_respa = rp.id\n"
+                + "		order by fecha desc\n"
+                + "		limit 1\n"
+                + ") as fecha\n"
+                + "from \n"
+                + "reserva_padre rp, \n"
+                + "cancha ca, \n"
+                + "complejo com\n"
+                + "where \n"
+                + "ca.id= rp.id_cancha\n"
+                + "and \n"
+                + "ca.id_complejo = com.id\n"
+                + "and \n"
+                + "rp.id_usuario =" + id+" "
+                + "and fecha < current_date";
+        PreparedStatement ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        JSONArray json = new JSONArray();
+        JSONObject obj;
+        while (rs.next()) {
+            obj = new JSONObject();
+            obj.put("ID", rs.getInt("id"));
+            obj.put("ESTADO", rs.getInt("estado"));
+            obj.put("TIPO_PAGO", rs.getString("tipo_pago"));
+            obj.put("ID_USUARIO", rs.getInt("id_usuario"));
+            obj.put("NOMBRE_CANCHA", rs.getString("nombre_cancha") != null ? rs.getString("nombre_cancha") : "");
+            obj.put("NOMBRE_COMPLEJO", rs.getString("nombre_complejo") != null ? rs.getString("nombre_complejo") : "");
+            obj.put("HORA_INICIO",rs.getString("hora_incio"));
+            obj.put("HORA_FIN",rs.getString("hora_fin"));
+            obj.put("FECHA",rs.getString("fecha"));
+            json.put(obj);
+        }
+        ps.close();
+        rs.close();
+        return json;
+    }
+    public JSONArray get_reservas_usuario_proximas(int id) throws SQLException, JSONException, IOException {
+        String consulta = "select \n"
+                + "rp.id,\n"
+                + "rp.estado,\n"
+                + "rp.tipo_pago,\n"
+                + "rp.id_usuario,\n"
+                + "ca.nombre as nombre_cancha,\n"
+                + "com.nombre as nombre_complejo,(\n"
+                + "		select re.fecha::timestamp::time\n"
+                + "		from reservas re \n"
+                + "		where re.id_respa = rp.id\n"
+                + "		limit 1\n"
+                + ") as hora_incio,(\n"
+                + "		select re.fecha::timestamp::time\n"
+                + "		from reservas re \n"
+                + "		where re.id_respa = rp.id\n"
+                + "		order by fecha desc\n"
+                + "		limit 1\n"
+                + ") as hora_fin,(\n"
+                + "		select re.fecha::timestamp::date\n"
+                + "		from reservas re \n"
+                + "		where re.id_respa = rp.id\n"
+                + "		order by fecha desc\n"
+                + "		limit 1\n"
+                + ") as fecha\n"
+                + "from \n"
+                + "reserva_padre rp, \n"
+                + "cancha ca, \n"
+                + "complejo com\n"
+                + "where \n"
+                + "ca.id= rp.id_cancha\n"
+                + "and \n"
+                + "ca.id_complejo = com.id\n"
+                + "and \n"
+                + "rp.id_usuario =" + id+" "
+                + "and fecha >= current_date";
+        PreparedStatement ps = con.statamet(consulta);
+        ResultSet rs = ps.executeQuery();
+        JSONArray json = new JSONArray();
+        JSONObject obj;
+        while (rs.next()) {
+            obj = new JSONObject();
+            obj.put("ID", rs.getInt("id"));
+            obj.put("ESTADO", rs.getInt("estado"));
+            obj.put("TIPO_PAGO", rs.getString("tipo_pago"));
+            obj.put("ID_USUARIO", rs.getInt("id_usuario"));
+            obj.put("NOMBRE_CANCHA", rs.getString("nombre_cancha") != null ? rs.getString("nombre_cancha") : "");
+            obj.put("NOMBRE_COMPLEJO", rs.getString("nombre_complejo") != null ? rs.getString("nombre_complejo") : "");
+            obj.put("HORA_INICIO",rs.getString("hora_incio"));
+            obj.put("HORA_FIN",rs.getString("hora_fin"));
+            obj.put("FECHA",rs.getString("fecha"));
             json.put(obj);
         }
         ps.close();
@@ -77,10 +192,10 @@ public class RESERVA_PA {
         String consulta = "UPDATE public.reserva_padre\n"
                 + "	SET estado=3\n"
                 + "	WHERE estado=1\n"
-                + "	and fecha   < '"+fecha+"'";
+                + "	and fecha   < '" + fecha + "'";
         PreparedStatement ps = con.statamet(consulta);
-        
-        ps.executeUpdate();     
+
+        ps.executeUpdate();
         ps.close();
     }
 
@@ -116,11 +231,11 @@ public class RESERVA_PA {
         this.FECHA = FECHA;
     }
 
-    public String getID_USUARIO() {
+    public int getID_USUARIO() {
         return ID_USUARIO;
     }
 
-    public void setID_USUARIO(String ID_USUARIO) {
+    public void setID_USUARIO(int ID_USUARIO) {
         this.ID_USUARIO = ID_USUARIO;
     }
 

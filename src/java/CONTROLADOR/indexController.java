@@ -74,6 +74,9 @@ public class indexController extends HttpServlet {
                 case "get_complejos":
                     html = get_complejos(request, con);
                     break;
+                case "get_complejos_opti":
+                    html = get_complejos_opti(request, con);
+                    break;
                 case "get_complejos_id":
                     html = get_complejos_id(request, con);
                     break;
@@ -182,6 +185,10 @@ public class indexController extends HttpServlet {
         COMPLEJO cp = new COMPLEJO(con);
         return cp.todos().toString();
     }
+    private String get_complejos_opti(HttpServletRequest request, Conexion con) throws SQLException, JSONException, IOException {
+        COMPLEJO cp = new COMPLEJO(con);
+        return cp.todos_opti().toString();
+    }
 
     private String get_complejos_id(HttpServletRequest request, Conexion con) throws SQLException, JSONException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -215,7 +222,7 @@ public class indexController extends HttpServlet {
 
     private String ok_res_sin_targeta(HttpServletRequest request, Conexion con) throws JSONException, ParseException, SQLException {
         int id_cancha = Integer.parseInt(request.getParameter("id_can"));
-        String id_usr = request.getParameter("id_usr");
+        int id_usr = Integer.parseInt(request.getParameter("id_usr"));
         JSONArray arr = new JSONArray(request.getParameter("json"));
         JSONObject obj;
         String fecha;
