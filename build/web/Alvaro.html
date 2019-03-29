@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+    <head>
+        <!-- SITE TITTLE -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Alvaro</title>
+        <!-- PLUGINS CSS STYLE -->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <style>
+
+
+            .responsiveImg {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+            }
+
+            /***********************************************/
+            .hrCancha { 
+                background: url('iconCancha0.png') no-repeat top center;  
+                /*background: url('http://i.stack.imgur.com/37Aip.png') no-repeat top center; */
+                background-size: contain;
+                display: block;
+                height: 18px;
+                border: 0;
+                width: 60%;   
+                position: relative;
+            }
+            .hrCancha:before,
+            .hrCancha:after {
+                content: '';
+                display: block;
+                position: absolute;
+                background: #a1a1a1;
+                height: 2px;
+                top: 8px;
+            }
+            .hrCancha:before {
+                left: 0;
+                right: 50%;
+                margin-right: 20px;
+            }
+            .hrCancha:after {
+                right: 0;
+                left: 50%;
+                margin-left: 20px;
+            }
+
+
+            /***********************************************/
+            .btnMd{/*Front*/
+                position: relative;
+                display:block;
+                background: transparent;
+                width:200px;/*Ancho right*/
+                height:10px;
+                line-height:35px;/*alto */
+                text-align:center;
+                font-size:15px;
+                text-decoration:none;
+                text-transform:uppercase;
+                margin:10px auto;/*margen*/
+                text-decoration: none;
+            }
+            .btnMd:before, .btnMd:after {/*Front*/
+                width:200px;/*Ancho left*/
+                left: 0px;
+                height:17px;/*alto */
+                z-index: -1;}
+            .btnMdText{ color: green; }/*color texto front*/
+            .btnMdText:before,.btnMdText:after {/*Borde*/
+                border: 3px solid white ;/*color borde front*/}
+            .btnMd:before{/*Arriba*/
+                position: absolute;
+                content: '';
+                border-bottom: none;
+                -webkit-transform: perspective(15px) rotateX(5deg);
+                -moz-transform: perspective(15px) rotateX(5deg);
+                transform: perspective(15px) rotateX(5deg);}
+            .btnMd:after{/*Abajo*/
+                position: absolute;
+                top: 22px;/*alto */
+                content: '';
+                border-top: none;
+                -webkit-transform: perspective(15px) rotateX(-5deg);
+                -moz-transform: perspective(15px) rotateX(-5deg);
+                transform: perspective(15px) rotateX(-5deg);}
+            .btnMdText:before,/*UP*/ .btnMdText:after/*down*/ {
+                background: white;/*color background Hover*/}
+            .btnMd:hover{
+                color:green;/*color texto Hover*/}
+            /***********************************************/
+            .btnLg{/*Front*/
+                position: relative;
+                display:inline-block;
+                background: transparent;
+                width:150px;/*Ancho right*/
+                height:60px;
+                line-height:55px;
+                text-align:center;
+                font-size:15px;
+                text-decoration:none;
+                margin:0px auto;/*margen*/
+                text-decoration: none;
+            }
+            .btnLg:before, .btnLg:after {/*Front*/
+                width:150px;/*Ancho left*/
+                left: 0px;
+                height:27px;
+                z-index: -1;
+            }
+            .btnLgText{ color: black; }/*color texto front*/
+            .btnLgText:before,.btnLgText:after {/*Borde*/
+                border: 3px solid  #66ff74;/*color borde front*/}
+            .btnLg:before{/*Arriba*/
+                position: absolute;
+                content: '';
+                border-bottom: none;
+                -webkit-transform: perspective(15px) rotateX(5deg);
+                -moz-transform: perspective(15px) rotateX(5deg);
+                transform: perspective(15px) rotateX(5deg);  
+            }
+            .btnLg:after{/*Abajo*/
+                position: absolute;
+                top: 32px;
+                content: '';
+                border-top: none;
+                -webkit-transform: perspective(15px) rotateX(-5deg);
+                -moz-transform: perspective(15px) rotateX(-5deg);
+                transform: perspective(15px) rotateX(-5deg);
+            }
+            .btnLgText:hover:before, .btnLgText:hover:after {
+                background: #66ff74;/*color background Hover*/}
+            .btnLg:hover{
+                color:black;/*color texto Hover*/}
+
+
+
+        </style>
+    </head>
+
+
+
+
+    <body class="  ">
+        <br> 
+        <br> 
+        <div class="row inline"><!-- ********************************************************************** --> 
+
+
+            <div class="  ">
+                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5  col-xl-5   " >
+                    <img src="cancha.png"  style="width:100%;  height:400px;    border-top-right-radius:80px;border-bottom-right-radius:80px;" alt="fotito"/>
+                    <div class="carousel-caption"> <a href="#" class="btn btnMd btnMdText">  <span class="glyphicon glyphicon-time" ></span> Comentarios</a> </div>
+                </div>
+            </div>
+
+
+
+            <div class=" ">
+                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6 col-xl-6 text-center ">
+
+
+                    <h1   style=" color: #019b4a;font-family: Times New Roman, Times, serif; " >Complejo <strong style="color: #019b4a;">Zona Sur</strong> </h1>
+                    <hr class="hrCancha"/>
+                    <!-- <hr style="height:15px ;background : url(iconoya.jpg) 50% 0 no-repeat;width: 75%;"/> --> 
+
+                    <p style="font-size: 20px">Reserva con tiempo en tus horas favoritas y tendrás</p>
+                    <p style="font-size: 20px;margin: -20px">preferencias en nuestras instalaciones.</p>
+                    <br> <br>
+
+                    <div class="form-inline">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <a href="#" class=" btn btn-default btn-lg btn-adn"  style="
+                                   -webkit-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+                                   -moz-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+                                   box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);">
+                                    <span class="glyphicon glyphicon-time" ></span> ESCOGER HORARIO</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br> 
+                    <br> 
+
+ 
+
+
+                    <section class=" margin-bottom-none">
+                        <div class="center-block row  ">
+                            <div class="col-xs-offset-1 col-xs-5  col-sm-6 col-md-6 col-lg-offset-2 col-lg-4 col-xl-offset-2 col-xl-4">
+                            <a href="#" class=" btn btnLg btnLgText "  >Ver En Mapa</a>
+                            </div>
+                            <div class="col-xs-pull-0 col-xs-6 col-sm-pull-1 col-sm-4 col-md-pull-0 col-md-5  col-lg-4 col-xl-offset-2 col-xl-4">
+                            <a href="#" class=" btnLg btnLgText btn "  >Reservar</a>
+                            </div>
+
+                        </div>  
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </body>
+
+
+</html>
