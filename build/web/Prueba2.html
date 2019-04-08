@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<!-- bootstrap -->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"><!--bootstrap-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><!--googleapis-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script><!--bootstrap-->
+
+
+        <style>
+
+
+            .PCImagen{ 
+                width: 100%;
+                height:350px;    
+                border-top-right-radius:80px;
+                border-bottom-right-radius:80px;
+                position: fixed;}
+
+            .PCBtnComentario {
+                position: absolute;/*flotar*/
+                display: inline-block;/*en linea bloque*/
+                bottom: 10%;/*arriba*/
+                float:none;/*que no flote*/
+                background-color: yellow;
+            }
+            .PCBtnDiseño{/*Front*/
+                position: relative;/*Figura statico*/
+                display:inline-block;
+                background: transparent;
+                width:200px;/*Ancho right*/
+                height:15px;
+                line-height:35px;/*alto */
+                text-align:center;
+                font-size:15px;
+                margin:10px auto;/*margen*/
+                text-decoration: none;
+                color: #66ff74;
+                z-index: 10;
+                margin:0px auto;/*margen*/
+                border:none; 
+            }
+            .PCBtnDiseño:before, .PCBtnDiseño:after {/*Front*/
+                width:200px;/*Ancho left*/
+                left: 0px;
+                height:15.5px;/*alto */
+                z-index: -1;
+                background: white ;
+                border: 3px solid green;}
+            .PCBtnDiseño:before{/*Arriba*/
+                position: absolute;
+                content: '';
+                border-bottom: none;
+                -webkit-transform: perspective(15px) rotateX(5deg);
+                -moz-transform: perspective(15px) rotateX(5deg);
+                transform: perspective(15px) rotateX(5deg);}
+            .PCBtnDiseño:after{/*Abajo*/
+                position: absolute;
+                top: 22px;
+                content: '';
+                border-top: none;
+                -webkit-transform: perspective(15px) rotateX(-5deg);
+                -moz-transform: perspective(15px) rotateX(-5deg);
+                transform: perspective(15px) rotateX(-5deg);}
+            .PCBtnDiseño:hover{color:white;}
+            .PCBtnDiseño:hover:before, .PCBtnDiseño:hover:after {background:red;}
+
+
+            .tooltips {position: relative;  display: inline-block;border-bottom: 10px dotted black;}/*quieto el Boton o Objeto*/
+            .tooltips .tooltipsConten{position:absolute; visibility: visible ; width:100%; background-color:black; color:#fff; text-align:center; border-radius:6px; padding:5px 0; z-index:1; bottom:150%;}/*si e 150% es arriba, y si lo quitas va abajo*/
+            .tooltips .Bubble{position:absolute; width:340px; height:180px; float:left; border:1px solid green; border-radius:22px; padding:4px 20px; background:white; bottom:150%;}/*si e 150% es arriba, y si lo quitas va abajo*/
+            .tooltips:hover .tooltipsConten {visibility: visible;}
+
+
+
+            /*el triangulo*/
+            .Bubble{position:absolute; width:340px; height:180px; float:left; border:1px solid green; border-radius:22px; padding:4px 20px; background:white;}
+            .Bubble:before {/* abajo */
+                position: absolute;/*llevar Adelante */
+                content: " ";
+                bottom: -16px;/*Abajo tamaño*/
+                left: 28px !important;/*Spacio izquierda*/
+                border-right: 16px solid transparent !important;/*triaqngulo derecha*/
+                border-top: 16px solid green !important;/*triaqngulo Arriba*/
+                border-bottom: 0 solid green !important;/*triaqngulo abajo*/
+                border-left: 16px solid transparent !important;/*triaqngulo izquierda*/}
+            .Bubble_Contenido{ color:black; padding:0px; width:100%; height:100%;overflow:auto;}/*Scroll*/
+            .Bubble_Contenido::-webkit-scrollbar {width:5px; height:5px;}
+            .Bubble_Contenido::-webkit-scrollbar-track {border:1px solid yellowgreen; border-radius:20px;}
+            .Bubble_Contenido::-webkit-scrollbar-thumb {background:yellowgreen; border-radius:20px;}
+            .Bubble_Contenido::-webkit-scrollbar-thumb:hover {background: green;}
+            .chat_people{overflow:hidden; clear:both; background:#0000ff; background-color: #01ff70;padding:7px 0px; border:1px solid green;}
+            .chat_img{float:left; width:11%;}/*Foto*/
+            .chat_img img{max-width:100%;}
+            .chat_Coment {float:left; padding: 0 0 0 15px;width: 88%;}/*La Caja*/
+            .chat_Coment h5{font-size:10px; color:black; margin:0 0 8px 0;}/*Nombre*/
+            .chat_Coment span{font-size:10px; float:right;} /*Estrellas*/ 
+            .chat_Coment p{font-size:9px; color:black; margin:auto;} /*COmentario*/
+        </style>
+
+
+    </head>
+    <body style="background-color: brown;" >
+
+        <div class="container-fluid">
+            <div class="col-xs-2 col-sm-3 col-md-6">
+                <p style="background-color: cyan;" >
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <div class="tooltips">Hover over me
+                    <span class="tooltipsConten">Tooltip text</span>
+                    <div class="tooltipsConten"  >
+                        <div class="Bubble">
+                            <div class="Bubble_Contenido">
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div> 
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-3 col-md-6" style="background-color: yellow;">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <div class="tooltips">Hover over me
+                    <span class="tooltipsConten">Tooltip text</span>
+                    <div class="tooltipsConten"  >
+                        <div class="Bubble">
+                            <div class="Bubble_Contenido">
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div> 
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-3 col-md-6">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <div class="tooltips">Hover over me
+                    <span class="tooltipsConten">Tooltip text</span>
+                    <div class="tooltipsConten"  >
+                        <div class="Bubble">
+                            <div class="Bubble_Contenido">
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div> 
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-3 col-md-6">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <div class="tooltips">Hover over me
+                    <span class="tooltipsConten">Tooltip text</span>
+                    <div class="tooltipsConten"  >
+                        <div class="Bubble">
+                            <div class="Bubble_Contenido">
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div> 
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                                <div class="chat_people">
+                                    <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                    <div class="chat_Coment" >
+                                        <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                                        <p> Test, which is a new approach to have all solutions 
+                                            astrology under one roof.</p>
+                                    </div>
+                                </div>
+                                <!-- ***************************************************************************************************** -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="   col-md-offset-4 col-md-4 " style="background-color: yellow;"> 
+            <div class=" " style="  display: grid; " >
+                <p style="position: relative;  display: inline-block;" >hola</p>
+
+                <img  src="img/cancha.png" style="width: 100%;height: 100px;position: relative;  display: inline-block;" alt="fotito"/>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="col-md-offset-4 col-md-4 tooltips" style="background-color: cyan;"> 
+
+
+
+            <!--  <div class=" PCBtnComentario "><a href="#" class="btn PCBtnDiseño" data-toggle="modal" data-target="#myModal">  <span class="glyphicon glyphicon-time" ></span> Comentarios</a></div>-->
+
+        </div>
+
+        <div class="col-md-offset-4 col-md-4 ">
+
+
+            <a href="#" class="btn" data-toggle="modal" data-target="#myModal" style="background: #000080; " >  Comentarios</a> 
+
+
+
+        </div>
+
+
+        <div class="modal fade " id="myModal" style="background: cyan; ">
+            <div class="container Bubble" style="background:yellow; margin-top: 100px;">
+                <div class="Bubble_Contenido">
+                    <!-- ***************************************************************************************************** -->
+                    <div class="chat_people">
+                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                        <div class="chat_Coment" >
+                            <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                            <p> Test, which is a new approach to have all solutions 
+                                astrology under one roof.</p>
+                        </div>
+                    </div> 
+                    <!-- ***************************************************************************************************** -->
+                    <div class="chat_people">
+                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                        <div class="chat_Coment" >
+                            <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                            <p> Test, which is a new approach to have all solutions 
+                                astrology under one roof.</p>
+                        </div>
+                    </div>
+                    <!-- ***************************************************************************************************** -->
+                    <div class="chat_people">
+                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                        <div class="chat_Coment" >
+                            <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                            <p> Test, which is a new approach to have all solutions 
+                                astrology under one roof.</p>
+                        </div>
+                    </div>
+                    <!-- ***************************************************************************************************** -->
+                    <div class="chat_people">
+                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                        <div class="chat_Coment" >
+                            <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                            <p> Test, which is a new approach to have all solutions 
+                                astrology under one roof.</p>
+                        </div>
+                    </div>
+                    <!-- ***************************************************************************************************** -->
+                    <div class="chat_people">
+                        <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                        <div class="chat_Coment" >
+                            <h5>Raul <span> ☆☆☆☆☆ </span></h5>
+                            <p> Test, which is a new approach to have all solutions 
+                                astrology under one roof.</p>
+                        </div>
+                    </div>
+                    <!-- ***************************************************************************************************** -->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"><!--bootstrap-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><!--googleapis-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script><!--bootstrap-->
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <style>
+            .btn { border: 2px solid black; border-radius: 5px;  background-color: white;  color: black;  padding: 14px 28px; font-size: 16px;cursor: pointer; margin: 0px; }
+            /* Green */
+            .success {border-color: #4CAF50;color: green;}
+            .success:hover {background-color: #4CAF50; color: white;}
+            /* Blue */
+            .info {border-color: #2196F3;color: dodgerblue}
+            .info:hover {background: #2196F3; color: white;}
+            /* Orange */
+            .warning {border-color: #ff9800;color: orange;}
+            .warning:hover { background: #ff9800;color: white; }
+            /* Red */
+            .danger {border-color: #f44336;color: red}
+            .danger:hover { background: #f44336;color: white;}
+
+
+            #return_top { position: fixed; bottom: 20px;right: 20px;background: rgb(0, 0, 0);background: rgba(0, 0, 0, 0.7); width: 50px; height: 50px;display: block;text-decoration: none; -webkit-border-radius: 35px; -moz-border-radius: 35px; border-radius: 35px; display: none; -webkit-transition: all 0.3s linear;  -moz-transition: all 0.3s ease;  -ms-transition: all 0.3s ease;-o-transition: all 0.3s ease;transition: all 0.3s ease;}
+            #return_top i {color: #fff;margin: 0; position: relative; left: 16px;top: 13px; font-size: 19px;-webkit-transition: all 0.3s ease; -moz-transition: all 0.3s ease;-ms-transition: all 0.3s ease;-o-transition: all 0.3s ease;transition: all 0.3s ease;}
+            #return_top:hover { background: rgba(0, 0, 0, 0.9);}
+            #return_top:hover i { color: #fff; top: 5px;}
+
+
+
+
+            .my-custom-scrollbar { position: relative; height: 200px; overflow: auto;}
+            .table-wrapper-scroll-y { display: block; }
+            table {border-collapse: collapse; border-spacing: 0; width: 100%;border: 1px solid #ddd;}
+            th, td {text-align: left; padding: 8px;}
+            tr:nth-child(even){background-color: #f2f2f2}
+
+
+            .botonBuscador input[type=text] {padding: 10px; font-size: 17px; border: 1px solid grey;float: left; width: 80%;background: #f1f1f1;}
+            .botonBuscador button { float: left;width: 20%;padding: 10px; background: red; color: white; font-size: 17px;  border: 1px solid grey; border-left: none;  cursor: pointer; }
+            .botonBuscador button:hover {  background: green; }
+            .botonBuscador:after { content: ""; clear: both; display: table;}
+            /*button:focus {box-shadow: 0 0 0 2px white, 0 0 0 4px blue; display: block;}
+            button:active {background-color: DarkBlue; box-shadow: 0 0 0 2px white, 0 0 0 4px DarkBlue;display: block;}*/
+        </style>
+    </head>
+    <body>
+
+        <div class="container"> 
+            <button class="btn success" onclick="mostrarContenido();">1 </button>
+            <button class="btn info">2</button>
+            <button class="btn warning">3</button>
+            <button class="btn danger">4</button>
+        </div>
+
+        <div class="botonBuscador" style="margin:auto;max-width:300px" >
+            <input type="text" placeholder="Search.." name="search2">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+
+
+        <div class="botonBuscador" style="margin:auto; text-align: center;  " >
+            <a href="#" class="btn btn-primary" > Hola </a>
+        </div>
+
+
+        <div  style="margin:auto; text-align: center;" >
+
+            <button class="btn btn-primary ">Mundo</button>
+        </div>
+
+        <div class="letras" >
+            <P id="textoMostrar" style="display: none;" >
+                Lorem ipsum dolor sit amet, nonumes voluptatum mel ea, cu case ceteros cum. Novum commodo malorum vix ut. Dolores consequuntur in ius, sale electram dissentiunt quo te. Cu duo omnes invidunt, eos eu mucius fabellas. Stet facilis ius te, quando voluptatibus eos in. Ad vix mundi alterum, integre urbanitas intellegam vix in.
+                Eum facete intellegat ei, ut mazim melius usu. Has elit simul primis ne, regione minimum id cum. Sea deleniti dissentiet ea. Illud mollis moderatius ut per, at qui ubique populo. Eum ad cibo legimus, vim ei quidam fastidii.
+                Quo debet vivendo ex. Qui ut admodum senserit partiendo. Id adipiscing disputando eam, sea id magna pertinax concludaturque. Ex ignota epicurei quo, his ex doctus delenit fabellas, erat timeam cotidieque sit in. Vel eu soleat voluptatibus, cum cu exerci mediocritatem. Malis legere at per, has brute putant animal et, in consul utamur usu.
+                Te has amet modo perfecto, te eum mucius conclusionemque, mel te erat deterruisset. Duo ceteros phaedrum id, ornatus postulant in sea. His at autem inani volutpat. Tollit possit in pri, platonem persecuti ad vix, vel nisl albucius gloriatur no.
+                Ea duo atqui incorrupte, sed rebum regione suscipit ex, mea ex dicant percipit referrentur. Dicat luptatum constituam vix ut. His vide platonem omittantur id, vel quis vocent an. Ad pro inani zril omnesque. Mollis forensibus sea an, vim habeo adipisci contentiones ad, tale autem graecis ne sit.
+                Ex quod meis per, ea paulo eirmod intellegam usu, eam te propriae fabellas. Nobis graecis has at, an eum audire impetus. Ius epicuri verterem ex, qui cu solet feugiat consetetur. Placerat apeirian et sea, nec wisi viderer definiebas ex, at eum oratio honestatis.
+                Eum illum nulla graeci at, mea quis munere indoctum at. In sea partiendo hendrerit. Quaestio partiendo an eam, rebum vitae accumsan ius id. Duo at causae option.
+                At persius imperdiet vis, ea elit atqui aperiri mei, percipit maiestatis sea eu. Has et partem hendrerit, vim cibo veniam aliquid an. No pri populo abhorreant, everti mandamus ne mea. Debitis forensibus suscipiantur ius cu. Ei per possim verterem, et iudico voluptatum eos.
+                Lorem ipsum dolor sit amet, nonumes voluptatum mel ea, cu case ceteros cum. Novum commodo malorum vix ut. Dolores consequuntur in ius, sale electram dissentiunt quo te. Cu duo omnes invidunt, eos eu mucius fabellas. Stet facilis ius te, quando voluptatibus eos in. Ad vix mundi alterum, integre urbanitas intellegam vix in.
+                Eum facete intellegat ei, ut mazim melius usu. Has elit simul primis ne, regione minimum id cum. Sea deleniti dissentiet ea. Illud mollis moderatius ut per, at qui ubique populo. Eum ad cibo legimus, vim ei quidam fastidii.
+                Quo debet vivendo ex. Qui ut admodum senserit partiendo. Id adipiscing disputando eam, sea id magna pertinax concludaturque. Ex ignota epicurei quo, his ex doctus delenit fabellas, erat timeam cotidieque sit in. Vel eu soleat voluptatibus, cum cu exerci mediocritatem. Malis legere at per, has brute putant animal et, in consul utamur usu.
+                Te has amet modo perfecto, te eum mucius conclusionemque, mel te erat deterruisset. Duo ceteros phaedrum id, ornatus postulant in sea. His at autem inani volutpat. Tollit possit in pri, platonem persecuti ad vix, vel nisl albucius gloriatur no.
+                Ea duo atqui incorrupte, sed rebum regione suscipit ex, mea ex dicant percipit referrentur. Dicat luptatum constituam vix ut. His vide platonem omittantur id, vel quis vocent an. Ad pro inani zril omnesque. Mollis forensibus sea an, vim habeo adipisci contentiones ad, tale autem graecis ne sit.
+                Ex quod meis per, ea paulo eirmod intellegam usu, eam te propriae fabellas. Nobis graecis has at, an eum audire impetus. Ius epicuri verterem ex, qui cu solet feugiat consetetur. Placerat apeirian et sea, nec wisi viderer definiebas ex, at eum oratio honestatis.
+                Eum illum nulla graeci at, mea quis munere indoctum at. In sea partiendo hendrerit. Quaestio partiendo an eam, rebum vitae accumsan ius id. Duo at causae option.
+                At persius imperdiet vis, ea elit atqui aperiri mei, percipit maiestatis sea eu. Has et partem hendrerit, vim cibo veniam aliquid an. No pri populo abhorreant, everti mandamus ne mea. Debitis forensibus suscipiantur ius cu. Ei per possim verterem, et iudico voluptatum eos.
+                Te mel meis adhuc. Choro percipit mei eu, fabulas fuisset tibique ad sea, cu eos sint falli iracundia. Usu ex minimum corrumpit, postea dolores salutandi ne est, cu nam option recusabo reprehendunt. Prima vocibus argumentum ex usu. Nam te legere salutatus dissentiunt, his ei principes prodesset, est possit blandit ex.
+                Pro no rebum timeam necessitatibus, et mnesarchum quaerendum has. Duo molestie interesset at. Vel ad legere populo. Sed ne saepe doming perpetua. Omnis iuvaret volumus an duo, qui duis audiam fabellas in.
+                Has in erant eruditi vituperatoribus, facer copiosae nam ex. Ne quo error rationibus, cum ea accusam comprehensam. Quo no nihil rationibus intellegam. Duo ea justo deleniti tincidunt, per et erant volumus consequat, per simul consulatu ne. Efficiendi contentiones mel id, ad quaeque facilis vel. Ius mutat nullam ut, dolores officiis platonem qui ex.
+                Et cum quem movet nonumes, at molestie mandamus intellegebat eum, at habeo vulputate vel. An nec diam consequuntur, quo an diam numquam theophrastus. Et unum possit sit. Suas ludus sea an. Quo expetendis consetetur an, no perpetua consequuntur cum. Congue tritani delenit eam an. Porro albucius id mei, ut fabellas scripserit interesset vis.
+                Eos causae albucius deseruisse ea, mel augue eirmod convenire no. Ad volutpat consulatu definiebas sea, nec integre scribentur ei. Principes mnesarchum mea ei, dicam laboramus abhorreant an has. Mutat iuvaret pri ea, id quo reque libris deseruisse. Ut aeterno denique minimum duo, indoctum reformidans id pro.
+                Alii dissentias eu eum, ei vix exerci laudem placerat. Ius at sonet saepe theophrastus, atqui qualisque urbanitas no sit, aperiam vulputate sadipscing te eam. An dolor mediocrem patrioque qui, his propriae laboramus scripserit in, ne ubique tamquam has. Tempor aperiri nominati vis eu. At recteque gloriatur eum, viris referrentur sit ut, et tota solum pri.
+                Quidam lobortis intellegat ea mel. Aeterno facilis mea ne. Omittam periculis no eos, duo cu sale autem ullum, legere tritani ut eos. In vix adhuc facer. Nec erat commodo efficiendi eu. Et nusquam lucilius splendide pro, at nostro constituam appellantur sea.
+                Ei iriure fastidii sea, vim ut vivendum pertinacia. Cu dolor perpetua his, debet doctus definitiones an sit. Velit ridens propriae in vix. Qui ut justo essent lucilius, no choro doming pro.
+                Est in eros contentiones, te dicit explicari tincidunt duo. No duo vocent perpetua salutatus, his ut essent placerat. Cu error argumentum sea. In sed eirmod veritus, te mundi utamur per. Ne sit case inani tollit, ea mel autem partiendo. Eum solum animal alterum ei. Sea quem oportere eu.
+                At ius ipsum prodesset. Pro menandri evertitur constituam ut, in elit porro repudiare usu, nusquam praesent comprehensam est te. Autem mnesarchum nam te. Libris qualisque nam an. Ei nam diam putant facilis. Quis deleniti no vel, liber perfecto ei cum, vim ea inermis imperdiet.
+                Id vide albucius lobortis pri. Mel saperet habemus scriptorem eu, harum pertinax euripidis vel ne. Dolor accumsan reprimique sit an. Ad veri vitae fuisset cum, nostrum gloriatur vix id. Perfecto voluptatum at mel, te ius dicant vituperatoribus.
+                Sed ne appellantur ullamcorper. Dicant persius quaestio et per, assum tritani omittantur vix no, vix suas aliquip ut. Per meis rationibus ut, eum ut delicata laboramus. An vix brute eruditi ocurreret, ex nec animal omnesque assentior, voluptatibus conclusionemque usu ne. Quo perpetua argumentum referrentur ei, cum idque phaedrum at. Quodsi instructior voluptatibus pri ex. Nec munere ornatus ut, mediocrem partiendo eu nam.
+            </P>
+
+
+        </div>
+
+
+        <div class="container table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table table-bordered table-striped mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                        <th scope="col">Addres</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Addres</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Addres</th>
+                        <th scope="col">Phone</th>
+                    </tr>
+                </thead>
+                <tbody style="height: 10px !important; overflow: scroll; ">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <a href="#" id="return_top"><i class="icon-chevron-up"></i></a>
+        <script src="plugin/jquery/jquery.min.js" type="text/javascript"></script>   
+        <script src="plugin/bootstrap-4.1.1/js/bootstrap.min.js" type="text/javascript"></script>  
+        <script >
+                // ===== Scroll to Top ==== 
+                $(window).scroll(function () {
+                    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+                        $('#return_top').fadeIn(200);    // Fade in the arrow
+                    } else {
+                        $('#return_top').fadeOut(200);   // Else fade out the arrow
+                    }
+                });
+                $('#return_top').click(function () {      // When arrow is clicked
+                    $('body,html').animate({
+                        scrollTop: 0                       // Scroll to top of body
+                    }, 500);
+                });
+                function mostrarContenido() {
+                    var x = document.getElementById("textoMostrar");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    } else {
+                        x.style.display = "none";
+                    }
+                }
+        </script>  
+
+
+    </body>
+</html>

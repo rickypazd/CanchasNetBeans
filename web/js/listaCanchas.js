@@ -47,5 +47,5 @@ function complejo_iten(obj) {
     $("#lista_complejos").append(html);
 }
 function ver_complejo(obj){
-    window.location.href="detallecanchas.html?id="+obj.ID;
+    window.location.href="perfilComplejo.html?id="+obj.ID;
 }

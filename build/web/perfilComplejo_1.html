@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--
+  <a href="#"> <img src="https://via.placeholder.com/150"> </a>
+-->
+<html>
+
+    <head>
+        <!-- SITE TITTLE -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Alvaro</title>
+        <!--  PLUGINS CSS STYLE -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+        <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="plugins/listtyicons/style.css" rel="stylesheet">
+        <link href="css/perfilComplejo.css" rel="stylesheet" type="text/css"/>
+
+
+        <script src="plugins/jquery/jquery.min.js"></script>
+        <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+        <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/perfilComplejo.js" type="text/javascript"></script>
+        <script src="js/custom.js"></script>
+
+        <style>
+
+            .tooltip1 {
+                position: relative; /*quieto*/
+                display: inline-block;
+                border-bottom: 10px dotted black;
+            }
+            .tooltip1 .tooltiptext1 {
+                visibility: hidden;/*ocultar*/
+                width: 120px;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 5px 0;
+                /* Position the tooltip */
+                position: absolute;
+                z-index: 1;
+                bottom: 150%;/*si e 150% es arriba, y si lo quitas va abajo*/
+            }
+            .tooltip1 .tooltiptext1 :after {
+                visibility: hidden;/*ocultar*/
+                width: 120px;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 5px 0;
+                /* Position the tooltip */
+                position: absolute;
+                z-index: 1;
+                bottom: 150%;/*si e 150% es arriba, y si lo quitas va abajo*/
+            }
+            .tooltip1:hover .tooltiptext1 {
+                visibility: visible;
+            }
+
+
+        </style>
+
+
+
+    </head>
+
+
+    <body>
+
+        <div class="main-wrapper" >
+            <!-- HEADER -->
+            <header id="pageTop" class="header" >
+                <!-- TOP INFO BAR -->
+                <div class="nav-wrapper navbarWhite">
+                    <!-- NAVBAR -->
+                    <nav id="menuBar" class="navbar navbar-default lightHeader" role="navigation">
+                        <div class="">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                                <ul class="nav navbar-nav navbar-right" style="text-align: center;">
+                                    <li class=" dropdown singleDrop">
+                                        <a href="login.html" aria-haspopup="true" aria-expanded="false">Ingresar</a>
+                                    </li>
+                                    <li class=" dropdown singleDrop">
+                                        <a class="" href="index.html" style="margin: 0; padding: 0;"><img src="img/logo-blue.png" alt="logo"></a>
+                                    </li>
+                                    <li class="active dropdown singleDrop">
+                                        <a href="listaCanchas.html" aria-haspopup="true" aria-expanded="false">Canchas</a>
+                                    </li>
+                                    <li class=" dropdown singleDrop">
+                                        <a href="mapas.html" aria-haspopup="true" aria-expanded="false">Mapas</a>
+                                    </li>
+                                    <li id="menu_reserva" class=" dropdown singleDrop">
+                                        <a href="reservas.html" aria-haspopup="true" aria-expanded="false">Mis Reservas</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+
+
+
+
+        <div class=" PCBody" >
+            <div class="  col-md-5  col-lg-5">
+                <img src="img/cancha.png" class="PCImagen" alt="fotito"/>
+                <div class=" PCBtnComentario " > <a href="#" class="btn PCBtnDiseño" data-toggle="modal" data-target="#myModal">  <span class="glyphicon glyphicon-time" ></span> Comentarios</a> </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br> <br>
+        <br>
+        <br> <br>
+        <br>
+        <br>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div style="text-align:center;" >       
+            <p>Move the mouse over the text below:</p>
+
+            <div class="tooltip1">Hover over me
+                <span class="tooltiptext1">Tooltip text</span>
+                <div class="tooltiptext1"  >
+                    <ul class="timeline timeline-horizontal"  >
+                        <li class="timeline-item" >
+                            <div class="timeline-panel" style="background-color: red; width: 200px; height: 200px; " >
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+ 
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <ul class="timeline timeline-horizontal"  >
+            <li class="timeline-item" >
+                <div class="timeline-panel" style="background-color: red; width: 200px; height: 200px; " >
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+</html>

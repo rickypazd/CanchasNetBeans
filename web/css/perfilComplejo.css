@@ -1,0 +1,471 @@
+.PCBody { 
+    margin: 0;
+    padding: 0;
+    padding-top: 120px;
+    text-align: center;
+    height: 100%;}
+
+.PCBtnComentario{ margin:auto; text-align: center; left: 0; position: absolute; background-color: transparent; width: 100%; bottom: 10%;}
+.PCBtnComentario a{ position: relative;display:inline-block;background: transparent;width:200px;height:45px;line-height:35px;text-align:center;font-size:15px;margin:10px auto;text-decoration: none; color: green;z-index: 1; margin:0px auto;border:none; }
+.PCBtnComentario a:before,  .PCBtnComentario a:after { width:200px;left: 0px;height:15.5px;z-index: -1; background: white ;border: 3px solid green;}
+.PCBtnComentario a:before{position:absolute; content:'';border-bottom:none; -webkit-transform:perspective(15px) rotateX(5deg);-moz-transform:perspective(15px) rotateX(5deg); transform:perspective(15px) rotateX(5deg);}
+.PCBtnComentario a:after{position:absolute; top:22px; content:''; border-top:none;-webkit-transform:perspective(15px) rotateX(-5deg); -moz-transform: perspective(15px) rotateX(-5deg); transform:perspective(15px) rotateX(-5deg);}
+.PCBtnComentario a:hover{color:white; }
+.PCBtnComentario a:hover:before,  .PCBtnComentario a:hover:after {background:green;}
+
+
+.tooltips {}/*quieto el Boton o Objeto*/
+.tooltips .tooltipsConten{position:absolute; visibility: visible ; width:100%; text-align:center; border-radius:6px; padding:5px 0; z-index:1; bottom:100%;}/*si e 150% es arriba, y si lo quitas va abajo*/
+.tooltips:hover .tooltipsConten {visibility: visible; display: block;}
+
+/*el triangulo*/
+.Bubble{position:absolute; width:340px; height:160px; float:left; border:1px solid white; border-radius:22px; padding:4px 15px; background:white;bottom:150%;}
+.Bubble:before {position:absolute; content:" "; bottom:-16px; left:28px !important; border-right:16px solid transparent !important; border-top:16px solid white !important;border-bottom: 0 solid green !important;border-left: 16px solid transparent !important;}
+.Bubble_Contenido{ color:black; padding:0px; width:100%; height:100%;overflow:auto;}/*Scroll*/
+.Bubble_Contenido::-webkit-scrollbar {width:5px; height:5px;}
+.Bubble_Contenido::-webkit-scrollbar-track {border:1px solid #cccccc; border-radius:20px;}
+.Bubble_Contenido::-webkit-scrollbar-thumb {background: #cccccc; border-radius:20px;}
+.Bubble_Contenido::-webkit-scrollbar-thumb:hover {background: green;}
+.chat_people{overflow:hidden; clear:both; background:#0000ff; background-color: white;padding:1px 0px; border:0.5px solid #cccccc;}
+.chat_img{float:left; width:11%;}/*Foto*/
+.chat_img img{max-width:100%; padding: 0 0 0 5px}
+.chat_Coment {float:left; padding: 0 0 0 5px;width: 88%;}/*La Caja*/
+.chat_Coment h5{font-size:10px; color:black; margin:0 0 2px 0; text-align: left;}/*Nombre*/
+.chat_Coment span{font-size:10px; float:right;} /*Estrellas*/ 
+.chat_Coment p{font-size:9px; color:black; margin:auto; background-color: #cccccc; clear:both;} /*COmentario*/
+
+
+.PCTitulo{
+    color: #019b4a;
+    font-family: Times New Roman, Times, serif;}
+.PCHr { 
+    background: url('../img/iconCancha.png') no-repeat top center;
+    /*background: url('../iconCancha.png') no-repeat top center;*/  
+    /*background: url('http://i.stack.imgur.com/37Aip.png') no-repeat top center; */
+    background-size: contain;
+    display: block;
+    height: 18px;
+    border: 0;
+    width: 60%;   
+    position: relative;
+    margin: auto;
+    margin-bottom: 35px;}
+.PCHr:before,.PCHr:after{
+    content: '';
+    display: block;
+    position: absolute;
+    background: #a1a1a1;
+    height: 2px;
+    top: 8px;}
+.PCHr:before {left: 0;right:50%;margin-right: 20px;}
+.PCHr:after {right: 0;left: 50%; margin-left: 20px;}
+.PCParafo1{font-size: 20px;}
+.PCParafo2{ font-size: 20px;margin: -10px;}
+.PCBtnHorario, .PCBtnHorario:hover, .PCBtnHorario:focus {
+    text-align: center;
+    height:60px;
+    line-height:50px;
+    margin-top: 45px;
+    width: 450px;
+    font-size: x-large;
+    color: black;
+    border: none;
+    -webkit-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+    -moz-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+    box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);}
+
+.PCBtnHorario:hover{
+
+    color: black;
+    border: none;
+    -webkit-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+    -moz-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+    box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);}
+.PCBtnHorario:focus {
+
+    color: black;
+    border: none;
+    -webkit-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+    -moz-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+    box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);}
+
+.PCBtnHexg{/*Front*/
+    position: relative;
+    display:inline-block;
+    background: transparent;
+    width:150px;/*Ancho right*/
+    height:60px;
+    line-height:55px;
+    text-align:center;
+    font-size:15px;
+    text-decoration:none;
+    margin:0px auto;/*margen*/
+    text-decoration: none;
+    margin-top: 45px;
+    color:black;
+    border:none; 
+
+}
+.PCBtnHexg:before, .PCBtnHexg:after {/*Front*/
+    width:150px;/*Ancho left*/
+    left: 0px;
+    height:27px;
+    z-index: -1;
+    color: black;
+    border: 3px solid  #66ff74;}
+.PCBtnHexg:before{/*Arriba*/
+    position: absolute;
+    content: '';
+    border-bottom: none;
+    -webkit-transform: perspective(15px) rotateX(5deg);
+    -moz-transform: perspective(15px) rotateX(5deg);
+    transform: perspective(15px) rotateX(5deg);}
+.PCBtnHexg:after{/*Abajo*/
+    position: absolute;
+    top: 32px;
+    content: '';
+    border-top: none;
+    -webkit-transform: perspective(15px) rotateX(-5deg);
+    -moz-transform: perspective(15px) rotateX(-5deg);
+    transform: perspective(15px) rotateX(-5deg);}
+.PCBtnHexg:hover:before, .PCBtnHexg:hover:after {background: #66ff74;}
+.PCBtnHexg:hover{color:black;}
+
+
+@media (min-width: 200px ) and (max-width: 495px)/**Mobil S M L */ {
+    .PCBody { 
+        padding-top: 80px;}
+    .PCImagen{
+        width:100%;  
+        height:200px;    
+        border-top-right-radius:80px;
+        border-bottom-right-radius:80px;}
+    
+    .Bubble{position:absolute; width:220px; height:90px; float:left; border:1px solid white; border-radius:22px; padding:4px 15px; background:white;bottom:150%;}
+
+    .PCTitulo{
+        color: #019b4a;
+        font-family: Times New Roman, Times, serif; 
+        font-size: 25px;}
+    .PCParafo1{
+        margin-top: -20px;
+        font-size: 10px;}
+    .PCParafo2{
+        font-size: 10px;   
+        margin: -10px;}
+    .PCBtnHorario{
+        height:40px;
+        line-height:27px;
+        margin: 0;
+        margin-top: 25px;
+        width: 250px;
+        font-size: small;
+        text-align:center;
+        color: black;
+        border: none;
+
+        -webkit-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+        -moz-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+        box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);}
+    .PCBtnHorario:hover{ 
+        color: black;
+        -webkit-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+        -moz-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+        box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);}
+    .PCBtnHexg{/*Front*/
+        position: relative;
+        display:inline-block;
+        background: transparent;
+        width:100px;/*Ancho Ancho Ancho Ancho Ancho*/
+        height:8px;
+        line-height:55px;
+        text-align:center;
+        font-size:9px;
+        text-decoration:none;
+        margin:0px auto;/*margen*/
+        text-decoration: none;
+        margin-top: 10px;
+        color:black;}
+    .PCBtnHexg:before, .PCBtnHexg:after {/*Front*/
+        width:100px;/*Ancho Ancho Ancho Ancho Ancho*/
+        left: 0px;
+        height:20px;/*Altura Altura Altura Altura */
+        z-index: -1;
+        color: black;
+        border: 3px solid  #66ff74;}
+    .PCBtnHexg:before{/*Arriba*/
+        position: absolute;
+        content: '';
+        top: 12px;
+        border-bottom: none;
+        -webkit-transform: perspective(15px) rotateX(5deg);
+        -moz-transform: perspective(15px) rotateX(5deg);
+        transform: perspective(15px) rotateX(5deg);}
+    .PCBtnHexg:after{/*Abajo*/
+        position: absolute;
+        top: 33px;/*Altura Altura Altura Altura */
+        content: '';
+        border-top: none;
+        -webkit-transform: perspective(15px) rotateX(-5deg);
+        -moz-transform: perspective(15px) rotateX(-5deg);
+        transform: perspective(15px) rotateX(-5deg);}
+    .PCBtnHexg:hover:before, .PCBtnHexg:hover:after {background: #66ff74;}
+    .PCBtnHexg:hover{color:black;} 
+}
+@media (min-width: 500px ) and (max-width: 1400px)/**table*****/   {
+    .PCBtnHorario{
+        height:60px;
+        line-height:50px;
+        margin-top: 45px;
+        width: 450px;
+        font-size: x-large;
+        color: black;
+        border: none;
+
+        -webkit-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+        -moz-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+        box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);}
+    .PCBtnHorario:hover{ 
+        color: black;
+        -webkit-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+        -moz-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+        box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);}
+
+    .PCBtnHexg{/*Front*/
+        position: relative;
+        display:inline-block;
+        background: transparent;
+        width:100px;/*Ancho Ancho Ancho Ancho Ancho*/
+        height:8px;
+        line-height:55px;
+        text-align:center;
+        font-size:9px;
+        text-decoration:none;
+        margin:0px auto;/*margen*/
+        text-decoration: none;
+        margin-top: 30px;
+        color:black;}
+    .PCBtnHexg:before, .PCBtnHexg:after {/*Front*/
+        width:100px;/*Ancho Ancho Ancho Ancho Ancho*/
+        left: 0px;
+        height:20px;/*Altura Altura Altura Altura */
+        z-index: -1;
+        color: black;
+        border: 3px solid  #66ff74;}
+    .PCBtnHexg:before{/*Arriba*/
+        position: absolute;
+        content: '';
+        top: 12px;
+        border-bottom: none;
+        -webkit-transform: perspective(15px) rotateX(5deg);
+        -moz-transform: perspective(15px) rotateX(5deg);
+        transform: perspective(15px) rotateX(5deg);}
+    .PCBtnHexg:after{/*Abajo*/
+        position: absolute;
+        top: 33px;/*Altura Altura Altura Altura */
+        content: '';
+        border-top: none;
+        -webkit-transform: perspective(15px) rotateX(-5deg);
+        -moz-transform: perspective(15px) rotateX(-5deg);
+        transform: perspective(15px) rotateX(-5deg);}
+    .PCBtnHexg:hover:before, .PCBtnHexg:hover:after {background: #66ff74;}
+    .PCBtnHexg:hover{color:black;} 
+
+
+}
+@media (min-width: 2500px) and (max-width: 5000px)/**4k*****/ {
+
+    .PCBody1{ 
+        padding-top: 220px;
+        margin-left: 1000px;
+    }
+
+
+    .PCImagen{
+        width:100%;  
+        height:750px;    
+        border-top-right-radius:80px;
+        border-bottom-right-radius:80px;}
+    .PCBtnComentario {
+        position: absolute;
+        right: 15%;
+        bottom: 80px;
+        left: 15%;
+        z-index: 10;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: #fff;
+        text-align: center;
+        text-shadow: 0 1px 2px rgba(0,0,0,.6);}
+    .PCBtnDiseño{/*Front*/
+        position: relative;/*Figura statico*/
+        background: transparent;
+        width:400px;/*Ancho right*/
+        height:20px;
+        line-height:70px;/*alto */
+        text-align:center;
+        font-size:30px;
+        margin:20px auto;/*margen*/
+        text-decoration: none;
+        color: #66ff74;
+        z-index: 20;
+        margin:0px auto;/*margen*/}
+    .PCBtnDiseño:before, .PCBtnDiseño:after {/*Front*/
+        width:400px;/*Ancho left*/
+        left: 0px;
+        height:36px;/*alto */
+        z-index: -1;
+        background: white ;
+        border: 3px solid white;}
+    .PCBtnDiseño:before{/*Arriba*/
+        position: absolute;
+        content: '';
+        border-bottom: none;
+        -webkit-transform: perspective(15px) rotateX(5deg);
+        -moz-transform: perspective(15px) rotateX(5deg);
+        transform: perspective(15px) rotateX(5deg);}
+    .PCBtnDiseño:after{/*Abajo*/
+        position: absolute;
+        top: 44px;
+        content: '';
+        border-top: none;
+        -webkit-transform: perspective(15px) rotateX(-5deg);
+        -moz-transform: perspective(15px) rotateX(-5deg);
+        transform: perspective(15px) rotateX(-5deg);}
+    .PCBtnDiseño:hover{color:white;}
+    .PCBtnDiseño:hover:before, .PCBtnDiseño:hover:after {background: #66ff74;}
+    .PCTitulo{
+        font-size: 80px;
+        color: #019b4a;
+        font-family: Times New Roman, Times, serif;}
+
+    .PCHr { 
+        background: url('iconCancha0.png') no-repeat top center;  
+        /*background: url('http://i.stack.imgur.com/37Aip.png') no-repeat top center; */
+        background-size: contain;
+        display: block;
+        height: 18px;
+        border: 0;
+        width: 60%;   
+        position: relative;
+        margin: auto;
+        margin-bottom: 35px;}
+    .PCHr:before,.PCHr:after{
+        content: '';
+        display: block;
+        position: absolute;
+        background: #a1a1a1;
+        height: 2px;
+        top: 18px;}
+    .PCHr:before {left: 0;right:50%;margin-right: 20px;}
+    .PCHr:after {right: 0;left: 50%; margin-left: 20px;}
+    .PCParafo1{font-size: 60px;}
+    .PCParafo2{padding-top: 40px; font-size: 60px;}
+    .PCBtnHorario{
+        height:120px;
+        line-height:120px;
+        margin: 0;
+        margin-top: 100px;
+        width: 1000px;
+        font-size: 70px;
+        text-align:center;
+        color: black;
+        border: none;
+
+        -webkit-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+        -moz-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+        box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);}
+    .PCBtnHorario:hover{ 
+        color: black;
+        -webkit-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+        -moz-box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);
+        box-shadow: 0px 0px 20px 1px rgba(174,174,174,1);}
+    .PCBtnHexg{/*Front*/
+        position: relative;
+        display:inline-block;
+        background: transparent;
+        width:300px;/*Ancho right*/
+        height:120px;
+        line-height:100px;
+        text-align:center;
+        font-size:30px;
+        text-decoration:none;
+        margin:0px auto;/*margen*/
+        text-decoration: none;
+        margin-top: 90px;
+        color:black;}
+    .PCBtnHexg:before, .PCBtnHexg:after {/*Front*/
+        width:300px;/*Ancho left*/
+        left: 0px;
+        height:52px;
+        z-index: -1;
+        color: black;
+        border: 3px solid  #66ff74;}
+    .PCBtnHexg:before{/*Arriba*/
+        position: absolute;
+        content: '';
+        border-bottom: none;
+        -webkit-transform: perspective(15px) rotateX(5deg);
+        -moz-transform: perspective(15px) rotateX(5deg);
+        transform: perspective(15px) rotateX(5deg);}
+    .PCBtnHexg:after{/*Abajo*/
+        position: absolute;
+        top: 64px;
+        content: '';
+        border-top: none;
+        -webkit-transform: perspective(15px) rotateX(-5deg);
+        -moz-transform: perspective(15px) rotateX(-5deg);
+        transform: perspective(15px) rotateX(-5deg);}
+    .PCBtnHexg:hover:before, .PCBtnHexg:hover:after {background: #66ff74;}
+    .PCBtnHexg:hover{color:black;}
+    .PCBtnVerMapa{margin-left: 100px; }
+    .PCBtnReservar{margin-right: 100px; }
+}
+
+/* Timeline */
+
+
+/*el triangulo*/
+.timeline .timeline-item .timeline-panel {
+    position: relative;
+    width: 46%;
+    float: left;
+    right: 16px;
+    border: 1px solid #777;
+    background: #ffffff;
+    border-radius: 2px;
+    padding: 20px;
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+.timeline .timeline-item .timeline-panel:before {
+    position: absolute;
+    top: 26px;
+    right: -16px;
+    display: inline-block;
+    border-top: 16px solid transparent;
+    border-left: 16px solid #777;
+    border-right: 0 solid #777;
+    border-bottom: 56px solid transparent;
+    content: " ";
+}
+/*abajo*/
+.timeline-horizontal .timeline-item .timeline-panel:before {
+    top: auto;
+    bottom: -16px;
+    left: 28px !important;
+    right: auto;
+    border-right: 16px solid transparent !important;
+    border-top: 16px solid #777 !important;
+    border-bottom: 0 solid #777 !important;
+    border-left: 16px solid transparent !important;
+}
+
+
+
+.PCBody1{ 
+    padding-top: 220px;
+    margin-left: 150px;
+}
+
+
