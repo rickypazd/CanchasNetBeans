@@ -32,6 +32,16 @@ $(document).ready(function () {
 });
 
 
+
+function mostrarlista() {
+    var x = document.getElementById("idBubble");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
 function getQueryVariable(varia) { //
     var query = window.location.search.substring(1);
     var vars = query.split("&");

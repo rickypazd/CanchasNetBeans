@@ -5,6 +5,15 @@
     text-align: center;
     height: 100%;}
 
+
+#PCImagen{
+    width:100%;  
+    height:400px;    
+    position: relative;
+    border-top-right-radius:80px;
+    border-bottom-right-radius:80px;}
+
+
 .PCBtnComentario{ margin:auto; text-align: center; left: 0; position: absolute; background-color: transparent; width: 100%; bottom: 10%;}
 .PCBtnComentario a{ position: relative;display:inline-block;background: transparent;width:200px;height:45px;line-height:35px;text-align:center;font-size:15px;margin:10px auto;text-decoration: none; color: green;z-index: 1; margin:0px auto;border:none; }
 .PCBtnComentario a:before,  .PCBtnComentario a:after { width:200px;left: 0px;height:15.5px;z-index: -1; background: white ;border: 3px solid green;}
@@ -135,12 +144,12 @@
 @media (min-width: 200px ) and (max-width: 495px)/**Mobil S M L */ {
     .PCBody { 
         padding-top: 80px;}
-    .PCImagen{
+    #PCImagen{
         width:100%;  
         height:200px;    
         border-top-right-radius:80px;
         border-bottom-right-radius:80px;}
-    
+
     .Bubble{position:absolute; width:220px; height:90px; float:left; border:1px solid white; border-radius:22px; padding:4px 15px; background:white;bottom:150%;}
 
     .PCTitulo{
@@ -281,59 +290,39 @@
     }
 
 
-    .PCImagen{
+    #PCImagen{
         width:100%;  
         height:750px;    
         border-top-right-radius:80px;
         border-bottom-right-radius:80px;}
-    .PCBtnComentario {
-        position: absolute;
-        right: 15%;
-        bottom: 80px;
-        left: 15%;
-        z-index: 10;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        color: #fff;
-        text-align: center;
-        text-shadow: 0 1px 2px rgba(0,0,0,.6);}
-    .PCBtnDiseño{/*Front*/
-        position: relative;/*Figura statico*/
-        background: transparent;
-        width:400px;/*Ancho right*/
-        height:20px;
-        line-height:70px;/*alto */
-        text-align:center;
-        font-size:30px;
-        margin:20px auto;/*margen*/
-        text-decoration: none;
-        color: #66ff74;
-        z-index: 20;
-        margin:0px auto;/*margen*/}
-    .PCBtnDiseño:before, .PCBtnDiseño:after {/*Front*/
-        width:400px;/*Ancho left*/
-        left: 0px;
-        height:36px;/*alto */
-        z-index: -1;
-        background: white ;
-        border: 3px solid white;}
-    .PCBtnDiseño:before{/*Arriba*/
-        position: absolute;
-        content: '';
-        border-bottom: none;
-        -webkit-transform: perspective(15px) rotateX(5deg);
-        -moz-transform: perspective(15px) rotateX(5deg);
-        transform: perspective(15px) rotateX(5deg);}
-    .PCBtnDiseño:after{/*Abajo*/
-        position: absolute;
-        top: 44px;
-        content: '';
-        border-top: none;
-        -webkit-transform: perspective(15px) rotateX(-5deg);
-        -moz-transform: perspective(15px) rotateX(-5deg);
-        transform: perspective(15px) rotateX(-5deg);}
-    .PCBtnDiseño:hover{color:white;}
-    .PCBtnDiseño:hover:before, .PCBtnDiseño:hover:after {background: #66ff74;}
+
+
+    .PCBtnComentario{ margin:auto; text-align: center; left: 0; position: absolute; background-color: transparent; width: 100%; bottom: 10%;}
+    .PCBtnComentario a{ position: relative;display:inline-block;background: transparent;width:400px;height:90px;line-height:70px;text-align:center;font-size:30px;margin:10px auto;text-decoration: none; color: green;z-index: 1; margin:0px auto;border:none; }
+    .PCBtnComentario a:before,  .PCBtnComentario a:after { width:400px;left: 0px;height:36px;z-index: -1; background: white ;border: 3px solid green;}
+    .PCBtnComentario a:before{position:absolute; content:'';border-bottom:none; -webkit-transform:perspective(15px) rotateX(5deg);-moz-transform:perspective(15px) rotateX(5deg); transform:perspective(15px) rotateX(5deg);}
+    .PCBtnComentario a:after{position:absolute; top:44px; content:''; border-top:none;-webkit-transform:perspective(15px) rotateX(-5deg); -moz-transform: perspective(15px) rotateX(-5deg); transform:perspective(15px) rotateX(-5deg);}
+    .PCBtnComentario a:hover{color:white; }
+    .PCBtnComentario a:hover:before,  .PCBtnComentario a:hover:after {background:green;}
+
+
+
+
+    .Bubble{position:absolute; width:600px; height:350px; float:left; border:1px solid white; border-radius:22px; padding:4px 15px; background:white;bottom:150%;}
+
+    .chat_people{overflow:hidden; clear:both; background:#0000ff; background-color: white;padding:20px 0px; border:0.5px solid #cccccc;}
+    .chat_img{float:left; width:11%;}/*Foto*/
+    .chat_img img{max-width:100%; padding: 0 0 0 10px}
+    .chat_Coment {float:left; padding: 0 0 0 5px;width: 88%;}/*La Caja*/
+
+    .chat_Coment h5{font-size:40px; color:black; margin:0 0 2px 0; text-align: left;}/*Nombre*/
+    .chat_Coment span{font-size:40px; float:right;} /*Estrellas*/ 
+    .chat_Coment p{font-size:20px; color:black; margin:auto; background-color: #cccccc; clear:both;} /*COmentario*/
+
+
+
+
+
     .PCTitulo{
         font-size: 80px;
         color: #019b4a;
@@ -468,4 +457,34 @@
     margin-left: 150px;
 }
 
+
+
+
+
+#modal_reserva .modal-content{
+    overflow:hidden;
+}
+
+#modal_reserva .modal-lg .bottom-strip {
+   height: 100%;
+    background: white;
+    transform: rotate(13deg);
+    margin-top: 10%;
+    margin-left: -41%;
+    border-top: 22px solid #44564a;
+    width: 150%;
+ 
+}
+ 
+
+#modal_reserva1 .modal-lg .bottom-strip {
+      height: 161px;
+    background: #007b5e;
+    transform: rotate(191deg);
+    margin-top: 80%;
+    margin-right: 0;
+    margin-left: 0;
+    border-bottom: 66px solid #4CAF50;
+    border-top: 10px solid #4caf50;
+}  
 
